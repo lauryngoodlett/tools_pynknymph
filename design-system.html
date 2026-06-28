@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pynk Nymph — Design System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" />
+<style>
+  body { background: var(--pn-mango-50); color: var(--pn-aloe-dark); }
+
+  .ds-shell { max-width: 1440px; margin: 0 auto; padding: 0 48px 120px; }
+  .ds-top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 0; border-bottom: 1px solid var(--pn-aloe-dark);
+    font-family: var(--pn-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em;
+  }
+  .ds-top .mark { height: var(--tw-mark-h, 30px); width: auto; display: block; }
+
+  .ds-hero { padding: 80px 0 64px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: end; border-bottom: 1px solid var(--pn-aloe-dark); }
+  .ds-hero h1 { font-family: var(--pn-display); font-style: italic; font-weight: 400; font-size: clamp(72px, 9vw, 156px); line-height: 0.92; letter-spacing: -0.025em; margin: 0; }
+  .ds-hero h1 em { color: var(--tw-accent, var(--pn-juicy-fruit)); font-style: italic; }
+  .ds-hero .meta { display: flex; flex-direction: column; gap: 24px; }
+  .ds-hero .meta .row { display: flex; justify-content: space-between; padding: 12px 0; border-top: 1px solid var(--pn-aloe-dark); font-family: var(--pn-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .ds-hero .meta .row:last-child { border-bottom: 1px solid var(--pn-aloe-dark); }
+
+  .ds-section { padding: 96px 0 16px; }
+  .ds-section-head { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 32px; align-items: end; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--pn-aloe-dark); }
+  .ds-section-head .num { font-family: var(--pn-mono); font-size: 14px; letter-spacing: 0.22em; }
+  .ds-section-head h2 { font-family: var(--pn-display); font-style: italic; font-weight: 400; font-size: clamp(48px, 5.5vw, 96px); line-height: 0.95; margin: 0; letter-spacing: -0.02em; }
+  .ds-section-head p { font-size: 16px; line-height: 1.6; max-width: 460px; margin: 0; color: var(--pn-charcoal); }
+
+  /* COLORS ----------------------------------------------------- */
+  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .sw { border-radius: var(--pn-r-card); padding: 28px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; }
+  .sw .name { font-family: var(--pn-display); font-style: italic; font-size: 36px; line-height: 1; letter-spacing: -0.01em; }
+  .sw .meta { font-family: var(--pn-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.7; }
+  .sw.outline { border: 1px solid var(--pn-aloe-dark); }
+
+  /* TYPE ------------------------------------------------------- */
+  .type-grid { display: grid; grid-template-columns: 220px 1fr; row-gap: 56px; column-gap: 48px; align-items: baseline; }
+  .type-grid .lbl { font-family: var(--pn-mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; padding-top: 12px; }
+  .type-grid .lbl small { display: block; font-size: 11px; opacity: 0.7; margin-top: 4px; }
+  .t-display-xl { font-family: var(--pn-display); font-style: italic; font-weight: 400; font-size: 144px; line-height: 0.92; letter-spacing: -0.025em; margin: 0; }
+  .t-display-l { font-family: var(--pn-display); font-style: italic; font-weight: 400; font-size: 88px; line-height: 0.95; letter-spacing: -0.02em; margin: 0; }
+  .t-display-m { font-family: var(--pn-display); font-style: italic; font-weight: 400; font-size: 56px; line-height: 1; letter-spacing: -0.015em; margin: 0; }
+  .t-h1-mono { font-family: var(--pn-mono); font-weight: 500; font-size: 36px; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+  .t-eyebrow { font-family: var(--pn-mono); font-weight: 500; font-size: 14px; text-transform: uppercase; letter-spacing: 0.22em; margin: 0; }
+  .t-body { font-family: var(--pn-sans); font-size: 18px; line-height: 1.65; margin: 0; max-width: 720px; }
+  .t-caption { font-family: var(--pn-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.22em; margin: 0; }
+
+  /* COMPONENTS ------------------------------------------------- */
+  .comp-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+  .comp { background: #fff; border: 1px solid rgba(40,52,20,.12); border-radius: var(--pn-r-card); padding: 32px; }
+  .comp h3 { font-family: var(--pn-display); font-style: italic; font-weight: 400; font-size: 28px; line-height: 1; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .comp .sub { font-family: var(--pn-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; margin-bottom: 24px; display: block; }
+  .comp .demo { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 28px; background: var(--pn-mango-50); border-radius: 12px; margin-bottom: 16px; min-height: 120px; }
+  .comp .code { font-family: var(--pn-mono); font-size: 11px; line-height: 1.7; opacity: 0.7; padding: 12px 0 0; border-top: 1px dashed rgba(40,52,20,.2); }
+
+  .comp.col-6 { grid-column: span 6; }
+  .comp.col-4 { grid-column: span 4; }
+  .comp.col-12 { grid-column: span 12; }
+  .comp.col-8 { grid-column: span 8; }
+
+  /* form */
+  .pn-input { display: flex; flex-direction: column; gap: 6px; }
+  .pn-input label { font-family: var(--pn-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.7; }
+  .pn-input input, .pn-input select, .pn-input textarea {
+    font-family: var(--pn-sans); font-size: 16px;
+    padding: 14px 16px; border: 1px solid var(--pn-aloe-dark); background: #fff;
+    border-radius: 12px; color: var(--pn-aloe-dark);
+    width: 100%;
+  }
+  .pn-input input:focus { outline: 2px solid var(--tw-accent, var(--pn-dragon-fruit)); outline-offset: 2px; }
+
+  /* card */
+  .pn-card-svc { background: var(--pn-aloe-dark); color: var(--pn-mango-50); border-radius: var(--pn-r-card); padding: 32px; min-height: 280px; display: flex; flex-direction: column; gap: 20px; position: relative; overflow: hidden; }
+  .pn-card-svc h4 { font-family: var(--pn-display); font-style: italic; font-weight: 400; font-size: 48px; line-height: 1; margin: 0; letter-spacing: -0.015em; }
+  .pn-card-svc .price { font-family: var(--pn-mono); font-size: 28px; font-weight: 500; margin-top: auto; }
+  .pn-card-svc .duration { font-family: var(--pn-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.65; }
+
+  /* nav */
+  .pn-nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; background: var(--pn-aloe-dark); color: var(--pn-mango-50); border-radius: var(--pn-r-pill); width: 100%; }
+  .pn-nav .links { display: flex; gap: 28px; font-family: var(--pn-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .pn-nav .mark { height: 22px; width: auto; display: block; }
+
+  /* badge */
+  .b-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pn-badge { display: inline-flex; align-items: center; padding: 6px 14px; border-radius: var(--pn-r-pill); font-family: var(--pn-mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em; }
+  .b-coral { background: var(--pn-juicy-fruit); color: #fff; }
+  .b-aloe { background: var(--pn-aloe-light); color: var(--pn-aloe-dark); }
+  .b-dragon { background: var(--pn-dragon-fruit); color: #fff; }
+  .b-charcoal { background: var(--pn-aloe-dark); color: var(--pn-mango-50); }
+  .b-outline { border: 1px solid var(--pn-aloe-dark); color: var(--pn-aloe-dark); }
+
+  /* spacing & radii */
+  .scale-list { display: flex; flex-direction: column; gap: 10px; }
+  .scale-row { display: grid; grid-template-columns: 80px 1fr 80px; align-items: center; gap: 16px; }
+  .scale-row .name { font-family: var(--pn-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .scale-row .bar { height: 14px; background: var(--pn-aloe-dark); border-radius: 4px; }
+  .scale-row .val { font-family: var(--pn-mono); font-size: 11px; text-align: right; opacity: 0.7; }
+
+  .radii-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .radii-row .r-tile { width: 100px; height: 100px; background: var(--pn-aloe-dark); display: grid; place-items: center; color: var(--pn-mango-50); font-family: var(--pn-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+
+  /* motif tiles */
+  .motif-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .m-tile { aspect-ratio: 1; border-radius: var(--pn-r-card); display: grid; place-items: center; padding: 16px; text-align: center; font-family: var(--pn-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .m-tile .ic { font-size: 56px; line-height: 1; margin-bottom: 8px; }
+
+  /* logos */
+  .logo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .logo-tile { background: #fff; border: 1px solid rgba(40,52,20,.12); border-radius: var(--pn-r-card); padding: 48px; display: grid; place-items: center; min-height: 280px; }
+  .logo-tile.dark { background: var(--pn-aloe-dark); }
+  .logo-tile.coral { background: var(--pn-juicy-fruit); }
+  .logo-tile.cream { background: var(--pn-mango-50); border-color: var(--pn-aloe-dark); }
+  .logo-tile img { max-height: 180px; width: auto; }
+  .logo-primary { grid-column: 1 / -1; min-height: 320px; margin-bottom: 24px; padding: 72px; }
+  .logo-tile .wm { max-height: none; width: 70%; height: auto; }
+  .logo-primary .wm { width: 56%; }
+
+  /* footer */
+  .ds-foot { margin-top: 96px; padding: 32px 0; border-top: 1px solid var(--pn-aloe-dark); display: flex; justify-content: space-between; font-family: var(--pn-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+
+  /* ---- Tweak hooks: accent + dark surface ---- */
+  .pn-btn-primary { background: var(--tw-accent, var(--pn-dragon-fruit)) !important; }
+  body.pn-dark { background: var(--pn-aloe-dark) !important; color: var(--pn-mango-50); }
+  body.pn-dark .ds-top,
+  body.pn-dark .ds-hero,
+  body.pn-dark .ds-hero .meta .row,
+  body.pn-dark .ds-section-head,
+  body.pn-dark .ds-foot { border-color: rgba(229,221,213,0.32) !important; }
+  body.pn-dark .ds-section-head p { color: rgba(229,221,213,0.7); }
+  body.pn-dark .sw.outline { border-color: rgba(229,221,213,0.4); }
+</style>
+</head>
+<body style="background-color: rgb(246, 235, 227)">
+<div class="ds-shell">
+
+  <header class="ds-top">
+    <img class="mark" src="assets/PN_Wordmark.svg" alt="Pynk Nymph" />
+    <span>Design System · v1.0 · 2026</span>
+  </header>
+
+  <section class="ds-hero">
+    <h1 style="font-weight: 700">The system, <em>front to back.</em></h1>
+    <div class="meta">
+      <div class="row"><span>Tokens</span><span>32</span></div>
+      <div class="row"><span>Components</span><span>14</span></div>
+      <div class="row"><span>Type roles</span><span>06</span></div>
+      <div class="row" style="border-width: 1px 0px 0px"><span>Motifs</span><span>06</span></div>
+    </div>
+  </section>
+
+  <!-- ============ COLOR ============ -->
+  <section class="ds-section">
+    <div class="ds-section-head">
+      <span class="num">01</span>
+      <h2>Color tokens.</h2>
+      <p>Two neutrals, two greens, two pinks, two warms — plus extended secondaries pulled from the live brand surfaces.</p>
+    </div>
+
+    <div class="swatches">
+      <div class="sw" style="background: var(--pn-aloe-dark); color: var(--pn-mango-50);">
+        <span class="name">Aloe Dark</span>
+        <div class="meta"><div>--pn-aloe-dark</div><div>#283414</div></div>
+      </div>
+      <div class="sw outline" style="background: var(--pn-mango-50); color: var(--pn-aloe-dark); background-color: rgb(246, 235, 227)">
+        <span class="name">Mango 50</span>
+        <div class="meta"><div>--pn-mango-50</div><div>#F6EBE3</div></div>
+      </div>
+      <div class="sw" style="background: var(--pn-aloe-light); color: var(--pn-aloe-dark);">
+        <span class="name">Aloe Light</span>
+        <div class="meta"><div>--pn-aloe-light</div><div>#759E33</div></div>
+      </div>
+      <div class="sw" style="background: var(--pn-charcoal); color: var(--pn-mango-50);">
+        <span class="name">Charcoal</span>
+        <div class="meta"><div>--pn-charcoal</div><div>#2C312F</div></div>
+      </div>
+      <div class="sw" style="background: var(--pn-juicy-fruit); color: var(--pn-pink-pale);">
+        <span class="name">Juicy Fruit</span>
+        <div class="meta"><div>--pn-juicy-fruit</div><div>#FF565D</div></div>
+      </div>
+      <div class="sw" style="background: var(--pn-dragon-fruit); color: #fff;">
+        <span class="name">Dragon Fruit</span>
+        <div class="meta"><div>--pn-dragon-fruit</div><div>#EF317D</div></div>
+      </div>
+      <div class="sw" style="background: var(--pn-strawberry); color: var(--pn-mango-50);">
+        <span class="name">Strawberry</span>
+        <div class="meta"><div>--pn-strawberry</div><div>#CC0709</div></div>
+      </div>
+      <div class="sw" style="background: var(--pn-mango); color: var(--pn-aloe-dark);">
+        <span class="name">Mango</span>
+        <div class="meta"><div>--pn-mango</div><div>#FF8B31</div></div>
+      </div>
+      <div class="sw" style="background: var(--pn-wine); color: var(--pn-pink-pale);">
+        <span class="name">Wine</span>
+        <div class="meta"><div>--pn-wine</div><div>#4D142A</div></div>
+      </div>
+      <div class="sw" style="background: var(--pn-aloe-pale); color: var(--pn-aloe-dark);">
+        <span class="name">Aloe Pale</span>
+        <div class="meta"><div>--pn-aloe-pale</div><div>#DBE4CE</div></div>
+      </div>
+      <div class="sw" style="background: var(--pn-pink-pale); color: var(--pn-aloe-dark);">
+        <span class="name">Pink Pale</span>
+        <div class="meta"><div>--pn-pink-pale</div><div>#FFEEEF</div></div>
+      </div>
+      <div class="sw" style="background: var(--pn-mango-1500); color: var(--pn-mango-50);">
+        <span class="name">Mango 1500</span>
+        <div class="meta"><div>--pn-mango-1500</div><div>#20140B</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TYPE ============ -->
+  <section class="ds-section">
+    <div class="ds-section-head">
+      <span class="num">02</span>
+      <h2>Type ramp.</h2>
+      <p>Three families, six clear roles. Use scale to build hierarchy — never decoration.</p>
+    </div>
+
+    <div class="type-grid">
+      <div class="lbl">Display XL<small>Fraunces · Italic · 144 / 0.92</small></div>
+      <h2 class="t-display-xl" style="font-weight: 700">Get your ass<br />waxed.</h2>
+
+      <div class="lbl">Display L<small>Fraunces · Italic · 88 / 0.95</small></div>
+      <h2 class="t-display-l" style="font-weight: 500">For every body. Downtown RVA.</h2>
+
+      <div class="lbl">Display M<small>Fraunces · Italic · 56 / 1</small></div>
+      <h2 class="t-display-m">Care, comfort, and respect.</h2>
+
+      <div class="lbl">H1 Mono<small>DM Mono · 36 · UPPER · 0.05em</small></div>
+      <h2 class="t-h1-mono">Brazilian / Bikini / Brow</h2>
+
+      <div class="lbl">Eyebrow<small>DM Mono · 14 · UPPER · 0.22em</small></div>
+      <p class="t-eyebrow">◆ For every body ◆ Downtown RVA</p>
+
+      <div class="lbl">Body<small>DM Sans · 18 / 1.65</small></div>
+      <p class="t-body">Pynk Nymph is an inclusive waxing and skincare studio in Downtown Richmond. We exist to make grooming feel safe, easy, and welcoming — a space without judgment, where every body is treated with care.</p>
+
+      <div class="lbl">Caption<small>DM Mono · 12 · UPPER · 0.22em</small></div>
+      <p class="t-caption">Pynk Nymph · 804.455.7149 · @pynknymph</p>
+    </div>
+  </section>
+
+  <!-- ============ SPACING / RADII ============ -->
+  <section class="ds-section">
+    <div class="ds-section-head">
+      <span class="num">03</span>
+      <h2>Spacing &amp; radii.</h2>
+      <p>One scale, no exceptions. Pill for buttons and tags; card for surfaces; tag for chips.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+      <div>
+        <span class="t-eyebrow" style="display:block;margin-bottom:24px;opacity:.7;">Spacing scale</span>
+        <div class="scale-list">
+          <div class="scale-row"><span class="name">--s-1</span><div class="bar" style="width: 4px;"></div><span class="val">4 px</span></div>
+          <div class="scale-row"><span class="name">--s-2</span><div class="bar" style="width: 8px;"></div><span class="val">8 px</span></div>
+          <div class="scale-row"><span class="name">--s-3</span><div class="bar" style="width: 12px;"></div><span class="val">12 px</span></div>
+          <div class="scale-row"><span class="name">--s-4</span><div class="bar" style="width: 16px;"></div><span class="val">16 px</span></div>
+          <div class="scale-row"><span class="name">--s-5</span><div class="bar" style="width: 24px;"></div><span class="val">24 px</span></div>
+          <div class="scale-row"><span class="name">--s-6</span><div class="bar" style="width: 32px;"></div><span class="val">32 px</span></div>
+          <div class="scale-row"><span class="name">--s-7</span><div class="bar" style="width: 48px;"></div><span class="val">48 px</span></div>
+          <div class="scale-row"><span class="name">--s-8</span><div class="bar" style="width: 64px;"></div><span class="val">64 px</span></div>
+          <div class="scale-row"><span class="name">--s-9</span><div class="bar" style="width: 96px;"></div><span class="val">96 px</span></div>
+          <div class="scale-row"><span class="name">--s-10</span><div class="bar" style="width: 128px;"></div><span class="val">128 px</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="t-eyebrow" style="display:block;margin-bottom:24px;opacity:.7;">Radii</span>
+        <div class="radii-row">
+          <div class="r-tile" style="border-radius: 8px;">Tag · 8</div>
+          <div class="r-tile" style="border-radius: 16px;">Card · 16</div>
+          <div class="r-tile" style="border-radius: 999px;">Pill · ∞</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPONENTS ============ -->
+  <section class="ds-section">
+    <div class="ds-section-head">
+      <span class="num" style="width: 80px">04</span>
+      <h2>Components.</h2>
+      <p style="font-family: &quot;DM Sans&quot;">Buttons, badges, forms, cards, navigation, marquee — the working set.</p>
+    </div>
+
+    <div class="comp-grid">
+      <!-- Buttons -->
+      <div class="comp col-6">
+        <h3>Buttons.</h3>
+        <span class="sub">.pn-btn — primary / coral / ghost</span>
+        <div class="demo" style="background-color: rgb(246, 235, 227)">
+          <button class="pn-btn pn-btn-primary" style="background-color: rgb(239, 49, 125); font-family: &quot;DM Mono&quot;; font-weight: 500">BOOK NOW</button>
+          <button class="pn-btn pn-btn-coral" style="font-family: &quot;DM Mono&quot;; font-weight: 500">GET WAXED</button>
+          <button class="pn-btn pn-btn-ghost-dark" style="font-family: &quot;DM Mono&quot;; font-weight: 500">BROWSE SERVICES</button>
+        </div>
+        <div class="code">.pn-btn-primary { background: var(--pn-dragon-fruit); color: #fff; border-radius: 999px; }</div>
+      </div>
+
+      <!-- Badges -->
+      <div class="comp col-6">
+        <h3>Badges &amp; chips.</h3>
+        <span class="sub">.pn-badge — DM Mono uppercase</span>
+        <div class="demo" style="background-color: rgb(246, 235, 227)">
+          <div class="b-row">
+            <span class="pn-badge b-coral">New</span>
+            <span class="pn-badge b-aloe">Member · 15% off</span>
+            <span class="pn-badge b-dragon">Hot girl approved</span>
+            <span class="pn-badge b-charcoal">For every body</span>
+            <span class="pn-badge b-outline">◆ 30 min</span>
+          </div>
+        </div>
+        <div class="code">.pn-badge { padding: 6px 14px; border-radius: 999px; font-family: var(--pn-mono); }</div>
+      </div>
+
+      <!-- Form -->
+      <div class="comp col-6">
+        <h3>Form fields.</h3>
+        <span class="sub">.pn-input — input / select / textarea</span>
+        <div class="demo" style="background: #fff; flex-direction: column; align-items: stretch; gap: 14px;">
+          <div class="pn-input"><label>Name</label><input type="text" placeholder="Jane Doe" value="Jane Doe" /></div>
+          <div class="pn-input"><label>Service</label>
+            <select><option>Brazilian wax · 45 min</option><option>Underarm</option><option>Brow shape</option></select>
+          </div>
+        </div>
+        <div class="code">border: 1px solid var(--pn-aloe-dark); border-radius: 12px; padding: 14px 16px;</div>
+      </div>
+
+      <!-- Service Card -->
+      <div class="comp col-6">
+        <h3>Service card.</h3>
+        <span class="sub">.pn-card-svc — booking surface</span>
+        <div class="demo" style="background: var(--pn-mango-50); background-color: rgb(246, 235, 227)">
+          <div class="pn-card-svc" style="width: 100%;">
+            <span class="duration">◆ 45 min · Returning $48</span>
+            <h4>Brazilian.</h4>
+            <p style="font-size: 14px; line-height: 1.55; opacity: .85; margin: 0;">Front-to-back wax with optional cleanup. Maintenance pricing kicks in after your second visit.</p>
+            <span class="price">From $65</span>
+          </div>
+        </div>
+        <div class="code">background: var(--pn-aloe-dark); padding: 32px; border-radius: 16px;</div>
+      </div>
+
+      <!-- Nav -->
+      <div class="comp col-12">
+        <h3>Navigation.</h3>
+        <span class="sub">.pn-nav — bar</span>
+        <div class="demo" style="padding: 24px; background-color: rgb(246, 235, 227)">
+          <div class="pn-nav" style="max-width: 880px; margin: 0 auto; border-radius: 0px">
+            <img class="mark" src="assets/PN_Wordmark-Green.png" alt="Pynk Nymph" />
+            <div class="links"><span>Services</span><span>About</span><span>Studio</span><span>FAQ</span></div>
+            <button class="pn-btn pn-btn-coral" style="padding: 12px 24px; font-size: 13px;">Book now</button>
+          </div>
+        </div>
+        <div class="code">background: var(--pn-aloe-dark); border-radius: 0px; padding: 16px 32px;</div>
+      </div>
+
+      <!-- Marquee -->
+      <div class="comp col-12">
+        <h3>Marquee scroller.</h3>
+        <span class="sub">.pn-marquee — infinite horizontal scroll</span>
+        <div class="demo" style="padding: 0; background: var(--pn-aloe-light); border-radius: 12px; overflow: hidden;">
+          <div class="pn-marquee" style="color: var(--pn-aloe-dark);">
+            <div class="pn-marquee-track">
+              <span class="pn-marquee-item">Get your ass waxed <i class="pn-marquee-diamond"></i></span>
+              <span class="pn-marquee-item">For every body <i class="pn-marquee-diamond"></i></span>
+              <span class="pn-marquee-item">Downtown RVA <i class="pn-marquee-diamond"></i></span>
+              <span class="pn-marquee-item">Hot girls get waxed <i class="pn-marquee-diamond"></i></span>
+              <span class="pn-marquee-item">Hot boys get waxed <i class="pn-marquee-diamond"></i></span>
+              <span class="pn-marquee-item">Get your ass waxed <i class="pn-marquee-diamond"></i></span>
+              <span class="pn-marquee-item">For every body <i class="pn-marquee-diamond"></i></span>
+              <span class="pn-marquee-item">Downtown RVA <i class="pn-marquee-diamond"></i></span>
+              <span class="pn-marquee-item">Hot girls get waxed <i class="pn-marquee-diamond"></i></span>
+              <span class="pn-marquee-item">Hot boys get waxed <i class="pn-marquee-diamond"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="code">animation: pnScroll 35s linear infinite; track duplicates content for seamless loop.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOGOS ============ -->
+  <section class="ds-section">
+    <div class="ds-section-head">
+      <span class="num">05</span>
+      <h2>Logo lockups.</h2>
+      <p>Hand-drawn liquid letterforms in two builds: cream-fill / aloe-outline for dark and accent surfaces, and the inverse aloe-fill / cream-outline for white and light surfaces. Pick the build that gives the cleanest contrast. Use the art in /assets directly — never recreate it.</p>
+    </div>
+    <div class="logo-tile dark logo-primary"><img class="wm" src="assets/PN_Wordmark-Green.png" alt="Pynk Nymph primary wordmark on aloe dark" /></div>
+    <div class="logo-row">
+      <div class="logo-tile cream" style="background-color: rgb(246, 235, 227)"><img class="wm" src="assets/PN_Wordmark.svg" alt="Pynk Nymph primary wordmark on cream" /></div>
+      <div class="logo-tile coral"><img class="wm" src="assets/PN_Wordmark.svg" alt="Pynk Nymph primary wordmark on dragon fruit" /></div>
+      <div class="logo-tile dark" style="background-color: rgb(239, 49, 125)"><img src="assets/PN_Wordmark.svg" alt="Pynk Nymph wordmark on dragon fruit" style="width: 348px" /></div>
+      <div class="logo-tile cream" style="background-color: rgb(67, 42, 25)"><img src="assets/PN_Wordmark-Green.png" alt="Pynk Nymph wordmark on dark surface" style="width: 348px" /></div>
+    </div>
+  </section>
+
+  <!-- ============ MOTIFS ============ -->
+  <section class="ds-section">
+    <div class="ds-section-head">
+      <span class="num">06</span>
+      <h2>Recurring motifs.</h2>
+      <p>Six visual elements that show up across stickers, merch, social, and brand moments.</p>
+    </div>
+    <div class="motif-grid">
+      <div class="m-tile" style="background: var(--pn-aloe-dark); color: var(--pn-mango-50);"><div><div class="ic">✺</div>Cactus</div></div>
+      <div class="m-tile" style="background: var(--pn-juicy-fruit); color: #fff;"><div><div class="ic">⌬</div>Splat</div></div>
+      <div class="m-tile" style="background: var(--pn-mango-50); color: var(--pn-aloe-dark); border: 1px solid var(--pn-aloe-dark); background-color: rgb(246, 235, 227)"><div><div class="ic">✦</div>Sparkle</div></div>
+      <div class="m-tile" style="background: var(--pn-aloe-light); color: var(--pn-aloe-dark);"><div><div class="ic">▭</div>Polaroid</div></div>
+      <div class="m-tile" style="background: var(--pn-dragon-fruit); color: #fff;"><div><div class="ic">★</div>Stars</div></div>
+      <div class="m-tile" style="background: var(--pn-wine); color: var(--pn-pink-pale);"><div><div class="ic">◐</div>Mascot</div></div>
+    </div>
+  </section>
+
+  <footer class="ds-foot">
+    <span>Pynk Nymph · Design System v1.0 · 2026</span>
+    <span><a href="index.html" style="color: inherit;">← Back to index</a></span>
+  </footer>
+
+</div>
+
+<div id="tweak-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="ds-tweaks.jsx"></script>
+</body>
+</html>

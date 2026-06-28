@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pynk Nymph — Brand Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles/tokens.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
+<template id="__bundler_thumbnail" data-bg-color="#283414">
+  <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="300" fill="#283414"/>
+    <text x="200" y="130" font-family="Georgia,serif" font-style="italic" font-size="72" font-weight="600" fill="#F6EBE3" text-anchor="middle">Brand</text>
+    <text x="200" y="186" font-family="Georgia,serif" font-style="italic" font-size="72" font-weight="600" fill="#FF565D" text-anchor="middle">Guide.</text>
+    <text x="200" y="224" font-family="monospace" font-size="10" letter-spacing="3" fill="#759E33" text-anchor="middle">PYNK NYMPH · 2026</text>
+  </svg>
+</template>
+<style>
+html { scroll-behavior: smooth; }
+body { background: var(--pn-mango-50); overflow-x: hidden; }
+a { text-decoration: none; }
+img { display: block; max-width: 100%; }
+*, *::before, *::after { box-sizing: border-box; }
+
+/* NAV */
+.g-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 54px; background: var(--pn-aloe-dark);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  border-bottom: 1px solid rgba(246,235,227,.1);
+}
+.g-nav-logo { font-family: var(--pn-display); font-style: italic; font-size: 18px; color: var(--pn-mango-50); }
+.g-nav-logo-img { height: 44px; width: auto; display: block; }
+.g-nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
+.g-nav-links a { font-family: var(--pn-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .22em; color: rgba(246,235,227,.92); transition: color .18s; }
+.g-nav-links a:hover { color: var(--pn-juicy-fruit); }
+
+/* MARQUEE */
+.mq { overflow: hidden; white-space: nowrap; }
+.mq-track { display: inline-flex; animation: mqscroll 26s linear infinite; }
+.mq-track.rev { animation-direction: reverse; animation-duration: 30s; }
+.mq-item { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .26em; text-transform: uppercase; padding: 0 28px; display: inline-flex; align-items: center; gap: 28px; }
+.mq-d { display: inline-block; width: 6px; height: 6px; background: currentColor; transform: rotate(45deg); flex-shrink: 0; }
+@keyframes mqscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* HERO */
+.hero { background: var(--pn-aloe-dark); color: var(--pn-mango-50); padding-top: 54px; display: flex; flex-direction: column; min-height: 100vh; position: relative; }
+.hero-bands { border-top: 1px solid rgba(246,235,227,.1); border-bottom: 1px solid rgba(246,235,227,.1); position: relative; z-index: 1; }
+.hero-bands .mq { padding: 11px 0; border-bottom: 1px solid rgba(246,235,227,.07); }
+.hero-bands .mq:last-child { border-bottom: none; }
+.hero-body { flex: 1; padding: 72px 80px 64px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1; }
+.hero-eye { font-family: var(--pn-mono); font-size: 11px; letter-spacing: .28em; text-transform: uppercase; opacity: .45; margin: 0 0 24px; display: flex; align-items: center; gap: 10px; }
+.hero-eye-d { width: 6px; height: 6px; background: var(--pn-aloe-light); transform: rotate(45deg); display: inline-block; }
+.hero-h1 { font-family: var(--pn-display); font-style: italic; font-size: clamp(100px, 13vw, 240px); line-height: .88; letter-spacing: -.03em; margin: 0; }
+.hero-h1 .ac { color: var(--pn-juicy-fruit); }
+.hero-foot { margin-top: 48px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; border-top: 1px solid rgba(246,235,227,.1); padding-top: 28px; flex-wrap: wrap; }
+.hero-sub { font-family: var(--pn-sans); font-size: 18px; line-height: 1.55; opacity: .65; max-width: 440px; margin: 0; }
+.hero-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-pill { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; border: 1px solid rgba(246,235,227,.28); border-radius: 999px; padding: 9px 18px; color: rgba(246,235,227,.65); transition: all .18s; }
+.hero-pill:hover { background: var(--pn-juicy-fruit); border-color: var(--pn-juicy-fruit); color: #fff; }
+
+/* SECTION */
+.s { padding: 88px 80px; }
+.s-dark { background: var(--pn-aloe-dark); color: var(--pn-mango-50); }
+.s-wine { background: var(--pn-wine); color: var(--pn-mango-50); }
+.s + .s { border-top: 1px solid rgba(40,52,20,.12); }
+.s-dark + .s, .s + .s-dark { border-top: none; }
+.s-eye { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .3em; text-transform: uppercase; opacity: .4; margin: 0 0 12px; }
+.s-dark .s-eye, .s-wine .s-eye { opacity: .35; color: var(--pn-mango-50); }
+.s-title { font-family: var(--pn-display); font-style: italic; font-size: clamp(64px, 8.5vw, 144px); line-height: .9; letter-spacing: -.025em; margin: 0 0 10px; }
+.s-desc { font-family: var(--pn-sans); font-size: 16px; line-height: 1.55; opacity: .55; max-width: 500px; margin: 0 0 52px; }
+.s-dark .s-desc, .s-wine .s-desc { opacity: .5; }
+
+/* SWATCHES */
+.sw-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 14px; }
+.sw-grid.sm { grid-template-columns: repeat(5,1fr); }
+.sw { border-radius: 14px; padding: 24px; min-height: 168px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; position: relative; overflow: hidden; transition: transform .15s, box-shadow .15s; user-select: none; }
+.sw.sm { min-height: 108px; padding: 18px 20px; }
+.sw:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.15); }
+.sw-name { font-family: var(--pn-display); font-style: italic; font-size: 24px; line-height: 1; letter-spacing: -.01em; }
+.sw.sm .sw-name { font-size: 17px; }
+.sw-hex { font-family: var(--pn-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; line-height: 1.7; opacity: .75; }
+.sw-ov { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--pn-mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase; opacity: 0; transition: opacity .15s; background: rgba(0,0,0,.45); color: #fff; border-radius: 14px; }
+.sw:hover .sw-ov { opacity: 1; }
+.sw[data-copied] .sw-ov { opacity: 1 !important; background: var(--pn-juicy-fruit); }
+.sw:not([data-copied]) .sw-ov::after { content: "TAP TO COPY"; }
+.sw[data-copied] .sw-ov::after { content: "COPIED  ✓"; }
+
+/* TYPE CARDS */
+.tf-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 28px; }
+.tf-card { border: 1px solid rgba(40,52,20,.16); border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 10px; min-height: 230px; }
+.tf-role { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; opacity: .4; }
+.tf-fam { font-family: var(--pn-display); font-style: italic; font-size: 34px; line-height: 1; letter-spacing: -.02em; margin: 0; }
+.tf-use { font-family: var(--pn-sans); font-size: 13px; line-height: 1.55; opacity: .6; margin: 0; }
+.tf-spc { font-size: 72px; line-height: 1; margin-top: auto; }
+.tf-card.fr .tf-spc { font-family: var(--pn-display); font-style: italic; font-weight: 500; }
+.tf-card.mo .tf-spc { font-family: var(--pn-mono); font-weight: 500; letter-spacing: -.03em; }
+.tf-card.sa .tf-spc { font-family: var(--pn-sans); font-weight: 800; }
+.tf-card.ca .tf-spc { font-family: 'Caveat', cursive; font-weight: 700; font-size: 84px; }
+
+/* PLAYGROUND */
+.pg { border-radius: 18px; background: var(--pn-aloe-dark); color: var(--pn-mango-50); padding: 44px; }
+.pg-lbl { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .28em; text-transform: uppercase; opacity: .4; margin: 0 0 18px; }
+#pg-txt { font-family: var(--pn-display); font-style: italic; font-size: 80px; line-height: .95; letter-spacing: -.025em; margin: 0 0 28px; word-break: break-word; outline: none; min-height: 80px; background: transparent; color: inherit; width: 100%; border: none; padding: 0; resize: none; overflow: hidden; cursor: text; }
+#pg-txt:focus { outline: none; }
+.pg-ctrls { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; border-top: 1px solid rgba(246,235,227,.1); padding-top: 18px; }
+.pg-lbl2 { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; opacity: .35; }
+input[type=range].pg-sz { accent-color: var(--pn-juicy-fruit); width: 130px; }
+.pg-fbtns { display: flex; gap: 8px; }
+.pg-fb { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; background: transparent; border: 1px solid rgba(246,235,227,.22); border-radius: 999px; padding: 6px 14px; color: rgba(246,235,227,.6); cursor: pointer; transition: all .15s; }
+.pg-fb.on, .pg-fb:hover { background: var(--pn-juicy-fruit); border-color: var(--pn-juicy-fruit); color: #fff; }
+
+/* LOGO VIEWER */
+.lv-stage { border-radius: 18px; height: 340px; display: flex; align-items: center; justify-content: center; transition: background .35s; margin-bottom: 20px; }
+.lv-stage img { max-width: 380px; width: 68%; height: auto; transition: opacity .25s; }
+.lv-picker { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.lv-dot { width: 36px; height: 36px; border-radius: 50%; border: 3px solid transparent; cursor: pointer; transition: transform .15s, border-color .15s; outline: none; }
+.lv-dot:hover { transform: scale(1.14); }
+.lv-dot.on { border-color: var(--pn-juicy-fruit); }
+.lv-lbl { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; opacity: .35; margin-left: 4px; }
+
+/* DO/DON'T */
+.dd-wrap { display: flex; flex-direction: column; }
+.dd-row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(40,52,20,.13); }
+.dd-row:last-child { border-bottom: 1px solid rgba(40,52,20,.13); }
+.dd-cell { padding: 34px 40px; }
+.dd-cell.no { background: rgba(40,52,20,.03); border-left: 1px solid rgba(40,52,20,.1); cursor: pointer; transition: background .2s; }
+.dd-cell.no:hover { background: rgba(255,86,93,.07); }
+.dd-tag { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+.dd-dot { width: 8px; height: 8px; border-radius: 50%; }
+.dd-cell.yes .dd-dot { background: var(--pn-aloe-light); }
+.dd-cell.no .dd-dot { background: var(--pn-juicy-fruit); }
+.dd-phrase { font-family: var(--pn-display); font-style: italic; font-size: 32px; line-height: 1.06; letter-spacing: -.015em; margin: 0 0 8px; }
+.dd-cell.no .dd-phrase { opacity: .18; transition: opacity .2s; }
+.dd-cell.no:hover .dd-phrase { opacity: 1; }
+.dd-note { font-family: var(--pn-sans); font-size: 14px; line-height: 1.55; opacity: .5; margin: 0; }
+.dd-hint { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; opacity: .25; margin-top: 10px; }
+.dd-cell.no:hover .dd-hint { opacity: 0; }
+
+/* MOTIFS */
+.mt-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 14px; }
+.mt-card { border: 1px solid rgba(40,52,20,.14); border-radius: 14px; padding: 24px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer; transition: background .2s, border-color .2s; }
+.mt-card:hover { background: var(--pn-aloe-dark); border-color: var(--pn-aloe-dark); }
+.mt-card:hover .mt-lbl { color: var(--pn-mango-50); opacity: .8; }
+.mt-img { width: 68px; height: 68px; object-fit: contain; }
+.mt-lbl { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; opacity: .4; text-align: center; transition: color .2s, opacity .2s; }
+
+/* FOOTER */
+.g-foot { background: #20140B; color: var(--pn-mango-50); }
+.g-foot-main { padding: 64px 80px 56px; display: grid; grid-template-columns: 1.15fr 1fr 1fr 1fr; gap: 48px; border-bottom: 1px solid rgba(246,235,227,.07); }
+.g-foot-badge { width: 76px; height: 76px; display: block; margin-bottom: 18px; object-fit: contain; }
+.g-foot-tagline { font-family: var(--pn-sans); font-size: 13px; line-height: 1.6; opacity: .42; margin: 0; max-width: 180px; }
+.g-foot-col-head { font-family: var(--pn-display); font-style: italic; font-size: 34px; line-height: .95; letter-spacing: -.02em; margin: 0 0 18px; }
+.g-foot-body { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .1em; line-height: 2.2; opacity: .48; margin: 0; }
+.g-foot-body a { color: inherit; transition: opacity .15s; }
+.g-foot-body a:hover { opacity: 1; }
+.g-foot-nav-row { padding: 18px 80px; border-bottom: 1px solid rgba(246,235,227,.05); display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.g-foot-nav-lbl { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .22em; text-transform: uppercase; opacity: .28; }
+.g-foot-nav-links { display: flex; gap: 22px; }
+.g-foot-nav-links a { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: rgba(246,235,227,.42); transition: color .15s; }
+.g-foot-nav-links a:hover { color: var(--pn-juicy-fruit); }
+.g-foot-copy-row { padding: 14px 80px 22px; font-family: var(--pn-mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; opacity: .2; }
+
+/* ── GRAIN OVERLAY ── */
+body::after { content: ''; position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: .04; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E"); background-size: 200px 200px; }
+/* ── HERO PHOTO BG ── */
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-bg::after { content: ''; position: absolute; inset: 0; background: rgba(40,52,20,.62); }
+/* ── WAVE DIVIDER ── */
+.wave-div { margin-top: -79px; position: relative; z-index: 10; line-height: 0; pointer-events: none; }
+.wave-div svg { display: block; width: 100%; height: 80px; }
+/* ── PHOTO BREAK ── */
+.photo-break { position: relative; height: 440px; overflow: hidden; }
+.photo-break img { width: 100%; height: 440px; object-fit: cover; display: block; object-position: center 40%; }
+.photo-break-scrim { position: absolute; inset: 0; background: radial-gradient(110% 90% at 100% 0%, rgba(255,139,49,.45) 0%, transparent 55%), radial-gradient(120% 110% at 95% 100%, rgba(239,49,125,.42) 0%, transparent 60%), linear-gradient(150deg, rgba(40,18,28,.5) 0%, rgba(40,18,28,.8) 100%); }
+.photo-break-cap { position: absolute; bottom: 52px; left: 80px; color: var(--pn-mango-50); }
+.photo-break-cap p { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .3em; text-transform: uppercase; opacity: .5; margin: 0 0 10px; }
+.photo-break-cap h3 { font-family: var(--pn-display); font-style: italic; font-size: clamp(44px,6vw,84px); line-height: .9; letter-spacing: -.025em; margin: 0; }
+
+/* TYPE PHILOSOPHY */
+.phil { display: grid; grid-template-columns: 1fr 1.1fr; gap: 16px; margin: 0 0 30px; }
+.phil-card { border: 1px solid rgba(40,52,20,.18); border-radius: 16px; padding: 28px 30px; }
+.phil-eye { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .22em; text-transform: uppercase; opacity: .45; margin: 0 0 14px; }
+.phil-lead { font-family: var(--pn-display); font-style: italic; font-size: 30px; line-height: 1.05; letter-spacing: -.02em; margin: 0; }
+.phil-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 13px; }
+.phil-list li { font-family: var(--pn-sans); font-size: 14px; line-height: 1.5; opacity: .82; padding-left: 116px; position: relative; }
+.phil-list li b { position: absolute; left: 0; top: 1px; font-family: var(--pn-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--pn-dragon-fruit); width: 100px; }
+
+/* HOW WE USE TYPE */
+.hwt { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 30px; }
+.hwt-card { border: 1px solid rgba(40,52,20,.18); border-radius: 16px; padding: 26px 28px; display: flex; flex-direction: column; gap: 14px; }
+.hwt-name { font-family: var(--pn-display); font-style: italic; font-size: 26px; line-height: 1; letter-spacing: -.02em; margin: 0; }
+.hwt-name.ca { font-family: 'Caveat', cursive; font-style: normal; font-weight: 700; font-size: 36px; }
+.hwt-rules { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+.hwt-rules li { font-family: var(--pn-sans); font-size: 13px; line-height: 1.5; opacity: .74; padding-left: 16px; position: relative; }
+.hwt-rules li::before { content: "\2014"; position: absolute; left: 0; opacity: .5; }
+.hwt-ex { margin-top: auto; border-top: 1px solid rgba(40,52,20,.14); padding-top: 14px; }
+.hwt-ex .hwt-ex-lbl { display: block; font-family: var(--pn-mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; opacity: .4; margin-bottom: 8px; }
+.hwt-ex p { margin: 4px 0 0; font-family: var(--pn-sans); font-size: 13.5px; opacity: .9; }
+.hwt-ex .ex-fr { font-family: var(--pn-display); font-style: italic; font-size: 19px; line-height: 1.1; }
+.hwt-ex .ex-mo { font-family: var(--pn-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+.hwt-ex .ex-ca { font-family: 'Caveat', cursive; font-size: 24px; line-height: 1.1; }
+
+/* ICONS & ILLUSTRATIONS */
+.ic-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 24px; }
+.ic-card { border: 1px solid rgba(40,52,20,.18); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+.ic-top { display: flex; align-items: center; gap: 16px; }
+.ic-thumb { width: 66px; height: 66px; flex-shrink: 0; background: rgba(40,52,20,.05); border-radius: 13px; display: flex; align-items: center; justify-content: center; }
+.ic-thumb img { width: 42px; height: 42px; object-fit: contain; }
+.ic-name { font-family: var(--pn-display); font-style: italic; font-size: 22px; line-height: 1; margin: 0 0 5px; }
+.ic-meta { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; opacity: .45; }
+.ic-use { font-family: var(--pn-sans); font-size: 12.5px; line-height: 1.5; opacity: .64; margin: 0; flex: 1; }
+.ic-dl { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; background: var(--pn-aloe-dark); color: var(--pn-mango-50); border-radius: 999px; padding: 9px 16px; text-decoration: none; display: inline-block; width: fit-content; transition: background .15s; }
+.ic-dl:hover { background: var(--pn-juicy-fruit); color: #fff; }
+.ic-note { border: 1px solid rgba(40,52,20,.2); border-radius: 14px; padding: 22px 26px; display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.ic-note h5 { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; margin: 0 0 10px; opacity: .5; }
+.ic-note p { font-family: var(--pn-sans); font-size: 13px; line-height: 1.5; opacity: .72; margin: 0; }
+
+/* GRAIN & GRADIENT */
+.gg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 26px; }
+.gg-card { border-radius: 18px; overflow: hidden; min-height: 220px; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; }
+.gg-grain { background: #20140B; }
+.gg-grain::before { content: ''; position: absolute; inset: 0; opacity: .2; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.gg-grad { background: linear-gradient(135deg, #EF317D 0%, #FF8B31 100%); }
+.gg-label { position: relative; z-index: 1; }
+.gg-label span { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; opacity: .7; display: block; margin-bottom: 8px; color: #fff; }
+.gg-label h4 { font-family: var(--pn-display); font-style: italic; font-size: 30px; line-height: 1; margin: 0; color: #fff; }
+.gg-cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.gg-col { border: 1px solid rgba(246,235,227,.16); border-radius: 14px; padding: 22px 24px; }
+.gg-col h5 { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; margin: 0 0 14px; opacity: .6; }
+.gg-col.avoid h5 { color: var(--pn-juicy-fruit); opacity: 1; }
+.gg-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.gg-col li { font-family: var(--pn-sans); font-size: 13px; line-height: 1.45; opacity: .78; padding-left: 16px; position: relative; }
+.gg-col li::before { content: "+"; position: absolute; left: 0; color: var(--pn-aloe-light); }
+.gg-col.avoid li::before { content: "\00d7"; color: var(--pn-juicy-fruit); }
+</style>
+</head>
+<body>
+
+<nav class="g-nav">
+  <img src="uploads/logo mark  - inverse.svg" alt="Pynk Nymph" class="g-nav-logo-img" />
+  <ul class="g-nav-links">
+    <li><a href="#color">Color</a></li>
+    <li><a href="#type">Type</a></li>
+    <li><a href="#logo">Logo</a></li>
+    <li><a href="#voice">Voice</a></li>
+    <li><a href="#motifs">Motifs</a></li>
+    <li><a href="#icons">Icons</a></li>
+    <li><a href="#texture">Texture</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"><img src="uploads/ashim-d-silva-USgb-K0TPxQ-unsplash.jpg" alt="" /></div>
+  <div class="hero-bands">
+    <div class="mq" style="color:rgba(246,235,227,.88);">
+      <div class="mq-track" id="mq1">
+        <span class="mq-item">GET YOUR ASS WAXED <span class="mq-d"></span></span>
+      </div>
+    </div>
+    <div class="mq" style="color:rgba(255,86,93,.95);">
+      <div class="mq-track rev" id="mq2">
+        <span class="mq-item">HOT GIRLS GET WAXED <span class="mq-d"></span></span>
+      </div>
+    </div>
+    <div class="mq" style="color:rgba(246,235,227,.65);">
+      <div class="mq-track" id="mq3">
+        <span class="mq-item">HOT BOYS GET WAXED <span class="mq-d"></span></span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-body">
+    <p class="hero-eye"><span class="hero-eye-d"></span> Pynk Nymph · Brand Guide · 2026</p>
+    <h1 class="hero-h1">The<br />Brand<span class="ac">.</span></h1>
+    <div class="hero-foot">
+      <p class="hero-sub">Colors, type, logo, voice. Everything you need to look and sound like us.</p>
+      <div class="hero-pills">
+        <a href="#color" class="hero-pill">◆ Color</a>
+        <a href="#type" class="hero-pill">◆ Type</a>
+        <a href="#logo" class="hero-pill">◆ Logo</a>
+        <a href="#voice" class="hero-pill">◆ Voice</a>
+        <a href="#motifs" class="hero-pill">◆ Motifs</a>
+        <a href="#icons" class="hero-pill">◆ Icons</a>
+        <a href="#texture" class="hero-pill">◆ Texture</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wave-div"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,55 C180,10 360,75 540,48 C720,18 900,72 1080,44 C1260,14 1380,66 1440,50 L1440,80 L0,80 Z" fill="#E5DDD5"/></svg></div>
+
+<!-- ═══ COLOR ═══ -->
+<section id="color" class="s">
+  <p class="s-eye">◆ 01 — Color System</p>
+  <h2 class="s-title">The palette.</h2>
+  <p class="s-desc">Tap any swatch to copy the hex code instantly.</p>
+
+  <div class="sw-grid">
+    <div class="sw" data-hex="#FF565D" style="background:#FF565D;color:#fff;">
+      <span class="sw-name">Juicy Fruit</span>
+      <div class="sw-hex">#FF565D<br/>Coral · Primary</div>
+      <div class="sw-ov"></div>
+    </div>
+    <div class="sw" data-hex="#283414" style="background:#283414;color:#E5DDD5;">
+      <span class="sw-name">Aloe Dark</span>
+      <div class="sw-hex">#283414<br/>Deep Olive · Primary Dark</div>
+      <div class="sw-ov"></div>
+    </div>
+    <div class="sw" data-hex="#EF317D" style="background:#EF317D;color:#fff;">
+      <span class="sw-name">Dragon Fruit</span>
+      <div class="sw-hex">#EF317D<br/>Hot Pink · Accent</div>
+      <div class="sw-ov"></div>
+    </div>
+    <div class="sw" data-hex="#E5DDD5" style="background:#E5DDD5;color:#283414;border:1px solid rgba(40,52,20,.1);">
+      <span class="sw-name">Mango Cream</span>
+      <div class="sw-hex">#E5DDD5<br/>Cream · Primary BG</div>
+      <div class="sw-ov"></div>
+    </div>
+  </div>
+
+  <div class="sw-grid sm">
+    <div class="sw sm" data-hex="#CC0709" style="background:#CC0709;color:#E5DDD5;">
+      <span class="sw-name">Strawberry</span>
+      <div class="sw-hex">#CC0709</div>
+      <div class="sw-ov"></div>
+    </div>
+    <div class="sw sm" data-hex="#FF8B31" style="background:#FF8B31;color:#20140B;">
+      <span class="sw-name">Mango</span>
+      <div class="sw-hex">#FF8B31</div>
+      <div class="sw-ov"></div>
+    </div>
+    <div class="sw sm" data-hex="#759E33" style="background:#759E33;color:#283414;">
+      <span class="sw-name">Aloe Light</span>
+      <div class="sw-hex">#759E33</div>
+      <div class="sw-ov"></div>
+    </div>
+    <div class="sw sm" data-hex="#DBE4CE" style="background:#DBE4CE;color:#283414;border:1px solid rgba(40,52,20,.1);">
+      <span class="sw-name">Aloe Pale</span>
+      <div class="sw-hex">#DBE4CE</div>
+      <div class="sw-ov"></div>
+    </div>
+    <div class="sw sm" data-hex="#20140B" style="background:#20140B;color:#E5DDD5;">
+      <span class="sw-name">Near Black</span>
+      <div class="sw-hex">#20140B</div>
+      <div class="sw-ov"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee divider -->
+<div class="mq" style="background:var(--pn-juicy-fruit);color:#fff;padding:12px 0;">
+  <div class="mq-track" id="mq4"><span class="mq-item">PYNK NYMPH <span class="mq-d"></span></span><span class="mq-item">FOR EVERY BODY <span class="mq-d"></span></span></div>
+</div>
+
+<!-- ═══ TYPOGRAPHY ═══ -->
+<section id="type" class="s">
+  <p class="s-eye">◆ 02 — Typography</p>
+  <h2 class="s-title">Four fonts.</h2>
+  <p class="s-desc">Display · Sans · Mono · Caveat. Typography helps us balance confidence and humanity.</p>
+
+  <div class="phil">
+    <div class="phil-card">
+      <p class="phil-eye">◆ Typography Philosophy</p>
+      <p class="phil-lead">Typography helps us balance confidence and humanity.</p>
+    </div>
+    <div class="phil-card">
+      <p class="phil-eye">◆ What each voice does</p>
+      <ul class="phil-list">
+        <li><b>Fraunces Italic</b>Beliefs, headlines, opinions, emotional statements.</li>
+        <li><b>DM Sans</b>Primary reading text and body copy.</li>
+        <li><b>DM Mono</b>Labels, navigation, categories, metadata, organizational elements.</li>
+        <li><b>Caveat</b>Handwritten emphasis — used in social when something should feel personal, candid, or like a note from a real person.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tf-grid">
+    <div class="tf-card fr">
+      <span class="tf-role">◆ Display — Headlines, Titles</span>
+      <h3 class="tf-fam">Fraunces</h3>
+      <p class="tf-use">Italic, always. The personality. Big, expressive, slightly weird in the best way.</p>
+      <span class="tf-spc">Aa</span>
+    </div>
+    <div class="tf-card mo">
+      <span class="tf-role">◆ Mono — Labels, Tags, UI</span>
+      <h3 class="tf-fam">DM Mono</h3>
+      <p class="tf-use">All caps, wide tracking. Eyebrows, callouts, timestamps, metadata.</p>
+      <span class="tf-spc">Aa</span>
+    </div>
+    <div class="tf-card sa">
+      <span class="tf-role">◆ Sans — Body, Buttons</span>
+      <h3 class="tf-fam">DM Sans</h3>
+      <p class="tf-use">Medium to Bold. Paragraphs, CTAs, supporting copy.</p>
+      <span class="tf-spc">Aa</span>
+    </div>
+    <div class="tf-card ca">
+      <span class="tf-role">◆ Script — Social Only</span>
+      <h3 class="tf-fam">Caveat</h3>
+      <p class="tf-use">Bold &amp; Regular. Handwritten notes, annotations, candid asides.</p>
+      <span class="tf-spc">Aa</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom:36px;">
+    <p class="s-eye" style="margin-bottom:18px;">◆ Font Files — download &amp; install</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
+      <div style="border:1px solid rgba(40,52,20,.15);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:10px;">
+        <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;opacity:.4;">◆ Display</span>
+        <p style="font-family:var(--pn-display);font-style:italic;font-size:28px;line-height:1;margin:0;">Fraunces</p>
+        <p style="font-family:var(--pn-sans);font-size:12px;line-height:1.5;opacity:.5;margin:0;">Variable italic — covers all weights in one file.</p>
+        <a href="fonts/Fraunces-Italic-VariableFont_SOFT_WONK_opsz_wght.ttf" download style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;background:var(--pn-aloe-dark);color:var(--pn-mango-50);border-radius:999px;padding:9px 18px;text-decoration:none;display:inline-block;margin-top:4px;width:fit-content;">↓ Download .ttf</a>
+      </div>
+      <div style="border:1px solid rgba(40,52,20,.15);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:10px;">
+        <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;opacity:.4;">◆ Mono</span>
+        <p style="font-family:var(--pn-mono);font-size:28px;line-height:1;margin:0;font-weight:500;">DM Mono</p>
+        <p style="font-family:var(--pn-sans);font-size:12px;line-height:1.5;opacity:.5;margin:0;">Regular, Medium &amp; Light — all weights included.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+          <a href="fonts/DMMono-Regular.ttf" download style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;background:var(--pn-aloe-dark);color:var(--pn-mango-50);border-radius:999px;padding:9px 14px;text-decoration:none;display:inline-block;">↓ Regular</a>
+          <a href="fonts/DMMono-Medium.ttf" download style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;background:var(--pn-aloe-dark);color:var(--pn-mango-50);border-radius:999px;padding:9px 14px;text-decoration:none;display:inline-block;">↓ Medium</a>
+          <a href="fonts/DMMono-Light.ttf" download style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;background:var(--pn-aloe-dark);color:var(--pn-mango-50);border-radius:999px;padding:9px 14px;text-decoration:none;display:inline-block;">↓ Light</a>
+        </div>
+      </div>
+      <div style="border:1px solid rgba(40,52,20,.15);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:10px;">
+        <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;opacity:.4;">◆ Sans</span>
+        <p style="font-family:var(--pn-sans);font-size:28px;line-height:1;margin:0;font-weight:700;">DM Sans</p>
+        <p style="font-family:var(--pn-sans);font-size:12px;line-height:1.5;opacity:.5;margin:0;">Free on Google Fonts — click to open and download all weights.</p>
+        <a href="https://fonts.google.com/specimen/DM+Sans" target="_blank" rel="noopener" style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;background:var(--pn-aloe-dark);color:var(--pn-mango-50);border-radius:999px;padding:9px 18px;text-decoration:none;display:inline-block;margin-top:4px;width:fit-content;">↗ Google Fonts</a>
+      </div>
+      <div style="border:1px solid rgba(40,52,20,.15);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:10px;">
+        <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;opacity:.4;">◆ Script</span>
+        <p style="font-family:'Caveat',cursive;font-size:36px;line-height:1;margin:0;font-weight:700;">Caveat</p>
+        <p style="font-family:var(--pn-sans);font-size:12px;line-height:1.5;opacity:.5;margin:0;">Bold &amp; Regular — free on Google Fonts. Social use only.</p>
+        <a href="https://fonts.google.com/specimen/Caveat" target="_blank" rel="noopener" style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;background:var(--pn-aloe-dark);color:var(--pn-mango-50);border-radius:999px;padding:9px 18px;text-decoration:none;display:inline-block;margin-top:4px;width:fit-content;">↗ Google Fonts</a>
+      </div>
+    </div>
+    <div style="background:rgba(40,52,20,.04);border:1px solid rgba(40,52,20,.1);border-radius:14px;padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div>
+        <p style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;opacity:.4;margin:0 0 10px;">◆ Install on Mac</p>
+        <ol style="font-family:var(--pn-sans);font-size:13px;line-height:1.8;opacity:.65;margin:0;padding-left:18px;">
+          <li>Download the .ttf file above</li>
+          <li>Double-click the downloaded file</li>
+          <li>Click <strong>Install Font</strong> in Font Book</li>
+          <li>Done — open any app and use it</li>
+        </ol>
+      </div>
+      <div>
+        <p style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;opacity:.4;margin:0 0 10px;">◆ Install on Windows</p>
+        <ol style="font-family:var(--pn-sans);font-size:13px;line-height:1.8;opacity:.65;margin:0;padding-left:18px;">
+          <li>Download the .ttf file above</li>
+          <li>Right-click the downloaded file</li>
+          <li>Select <strong>Install</strong> or <strong>Install for all users</strong></li>
+          <li>Done — restart any open apps</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:36px;">
+    <p class="s-eye" style="margin-bottom:18px;">◆ How We Use Type</p>
+    <div class="hwt">
+      <div class="hwt-card">
+        <h3 class="hwt-name">Fraunces Italic</h3>
+        <ul class="hwt-rules">
+          <li>Use for statements we believe.</li>
+          <li>Use for headlines with emotion or personality.</li>
+          <li>Never use for long paragraphs.</li>
+        </ul>
+        <div class="hwt-ex"><span class="hwt-ex-lbl">◆ Examples</span><p class="ex-fr">We help people feel comfortable in their bodies.</p><p class="ex-fr">The first 48 hours matter.</p></div>
+      </div>
+      <div class="hwt-card">
+        <h3 class="hwt-name">DM Sans</h3>
+        <ul class="hwt-rules">
+          <li>Use for the most readable content.</li>
+          <li>Instructions, captions, explanations, educational content.</li>
+        </ul>
+        <div class="hwt-ex"><span class="hwt-ex-lbl">◆ Example</span><p>Booking takes two minutes — pick a service, pick a time, you're in.</p></div>
+      </div>
+      <div class="hwt-card">
+        <h3 class="hwt-name">DM Mono</h3>
+        <ul class="hwt-rules">
+          <li>Use for structure.</li>
+          <li>Labels, dates, categories, slide markers, navigation, references.</li>
+        </ul>
+        <div class="hwt-ex"><span class="hwt-ex-lbl">◆ Examples</span><p class="ex-mo">NYMPH NOTES #001</p><p class="ex-mo">COMMUNITY SPOTLIGHT</p><p class="ex-mo">JULY 2026</p></div>
+      </div>
+      <div class="hwt-card">
+        <h3 class="hwt-name ca">Caveat</h3>
+        <ul class="hwt-rules">
+          <li>Use sparingly.</li>
+          <li>Should feel like a handwritten annotation, not a design-system font.</li>
+          <li>Most common in social graphics, notes, callouts, and observations.</li>
+        </ul>
+        <div class="hwt-ex"><span class="hwt-ex-lbl">◆ Examples</span><p class="ex-ca">One thing I've noticed…</p><p class="ex-ca">Trust me on this one.</p><p class="ex-ca">Wait.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg">
+    <p class="pg-lbl">◆ Type Playground — click to edit</p>
+    <div id="pg-txt" contenteditable="true" spellcheck="false">Get your ass waxed.</div>
+    <div class="pg-ctrls">
+      <span class="pg-lbl2">Font</span>
+      <div class="pg-fbtns">
+        <button class="pg-fb on" data-font="display">Display</button>
+        <button class="pg-fb" data-font="mono">Mono</button>
+        <button class="pg-fb" data-font="sans">Sans</button>
+        <button class="pg-fb" data-font="caveat">Caveat</button>
+      </div>
+      <span class="pg-lbl2">Size</span>
+      <input type="range" class="pg-sz" min="20" max="160" value="80" />
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LOGO ═══ -->
+<section id="logo" class="s s-dark">
+  <p class="s-eye">◆ 03 — Logo &amp; Lockups</p>
+  <h2 class="s-title">The mark.</h2>
+  <p class="s-desc">Click a color to preview the logo on any brand background.</p>
+
+  <div class="lv-stage" id="lv-stage" style="background:#283414;">
+    <img id="lv-img" src="uploads/logo mark  - inverse.svg" alt="Pynk Nymph Logo" style="max-width:480px;width:72%;" />
+  </div>
+  <div class="lv-picker">
+    <button class="lv-dot on" data-bg="#283414" data-src="uploads/logo mark  - inverse.svg" style="background:#283414;" title="Aloe Dark"></button>
+    <button class="lv-dot" data-bg="#FAF3ED" data-src="uploads/logo + mark - green.svg" style="background:#FAF3ED;border:2px solid rgba(40,52,20,.25);" title="Cream"></button>
+    <button class="lv-dot" data-bg="#759E33" data-src="uploads/logo mark  - inverse.svg" style="background:#759E33;" title="Aloe Light"></button>
+    <button class="lv-dot" data-bg="#EF317D" data-src="uploads/logo mark  - inverse.svg" style="background:#EF317D;" title="Dragon Fruit"></button>
+    <button class="lv-dot" data-bg="#FF565D" data-src="uploads/logo mark  - inverse.svg" style="background:#FF565D;" title="Juicy Fruit"></button>
+    <button class="lv-dot" data-bg="#20140B" data-src="uploads/logo mark  - inverse.svg" style="background:#20140B;" title="Near Black"></button>
+    <button class="lv-dot" data-bg="#DBE4CE" data-src="uploads/logo + mark - green.svg" style="background:#DBE4CE;border:2px solid rgba(40,52,20,.2);" title="Aloe Pale"></button>
+    <span class="lv-lbl">← pick a background</span>
+  </div>
+</section>
+
+<!-- Marquee divider -->
+<div class="mq" style="background:rgba(40,52,20,.08);color:var(--pn-aloe-dark);padding:11px 0;">
+  <div class="mq-track rev" id="mq5"><span class="mq-item">JUDGEMENT-FREE CARE <span class="mq-d"></span></span><span class="mq-item">ALL BODIES WELCOME <span class="mq-d"></span></span></div>
+</div>
+
+<!-- ═══ VOICE ═══ -->
+<section id="voice" class="s">
+  <p class="s-eye">◆ 04 — Voice &amp; Tone</p>
+  <h2 class="s-title">How we talk.</h2>
+  <p class="s-desc">Four principles, each one a rule. The left column shows the behavior — the right shows what we'd never write. Hover to reveal.</p>
+
+  <div class="dd-wrap">
+    <div class="dd-row">
+      <div class="dd-cell yes">
+        <div class="dd-tag"><span class="dd-dot"></span> Challenge assumptions</div>
+        <p class="dd-phrase">Hair is normal. Waxing is optional.</p>
+        <p class="dd-note">Lead with respect, not insecurity. We don't sell a problem — we offer a choice.</p>
+      </div>
+      <div class="dd-cell no">
+        <div class="dd-tag"><span class="dd-dot"></span> Never</div>
+        <p class="dd-phrase">"Show off that silky smooth skin."</p>
+        <p class="dd-note">Implies hair is a flaw to fix. That's the opposite of what we stand for.</p>
+        <p class="dd-hint">← hover to reveal</p>
+      </div>
+    </div>
+    <div class="dd-row">
+      <div class="dd-cell yes">
+        <div class="dd-tag"><span class="dd-dot"></span> Be direct</div>
+        <p class="dd-phrase">Get your ass waxed.</p>
+        <p class="dd-note">Say it plainly. Funny, unapologetic, ours. If it sounds like a spa brochure, rewrite it.</p>
+      </div>
+      <div class="dd-cell no">
+        <div class="dd-tag"><span class="dd-dot"></span> Never</div>
+        <p class="dd-phrase">"Schedule your rejuvenating treatment today."</p>
+        <p class="dd-note">This is every other spa in the country. We are not every other spa.</p>
+        <p class="dd-hint">← hover to reveal</p>
+      </div>
+    </div>
+    <div class="dd-row">
+      <div class="dd-cell yes">
+        <div class="dd-tag"><span class="dd-dot"></span> Say the quiet part out loud</div>
+        <p class="dd-phrase">Will you be judged? No.</p>
+        <p class="dd-note">Answer the question people are too embarrassed to ask. Don't hint at the reassurance — state it clearly.</p>
+      </div>
+      <div class="dd-cell no">
+        <div class="dd-tag"><span class="dd-dot"></span> Never</div>
+        <p class="dd-phrase">"We pride ourselves on a welcoming environment for all guests."</p>
+        <p class="dd-note">Corporate speak. Nobody reads it. Nobody believes it.</p>
+        <p class="dd-hint">← hover to reveal</p>
+      </div>
+    </div>
+    <div class="dd-row">
+      <div class="dd-cell yes">
+        <div class="dd-tag"><span class="dd-dot"></span> Talk like a human</div>
+        <p class="dd-phrase">First wax? We'll walk you through it.</p>
+        <p class="dd-note">Sound like a person, not a brand. Practical, warm, no flourishes — if it sounds polished, it's probably wrong.</p>
+      </div>
+      <div class="dd-cell no">
+        <div class="dd-tag"><span class="dd-dot"></span> Never</div>
+        <p class="dd-phrase">"Experience the ultimate luxury waxing journey."</p>
+        <p class="dd-note">Corporate PR speak. Nobody believes it.</p>
+        <p class="dd-hint">← hover to reveal</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MOTIFS ═══ -->
+<div class="photo-break">
+  <img src="uploads/emir-saldierna-a_YGMhAa0e0-unsplash.jpg" alt="" />
+  <div class="photo-break-scrim"></div>
+  <div class="photo-break-cap">
+    <p>◆ Pynk Nymph · Visual World</p>
+    <h3>Brand<br />elements<span style="color:var(--pn-juicy-fruit);">.</span></h3>
+  </div>
+</div>
+
+<section id="motifs" class="s s-dark">
+  <p class="s-eye">◆ 05 — Motifs &amp; Brand Elements</p>
+  <h2 class="s-title">The extras.</h2>
+  <p class="s-desc">Supporting marks and decorative elements. Hover to feel them.</p>
+
+  <div class="mt-grid">
+    <div class="mt-card"><img class="mt-img" src="uploads/Drip.svg" alt="Drip" /><span class="mt-lbl">Drip</span></div>
+    <div class="mt-card"><img class="mt-img" src="uploads/Heart - juicy.svg" alt="Juicy Heart" /><span class="mt-lbl">Juicy Heart</span></div>
+    <div class="mt-card"><img class="mt-img" src="uploads/Heart - dragon.svg" alt="Dragon Heart" /><span class="mt-lbl">Dragon Heart</span></div>
+    <div class="mt-card"><img class="mt-img" src="uploads/Cactus Illustration.svg" alt="Cactus" /><span class="mt-lbl">Cactus</span></div>
+    <div class="mt-card" style="background:var(--pn-aloe-dark);border-color:var(--pn-aloe-dark);"><img class="mt-img" src="uploads/Sparkle.svg" alt="Sparkle" style="width:52px;height:52px;filter:brightness(0) invert(66%) sepia(96%) saturate(800%) hue-rotate(346deg) brightness(107%);" /><span class="mt-lbl" style="color:rgba(246,235,227,.65);">Sparkle</span></div>
+    <div class="mt-card" style="padding:16px 12px;"><img class="mt-img" src="uploads/waxstick-0db10b22.svg" alt="Wax Stick" style="width:48px;height:auto;" /><span class="mt-lbl">Wax Stick</span></div>
+  </div>
+</section>
+
+<!-- ═══ ICONS & ILLUSTRATIONS ═══ -->
+<section id="icons" class="s">
+  <p class="s-eye">◆ 06 — Icons &amp; Illustrations</p>
+  <h2 class="s-title">The library.</h2>
+  <p class="s-desc">Our illustration set. Click any to download the SVG, then place it flat — never restyled.</p>
+
+  <div class="ic-grid">
+    <div class="ic-card">
+      <div class="ic-top"><div class="ic-thumb"><img src="uploads/waxstick.svg" alt="Wax Stick" /></div><div><p class="ic-name">Wax Stick</p><span class="ic-meta">SVG · Hero object</span></div></div>
+      <p class="ic-use">The signature object. Lead service spotlights, how-it-works content, and process posts.</p>
+      <a class="ic-dl" href="uploads/waxstick.svg" download>↓ Download SVG</a>
+    </div>
+    <div class="ic-card">
+      <div class="ic-top"><div class="ic-thumb"><img src="uploads/Drip.svg" alt="Drip" /></div><div><p class="ic-name">Drip</p><span class="ic-meta">SVG · Texture accent</span></div></div>
+      <p class="ic-use">A playful accent. Use sparingly over photography or as a small section break — one per layout.</p>
+      <a class="ic-dl" href="uploads/Drip.svg" download>↓ Download SVG</a>
+    </div>
+    <div class="ic-card">
+      <div class="ic-top"><div class="ic-thumb"><img src="uploads/Sparkle.svg" alt="Sparkle" /></div><div><p class="ic-name">Sparkle</p><span class="ic-meta">SVG · Emphasis</span></div></div>
+      <p class="ic-use">Marks a highlight or a moment of delight. Never more than one sparkle in a single composition.</p>
+      <a class="ic-dl" href="uploads/Sparkle.svg" download>↓ Download SVG</a>
+    </div>
+    <div class="ic-card">
+      <div class="ic-top"><div class="ic-thumb"><img src="uploads/Heart - juicy.svg" alt="Juicy Heart" /></div><div><p class="ic-name">Juicy Heart</p><span class="ic-meta">SVG · Coral · Affection</span></div></div>
+      <p class="ic-use">Warmth and community. Pair with testimonials, shout-outs, and thank-you posts.</p>
+      <a class="ic-dl" href="uploads/Heart - juicy.svg" download>↓ Download SVG</a>
+    </div>
+    <div class="ic-card">
+      <div class="ic-top"><div class="ic-thumb"><img src="uploads/Heart - dragon.svg" alt="Dragon Heart" /></div><div><p class="ic-name">Dragon Heart</p><span class="ic-meta">SVG · Pink · High energy</span></div></div>
+      <p class="ic-use">Louder love. Reactions, launches, and celebratory moments that need a little more voltage.</p>
+      <a class="ic-dl" href="uploads/Heart - dragon.svg" download>↓ Download SVG</a>
+    </div>
+    <div class="ic-card">
+      <div class="ic-top"><div class="ic-thumb"><img src="uploads/Cactus Illustration.svg" alt="Cactus" /></div><div><p class="ic-name">Cactus</p><span class="ic-meta">SVG · Richmond / resilience</span></div></div>
+      <p class="ic-use">Our editorial illustration. Best in longer-form content, blog headers, and Richmond-rooted stories.</p>
+      <a class="ic-dl" href="uploads/Cactus Illustration.svg" download>↓ Download SVG</a>
+    </div>
+  </div>
+
+  <div class="ic-note">
+    <div><h5>◆ Do</h5><p>Place icons flat, at their native proportions. One illustration per layout. Recolor only to a brand color when needed.</p></div>
+    <div><h5>◆ Don't</h5><p>No drop shadows, gradients, or outlines on top. Don't stretch, rotate, or crowd them together.</p></div>
+    <div><h5>◆ Need a vector?</h5><p>Every mark is a clean SVG — scales to any size for print or screen without losing edges.</p></div>
+  </div>
+</section>
+
+<!-- ═══ GRAIN & GRADIENT ═══ -->
+<section id="texture" class="s s-dark">
+  <p class="s-eye">◆ 07 — Grain &amp; Gradient</p>
+  <h2 class="s-title">Perfect isn't<br />the goal.</h2>
+  <p class="s-desc">Human is. We use grain and gradient to keep the brand from feeling clinical, sterile, or corporate. We don't chase perfection — we chase comfort.</p>
+
+  <div class="gg-grid">
+    <div class="gg-card gg-grain"><div class="gg-label"><span>◆ Grain</span><h4>Warm &amp; tactile.</h4></div></div>
+    <div class="gg-card gg-grad"><div class="gg-label"><span>◆ Gradient</span><h4>Energy &amp; depth.</h4></div></div>
+  </div>
+
+  <div class="gg-cols">
+    <div class="gg-col">
+      <h5>◆ Grain</h5>
+      <ul>
+        <li>Adds warmth and texture</li>
+        <li>Makes digital content feel tactile and lived-in</li>
+        <li>Balances clean layouts with personality</li>
+        <li>Use subtly — felt more than noticed</li>
+      </ul>
+    </div>
+    <div class="gg-col">
+      <h5>◆ Gradient</h5>
+      <ul>
+        <li>Adds energy, movement, and emotion</li>
+        <li>Creates depth without heavy illustration</li>
+        <li>Built from our pinks, greens, and warm neutrals</li>
+        <li>Should support content, not compete with it</li>
+      </ul>
+    </div>
+    <div class="gg-col avoid">
+      <h5>× Avoid</h5>
+      <ul>
+        <li>Flat corporate perfection</li>
+        <li>Sterile beauty-brand minimalism</li>
+        <li>Heavy grain that hurts readability</li>
+        <li>Loud gradients that overpower the message</li>
+      </ul>
+    </div>
+  </div>
+
+  <p style="font-family:var(--pn-sans);font-size:13.5px;line-height:1.6;opacity:.5;margin:28px 0 0;max-width:640px;">One sentence explains the whole visual world: body hair in photography, the grain, the gradients, human-sounding copy, imperfect illustrations, real community photography — all of it chases comfort over perfection.</p>
+</section>
+
+<!-- Footer marquee -->
+<div class="mq" style="background:var(--pn-dragon-fruit);color:#fff;padding:12px 0;">
+  <div class="mq-track rev" id="mq6"><span class="mq-item">DOWNTOWN RVA <span class="mq-d"></span></span><span class="mq-item">FOR EVERY BODY <span class="mq-d"></span></span><span class="mq-item">PYNK NYMPH <span class="mq-d"></span></span></div>
+</div>
+
+<footer class="g-foot">
+  <div class="g-foot-main">
+    <div>
+      <img src="uploads/PN_Badge (light).svg" alt="Pynk Nymph" class="g-foot-badge" />
+      <p class="g-foot-tagline">Waxing and skincare<br />for every body.</p>
+    </div>
+    <div>
+      <h3 class="g-foot-col-head">Find us.</h3>
+      <p class="g-foot-body">315 E Grace Street<br />Richmond, VA 23222<br />Suite A</p>
+    </div>
+    <div>
+      <h3 class="g-foot-col-head">Hours.</h3>
+      <p class="g-foot-body">Tues &amp; Thur&nbsp;&nbsp;&nbsp;9am – 7pm<br />Wed &amp; Fri&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12pm – 7pm<br />Saturday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12pm – 7pm</p>
+    </div>
+    <div>
+      <h3 class="g-foot-col-head">Say Hi.</h3>
+      <p class="g-foot-body">pynknymph@gmail.com<br />(804) 455-7149<br />@pynknymph</p>
+    </div>
+  </div>
+  <div class="g-foot-nav-row">
+    <span class="g-foot-nav-lbl">Navigation</span>
+    <div class="g-foot-nav-links">
+      <a href="#color">Color</a>
+      <a href="#type">Type</a>
+      <a href="#logo">Logo</a>
+      <a href="#voice">Voice</a>
+      <a href="#motifs">Motifs</a>
+      <a href="#icons">Icons</a>
+      <a href="#texture">Texture</a>
+    </div>
+  </div>
+  <div class="g-foot-copy-row">© 2026 Pynk Nymph · Brand Guide · All rights reserved.</div>
+</footer>
+
+<script>
+// Fill marquees with enough copies for seamless loop
+document.querySelectorAll('.mq-track').forEach(t => {
+  const base = t.innerHTML;
+  t.innerHTML = base.repeat(6);
+});
+
+// Click-to-copy hex
+document.querySelectorAll('.sw[data-hex]').forEach(sw => {
+  sw.addEventListener('click', () => {
+    navigator.clipboard.writeText(sw.dataset.hex).catch(() => {});
+    sw.dataset.copied = '1';
+    setTimeout(() => delete sw.dataset.copied, 1400);
+  });
+});
+
+// Logo bg switcher
+const lvStage = document.getElementById('lv-stage');
+const lvImg = document.getElementById('lv-img');
+document.querySelectorAll('.lv-dot[data-bg]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.lv-dot').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    lvStage.style.background = btn.dataset.bg;
+    lvImg.style.opacity = '0';
+    setTimeout(() => { lvImg.src = btn.dataset.src; lvImg.style.opacity = '1'; }, 220);
+  });
+});
+
+// Type playground
+const pgTxt = document.getElementById('pg-txt');
+const pgSz = document.querySelector('.pg-sz');
+const pgFbs = document.querySelectorAll('.pg-fb');
+const fontMap = {
+  display: { fontFamily: '"Fraunces","Georgia",serif', fontStyle: 'italic', fontWeight: '500', letterSpacing: '-.025em' },
+  mono:    { fontFamily: '"DM Mono",ui-monospace,monospace', fontStyle: 'normal', fontWeight: '500', letterSpacing: '-.02em' },
+  sans:    { fontFamily: '"DM Sans",system-ui,sans-serif', fontStyle: 'normal', fontWeight: '800', letterSpacing: '-.01em' },
+  caveat:  { fontFamily: "'Caveat',cursive", fontStyle: 'normal', fontWeight: '700', letterSpacing: '0' }
+};
+pgSz.addEventListener('input', () => { pgTxt.style.fontSize = pgSz.value + 'px'; });
+pgFbs.forEach(btn => {
+  btn.addEventListener('click', () => {
+    pgFbs.forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    Object.assign(pgTxt.style, fontMap[btn.dataset.font]);
+  });
+});
+</script>
+<div id="tweaks-root"></div>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "#EF317D",
+  "pageBg": "warm",
+  "darkTone": "soil"
+}/*EDITMODE-END*/;
+
+function BrandTweaks() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  React.useEffect(() => {
+    // Accent colour — overrides the CSS variable
+    document.documentElement.style.setProperty('--pn-juicy-fruit', t.accent);
+
+    // Page background
+    const bgMap = { cream: '#F6EBE3', pale: '#DBE4CE', warm: '#FAF3ED' };
+    const bg = bgMap[t.pageBg] || bgMap.cream;
+    document.body.style.background = bg;
+    // Keep wave divider fill in sync
+    const wavePath = document.querySelector('.wave-div path');
+    if (wavePath) wavePath.setAttribute('fill', bg);
+
+    // Dark section tone
+    const darkMap = { forest: '#283414', wine: '#3B0D1A', soil: '#1A0803' };
+    const dark = darkMap[t.darkTone] || darkMap.forest;
+    document.documentElement.style.setProperty('--pn-aloe-dark', dark);
+  }, [t.accent, t.pageBg, t.darkTone]);
+
+  return (
+    React.createElement(TweaksPanel, { title: 'Brand Guide' },
+      React.createElement(TweakSection, { label: 'Accent Color' }),
+      React.createElement(TweakColor, {
+        label: 'Accent',
+        value: t.accent,
+        options: ['#FF565D', '#EF317D', '#FF8B31', '#759E33'],
+        onChange: v => setTweak('accent', v)
+      }),
+      React.createElement(TweakSection, { label: 'Page Tone' }),
+      React.createElement(TweakRadio, {
+        label: 'Background',
+        value: t.pageBg,
+        options: ['cream', 'pale', 'warm'],
+        onChange: v => setTweak('pageBg', v)
+      }),
+      React.createElement(TweakSection, { label: 'Dark Sections' }),
+      React.createElement(TweakRadio, {
+        label: 'Tone',
+        value: t.darkTone,
+        options: ['forest', 'wine', 'soil'],
+        onChange: v => setTweak('darkTone', v)
+      })
+    )
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('tweaks-root')).render(
+  React.createElement(BrandTweaks)
+);
+</script>
+</body>
+</html>

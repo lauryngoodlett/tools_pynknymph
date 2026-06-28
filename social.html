@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pynk Nymph — Social Kit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles/tokens.css" />
+<style>
+  body { background: var(--pn-mango-50); color: var(--pn-aloe-dark); }
+  .s-shell { max-width: 1440px; margin: 0 auto; padding: 0 48px 120px; }
+  .s-top { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-bottom: 1px solid var(--pn-aloe-dark); font-family: var(--pn-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em; }
+  .s-top .mark { height: 30px; width: auto; display: block; }
+  .s-hero { padding: 80px 0 64px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: end; border-bottom: 1px solid var(--pn-aloe-dark); }
+  .s-hero h1 { font-family: var(--pn-display); font-style: italic; font-weight: 400; font-size: clamp(72px, 9vw, 156px); line-height: 0.92; letter-spacing: -0.025em; margin: 0; }
+  .s-hero h1 em { color: var(--pn-juicy-fruit); font-style: italic; }
+  .s-hero p { font-size: 18px; line-height: 1.6; max-width: 420px; margin: 0; color: var(--pn-charcoal); }
+
+  .s-section { padding: 96px 0 16px; }
+  .s-section-head { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 32px; align-items: end; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--pn-aloe-dark); }
+  .s-section-head .num { font-family: var(--pn-mono); font-size: 14px; letter-spacing: 0.22em; }
+  .s-section-head h2 { font-family: var(--pn-display); font-style: italic; font-weight: 400; font-size: clamp(48px, 5.5vw, 96px); line-height: 0.95; margin: 0; letter-spacing: -0.02em; }
+  .s-section-head p { font-size: 16px; line-height: 1.6; max-width: 460px; margin: 0; color: var(--pn-charcoal); }
+
+  /* IG GRID — square posts */
+  .ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; max-width: 900px; }
+  .ig-post { aspect-ratio: 1; border-radius: 4px; overflow: hidden; position: relative; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; font-family: var(--pn-display); font-style: italic; line-height: 0.95; letter-spacing: -0.02em; }
+  .ig-post .meta { font-family: var(--pn-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.85; }
+  .ig-post .head { font-size: 60px; }
+  .ig-post .foot { font-family: var(--pn-mono); font-style: normal; font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.85; }
+
+  .ig-1 { background: var(--pn-aloe-dark); color: var(--pn-mango-50); }
+  .ig-2 { background: var(--pn-juicy-fruit); color: var(--pn-pink-pale); }
+  .ig-3 { background: var(--pn-mango-50); color: var(--pn-aloe-dark); }
+  .ig-4 { background: var(--pn-dragon-fruit); color: #fff; }
+  .ig-5 { background: var(--pn-aloe-light); color: var(--pn-aloe-dark); }
+  .ig-6 { background: var(--pn-wine); color: var(--pn-pink-pale); }
+  .ig-7 { background: var(--pn-mango); color: var(--pn-aloe-dark); }
+  .ig-8 { background: var(--pn-charcoal); color: var(--pn-mango-50); }
+  .ig-9 { background: var(--pn-strawberry); color: var(--pn-mango-50); }
+
+  .ig-photo { background-size: cover; background-position: center; position: relative; }
+  .ig-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.05) 60%, rgba(0,0,0,.5) 100%); }
+  .ig-photo .head, .ig-photo .meta, .ig-photo .foot { position: relative; color: var(--pn-pink-pale); }
+
+  /* STORIES — 9:16 */
+  .stories { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .story { aspect-ratio: 9/16; border-radius: 16px; overflow: hidden; position: relative; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+  .story h3 { font-family: var(--pn-display); font-style: italic; font-weight: 400; font-size: 36px; line-height: 0.95; letter-spacing: -0.02em; margin: 0; }
+  .story .label { font-family: var(--pn-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; }
+  .story .footer { font-family: var(--pn-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; }
+  .story.s-aloe { background: var(--pn-aloe-dark); color: var(--pn-mango-50); }
+  .story.s-coral { background: var(--pn-juicy-fruit); color: var(--pn-pink-pale); }
+  .story.s-wine { background: var(--pn-wine); color: var(--pn-pink-pale); }
+  .story.s-cream { background: var(--pn-mango-50); color: var(--pn-aloe-dark); border: 1px solid var(--pn-aloe-dark); }
+
+  .story.photo { background: var(--pn-wine) url('assets/img/personality-bg.png') center/cover; color: var(--pn-pink-pale); }
+  .story.photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.05) 50%, rgba(0,0,0,.6) 100%); }
+  .story.photo > * { position: relative; z-index: 1; }
+
+  .s-foot { margin-top: 96px; padding: 32px 0; border-top: 1px solid var(--pn-aloe-dark); display: flex; justify-content: space-between; font-family: var(--pn-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="s-shell">
+  <header class="s-top"><img class="mark" src="assets/PN_Wordmark.svg" alt="Pynk Nymph" /><span>Social Kit · Instagram · 2026</span></header>
+
+  <section class="s-hero">
+    <h1>The grid <em>has rules.</em></h1>
+    <p>Templates for posts and stories built to stay on-brand at thumbnail size. Type-led on solid color; photo-led with one clean caption. Never both at once.</p>
+  </section>
+
+  <!-- IG FEED -->
+  <section class="s-section">
+    <div class="s-section-head">
+      <span class="num">01</span>
+      <h2>Feed posts.</h2>
+      <p>1080 × 1080 square. Two recipes: bold type on solid swatch, or full-bleed photo with a single mono caption. Alternate in the grid.</p>
+    </div>
+
+    <div class="ig-grid">
+      <!-- Row 1 -->
+      <div class="ig-post ig-1">
+        <span class="meta">◆ For every body</span>
+        <div class="head">Get your<br />ass waxed.</div>
+        <span class="foot">@pynknymph</span>
+      </div>
+      <div class="ig-post ig-photo" style="background-image: url('assets/img/personality-bg.png');">
+        <span class="meta">◆ Studio diary 003</span>
+        <div></div>
+        <span class="foot">Hot girls get waxed.</span>
+      </div>
+      <div class="ig-post ig-3">
+        <span class="meta">◆ Pricing · Brazilian</span>
+        <div class="head">$58.<br />45 min.</div>
+        <span class="foot">Maintenance · cycle 3+</span>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="ig-post ig-4">
+        <span class="meta">◆ Tuesday tip</span>
+        <div class="head">Don't<br />exfoliate<br />24 hrs<br />before.</div>
+        <span class="foot">Aftercare 101</span>
+      </div>
+      <div class="ig-post ig-photo" style="background-image: url('assets/img/inclusive-bg.jpg');">
+        <span class="meta">◆ For every body</span>
+        <div></div>
+        <span class="foot">Real bodies. Real care.</span>
+      </div>
+      <div class="ig-post ig-6">
+        <span class="meta">◆ This week's quote</span>
+        <div class="head" style="font-size: 38px;">"First place where I didn't get a weird vibe walking in."</div>
+        <span class="foot">M. · 6-month regular</span>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="ig-post ig-7">
+        <span class="meta">◆ Now booking</span>
+        <div class="head">Brow<br />shape<br />szn.</div>
+        <span class="foot">Book at pynknymph.com</span>
+      </div>
+      <div class="ig-post ig-photo" style="background-image: url('assets/img/services-hero.jpg');">
+        <span class="meta">◆ Studio diary 004</span>
+        <div></div>
+        <span class="foot">Hot bodies, hot details.</span>
+      </div>
+      <div class="ig-post ig-5">
+        <span class="meta">◆ ICYMI</span>
+        <div class="head">Visit 3 →<br />20% off.<br />Forever.</div>
+        <span class="foot">Maintenance pricing</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORIES -->
+  <section class="s-section">
+    <div class="s-section-head">
+      <span class="num">02</span>
+      <h2>Stories.</h2>
+      <p>1080 × 1920 vertical. Lockup top-left, message centered, CTA pinned bottom. Keep type to one or two short lines.</p>
+    </div>
+
+    <div class="stories">
+      <div class="story s-aloe">
+        <span class="label">◆ Pynk Nymph</span>
+        <h3>Walk-in slot opened.<br /><span style="color: var(--pn-juicy-fruit);">2:30 today.</span></h3>
+        <span class="footer">Tap → book now</span>
+      </div>
+      <div class="story s-coral">
+        <span class="label">◆ Promo · This week</span>
+        <h3>Bring a friend.<br /><span style="color: var(--pn-aloe-dark);">Both get 15% off.</span></h3>
+        <span class="footer">Code: BFFWAX</span>
+      </div>
+      <div class="story photo">
+        <span class="label">◆ Studio · Saturday</span>
+        <h3 style="font-size: 44px;">Hot girls<br />get<br /><span style="color: var(--pn-juicy-fruit);">waxed.</span></h3>
+        <span class="footer">Swipe up · Book</span>
+      </div>
+      <div class="story s-wine">
+        <span class="label">◆ Aftercare · 24 hrs</span>
+        <h3>No heat.<br />No friction.<br /><span style="color: var(--pn-juicy-fruit);">No swimming.</span></h3>
+        <span class="footer">Saved highlights → Aftercare</span>
+      </div>
+      <div class="story s-cream">
+        <span class="label">◆ Reminder</span>
+        <h3>Reschedule yourself,<br /><span style="color: var(--pn-juicy-fruit);">anytime.</span></h3>
+        <span class="footer">pynknymph.com</span>
+      </div>
+      <div class="story s-aloe">
+        <span class="label">◆ Quote · Sunday</span>
+        <h3 style="font-size: 32px;">"Most painless wax of my life. Aftercare instructions actually useful."</h3>
+        <span class="footer">A. · Brazilian regular</span>
+      </div>
+      <div class="story s-coral">
+        <span class="label">◆ FAQ Friday</span>
+        <h3>Q: Does it hurt?<br /><span style="color: var(--pn-aloe-dark);">A: Less than you think.</span></h3>
+        <span class="footer">DMs open</span>
+      </div>
+      <div class="story s-wine">
+        <span class="label">◆ Booking</span>
+        <h3>Open slots:<br /><span style="color: var(--pn-juicy-fruit);">Sat 11am.<br />Sun 2pm.</span></h3>
+        <span class="footer">Tap → book now</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="s-foot">
+    <span>Pynk Nymph · Social Kit · 2026</span>
+    <span><a href="index.html" style="color: inherit;">← Back to index</a></span>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,1113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pynk Nymph — Social Playbook</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles/tokens.css" />
+<template id="__bundler_thumbnail" data-bg-color="#283414">
+  <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="300" fill="#283414"/>
+    <text x="200" y="118" font-family="Georgia,serif" font-style="italic" font-size="56" font-weight="600" fill="#F6EBE3" text-anchor="middle">Social</text>
+    <text x="200" y="178" font-family="Georgia,serif" font-style="italic" font-size="56" font-weight="600" fill="#FF565D" text-anchor="middle">Playbook.</text>
+    <text x="200" y="220" font-family="monospace" font-size="10" letter-spacing="3" fill="#759E33" text-anchor="middle">PYNK NYMPH · 2026</text>
+  </svg>
+</template>
+<style>
+html { scroll-behavior: smooth; }
+body { background: #F6EBE3; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+a { text-decoration: none; }
+
+/* NAV */
+.g-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 54px; background: var(--pn-aloe-dark); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; border-bottom: 1px solid rgba(246,235,227,.1); }
+.g-nav-logo-img { height: 44px; width: auto; display: block; }
+.g-nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+.g-nav-links a { font-family: var(--pn-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .2em; color: rgba(246,235,227,.95); transition: color .18s; }
+.g-nav-links a:hover { color: var(--pn-juicy-fruit); }
+
+/* MARQUEE */
+.mq { overflow: hidden; white-space: nowrap; }
+.mq-track { display: inline-flex; animation: mqscroll 55s linear infinite; will-change: transform; }
+.mq-track.rev { animation-direction: reverse; animation-duration: 70s; }
+.mq-item { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .26em; text-transform: uppercase; padding: 0 28px; display: inline-flex; align-items: center; gap: 28px; }
+.mq-d { display: inline-block; width: 11px; height: 11px; background: currentColor; clip-path: polygon(50% 0%,53% 47%,100% 50%,53% 53%,50% 100%,47% 53%,0% 50%,47% 47%); flex-shrink: 0; }
+@keyframes mqscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* HERO */
+.hero { background: var(--pn-aloe-dark); color: var(--pn-mango-50); padding-top: 54px; min-height: 100vh; display: flex; flex-direction: column; position: relative; }
+.hero-bands { border-top: 1px solid rgba(246,235,227,.08); border-bottom: 1px solid rgba(246,235,227,.08); position: relative; z-index: 1; }
+.hero-bands .mq { padding: 10px 0; border-bottom: 1px solid rgba(246,235,227,.06); }
+.hero-bands .mq:last-child { border-bottom: none; }
+.hero-body { flex: 1; padding: 72px 80px 64px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1; }
+.hero-eye { font-family: var(--pn-mono); font-size: 11px; letter-spacing: .28em; text-transform: uppercase; opacity: .4; margin: 0 0 22px; }
+.hero-h1 { font-family: var(--pn-display); font-style: italic; font-size: clamp(88px, 11vw, 210px); line-height: .88; letter-spacing: -.03em; margin: 0; }
+.hero-h1 .ac { color: var(--pn-juicy-fruit); }
+.hero-foot { margin-top: 40px; border-top: 1px solid rgba(246,235,227,.1); padding-top: 24px; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.hero-sub { font-family: var(--pn-sans); font-size: 17px; line-height: 1.55; opacity: .8; max-width: 480px; margin: 0; }
+.hero-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-pill { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; border: 1px solid rgba(246,235,227,.25); border-radius: 999px; padding: 8px 16px; color: rgba(246,235,227,.6); transition: all .18s; }
+.hero-pill:hover { background: var(--pn-juicy-fruit); border-color: var(--pn-juicy-fruit); color: #fff; }
+
+/* SECTIONS */
+.s { padding: 80px; }
+.s + .s { border-top: 1px solid rgba(40,52,20,.1); }
+.s-dark { background: var(--pn-aloe-dark); color: var(--pn-mango-50); }
+.s-juicy { background: var(--pn-juicy-fruit); color: #fff; }
+.s-dragon { background: var(--pn-dragon-fruit); color: #fff; }
+.s-wine { background: var(--pn-wine); color: var(--pn-mango-50); }
+.s-dark + .s, .s + .s-dark { border-top: none; }
+.s-eye { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .3em; text-transform: uppercase; opacity: 1; margin: 0 0 12px; }
+.s-title { font-family: var(--pn-display); font-style: italic; font-size: clamp(56px, 7vw, 120px); line-height: .9; letter-spacing: -.025em; margin: 0 0 10px; }
+.s-desc { font-family: var(--pn-sans); font-size: 15px; line-height: 1.55; opacity: .78; max-width: 500px; margin: 0 0 48px; }
+
+/* BUILD A POST — DECISION TREE */
+.bp-builder { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
+.bp-left { display: flex; flex-direction: column; gap: 20px; }
+.bp-steps { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.bp-step { display: flex; align-items: center; gap: 7px; font-family: var(--pn-mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: rgba(40,52,20,.32); }
+.bp-step-num { width: 19px; height: 19px; border-radius: 50%; border: 1.5px solid rgba(40,52,20,.22); display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; }
+.bp-step.active { color: var(--pn-aloe-dark); }
+.bp-step.active .bp-step-num { border-color: var(--pn-aloe-dark); }
+.bp-step.done { color: var(--pn-dragon-fruit); cursor: pointer; }
+.bp-step.done .bp-step-num { border-color: var(--pn-dragon-fruit); background: var(--pn-dragon-fruit); color: #fff; }
+.bp-step-sep { color: rgba(40,52,20,.22); font-family: var(--pn-mono); }
+.bp-q { font-family: var(--pn-display); font-style: italic; font-size: 30px; line-height: 1.05; letter-spacing: -.015em; color: var(--pn-aloe-dark); margin: 0; }
+.bp-q-sub { font-family: var(--pn-sans); font-size: 13px; opacity: .6; margin: 5px 0 0; }
+.bp-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; }
+.bp-choice { text-align: left; background: rgba(255,255,255,.82); border: 1.5px solid rgba(239,49,125,.2); border-radius: 14px; padding: 16px 18px; cursor: pointer; transition: transform .16s, box-shadow .16s, border-color .16s, background .16s; display: flex; flex-direction: column; gap: 5px; }
+.bp-choice:hover { background: #fff; border-color: var(--pn-dragon-fruit); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(239,49,125,.13); }
+.bp-choice-k { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: rgba(239,49,125,.75); display: flex; align-items: center; gap: 7px; }
+.bp-choice-t { font-family: var(--pn-display); font-style: italic; font-size: 20px; line-height: 1.1; letter-spacing: -.01em; color: var(--pn-aloe-dark); }
+.bp-choice-s { font-family: var(--pn-sans); font-size: 12px; opacity: .62; line-height: 1.4; }
+.bp-choice-rec { border-color: rgba(117,158,51,.45); }
+.bp-rec { font-family: var(--pn-mono); font-size: 8px; letter-spacing: .12em; text-transform: uppercase; background: var(--pn-aloe-light); color: #fff; padding: 2px 7px; border-radius: 999px; }
+.bp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+.bp-tag { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; }
+.bp-draft { font-family: var(--pn-display); font-style: italic; font-size: 22px; line-height: 1.3; letter-spacing: -.01em; background: rgba(255,255,255,.9); border: 2px solid rgba(239,49,125,.25); border-radius: 14px; padding: 18px 20px; width: 100%; color: var(--pn-aloe-dark); resize: vertical; outline: none; min-height: 190px; transition: border-color .2s, box-shadow .2s; box-shadow: 0 4px 20px rgba(239,49,125,.1); }
+.bp-draft:focus { border-color: var(--pn-dragon-fruit); box-shadow: 0 4px 28px rgba(239,49,125,.2); }
+.bp-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.bp-copy { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; background: var(--pn-dragon-fruit); border: none; border-radius: 999px; padding: 11px 24px; cursor: pointer; color: #fff; font-weight: 600; transition: all .18s; }
+.bp-copy:hover { background: var(--pn-juicy-fruit); transform: translateY(-1px); }
+.bp-copy.copied { background: var(--pn-aloe-dark); color: var(--pn-mango-50); }
+.bp-restart { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; background: transparent; border: 1.5px solid rgba(40,52,20,.25); border-radius: 999px; padding: 11px 22px; cursor: pointer; color: var(--pn-aloe-dark); transition: all .18s; }
+.bp-restart:hover { border-color: var(--pn-aloe-dark); background: rgba(40,52,20,.05); }
+
+/* IG MOCKUP */
+.ig-phone { width: 320px; background: #fff; border-radius: 28px; box-shadow: 0 20px 60px rgba(0,0,0,.18); overflow: hidden; flex-shrink: 0; }
+.ig-status { background: #fff; height: 44px; display: flex; align-items: center; justify-content: center; }
+.ig-status-bar { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 20px; }
+.ig-time { font-family: var(--pn-sans); font-size: 12px; font-weight: 600; color: #000; }
+.ig-icons { display: flex; gap: 6px; align-items: center; }
+.ig-header { padding: 10px 14px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #f0f0f0; }
+.ig-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--pn-dragon-fruit), var(--pn-juicy-fruit)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ig-avatar-inner { width: 32px; height: 32px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.ig-avatar-inner img { width: 100%; height: 100%; object-fit: cover; }
+.ig-handle { font-family: var(--pn-sans); font-size: 13px; font-weight: 600; color: #000; line-height: 1.2; }
+.ig-handle-sub { font-family: var(--pn-sans); font-size: 11px; color: #888; }
+.ig-img { background: var(--pn-aloe-pale); width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.ig-img-placeholder { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(40,52,20,.3); text-align: center; padding: 20px; line-height: 1.6; }
+.ig-figma { position: absolute; inset: 0; background: #ECECEC; }
+.ig-figma-x { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ig-figma-x line { stroke: #D6D6D6; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.ig-figma-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; }
+.ig-figma-ico { color: #BFBFBF; }
+.ig-figma-dim { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .14em; color: #9C9C9C; background: #ECECEC; padding: 2px 9px; }
+.ig-actions { padding: 10px 14px 6px; display: flex; gap: 14px; align-items: center; }
+.ig-action-icon { width: 24px; height: 24px; opacity: .8; }
+.ig-likes { font-family: var(--pn-sans); font-size: 13px; font-weight: 600; color: #000; padding: 0 14px 4px; }
+.ig-caption { padding: 2px 14px 12px; }
+.ig-cap-handle { font-family: var(--pn-sans); font-size: 13px; font-weight: 600; color: #000; }
+.ig-cap-text { font-family: var(--pn-sans); font-size: 13px; color: #000; line-height: 1.45; margin: 0; word-break: break-word; }
+.ig-cap-text.empty { color: #aaa; }
+.ig-comment { padding: 0 14px 14px; font-family: var(--pn-sans); font-size: 12px; color: #aaa; }
+
+/* GOALS */
+.goal-list { display: flex; flex-direction: column; }
+.goal-row { display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: baseline; padding: 16px 0; border-top: 1px solid rgba(246,235,227,.1); }
+.goal-row:last-child { border-bottom: 1px solid rgba(246,235,227,.1); }
+.goal-num { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .18em; opacity: .65; }
+.goal-txt { font-family: var(--pn-display); font-style: italic; font-size: 24px; line-height: 1.1; letter-spacing: -.01em; }
+
+/* BARRIERS */
+.barrier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.barrier { border-radius: 16px; padding: 24px 26px; }
+.barrier-lbl { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .22em; text-transform: uppercase; opacity: .6; display: block; margin-bottom: 8px; }
+.barrier h4 { font-family: var(--pn-display); font-style: italic; font-size: 28px; line-height: 1; letter-spacing: -.015em; margin: 0 0 10px; }
+.barrier ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.barrier li { font-family: var(--pn-sans); font-size: 13px; line-height: 1.45; padding-left: 16px; position: relative; opacity: .8; }
+.barrier li::before { content: "—"; position: absolute; left: 0; font-size: 11px; opacity: .4; }
+
+/* PILLARS */
+.pillar-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.p-tab { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; background: transparent; border: 1px solid rgba(40,52,20,.2); border-radius: 999px; padding: 9px 18px; cursor: pointer; color: var(--pn-aloe-dark); transition: all .18s; }
+.p-tab:hover { border-color: var(--pn-aloe-dark); }
+.p-tab.on { background: var(--pn-aloe-dark); color: var(--pn-mango-50); border-color: var(--pn-aloe-dark); }
+.pillar-panel { display: none; }
+.pillar-panel.on { display: block; }
+.p-content { border: 1.5px solid var(--pn-aloe-dark); border-radius: 16px; padding: 32px 36px; }
+.p-num { font-family: var(--pn-display); font-style: italic; font-size: 64px; line-height: .8; letter-spacing: -.02em; opacity: .3; margin: 0 0 12px; }
+.p-name { font-family: var(--pn-display); font-style: italic; font-size: 40px; line-height: 1; letter-spacing: -.02em; margin: 0 0 10px; }
+.p-body { font-family: var(--pn-sans); font-size: 15px; line-height: 1.6; opacity: .7; margin: 0 0 18px; max-width: 640px; }
+.p-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.p-chip { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .03em; background: rgba(40,52,20,.07); border-radius: 999px; padding: 5px 12px; }
+
+/* FORMULAS */
+.formula-grid { display: flex; flex-direction: column; gap: 0; }
+.formula { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 24px 0; border-top: 1px solid rgba(40,52,20,.1); align-items: start; }
+.formula:last-child { border-bottom: 1px solid rgba(40,52,20,.1); }
+.f-lbl { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; opacity: .45; padding-top: 4px; }
+.f-name { font-family: var(--pn-display); font-style: italic; font-size: 26px; line-height: 1; letter-spacing: -.015em; margin: 0 0 6px; }
+.f-body { font-family: var(--pn-sans); font-size: 14px; line-height: 1.55; opacity: .65; margin: 0 0 10px; }
+.f-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.f-chip { font-family: var(--pn-mono); font-size: 9px; background: rgba(40,52,20,.07); border-radius: 999px; padding: 4px 11px; letter-spacing: .02em; }
+
+/* EXAMPLE GROUPS */
+.ex-groups { display: flex; flex-direction: column; gap: 56px; }
+.ex-group-head { max-width: 640px; margin-bottom: 22px; }
+.ex-goal-num { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--pn-dragon-fruit); }
+.ex-goal-title { font-family: var(--pn-display); font-style: italic; font-size: clamp(28px,3.4vw,44px); line-height: 1; letter-spacing: -.02em; margin: 8px 0 8px; color: var(--pn-aloe-dark); }
+.ex-goal-sub { font-family: var(--pn-sans); font-size: 14px; opacity: .65; margin: 0; line-height: 1.5; }
+.ex-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(290px,1fr)); gap: 28px; align-items: start; }
+
+/* FOOTER */
+.g-foot { background: linear-gradient(180deg, #2a1006 0%, #1a0803 55%, #0d0401 100%); color: var(--pn-mango-50); }
+.g-foot-main { padding: 64px 80px 56px; display: grid; grid-template-columns: 1.15fr 1fr 1fr 1fr; gap: 48px; border-bottom: 1px solid rgba(246,235,227,.07); }
+.g-foot-badge { width: 76px; height: 76px; display: block; margin-bottom: 18px; object-fit: contain; }
+.g-foot-tagline { font-family: var(--pn-sans); font-size: 13px; line-height: 1.6; opacity: .42; margin: 0; max-width: 180px; }
+.g-foot-col-head { font-family: var(--pn-display); font-style: italic; font-size: 34px; line-height: .95; letter-spacing: -.02em; margin: 0 0 18px; }
+.g-foot-body { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .1em; line-height: 2.2; opacity: .48; margin: 0; }
+.g-foot-body a { color: inherit; transition: opacity .15s; }
+.g-foot-body a:hover { opacity: 1; }
+.g-foot-nav-row { padding: 18px 80px; border-bottom: 1px solid rgba(246,235,227,.05); display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.g-foot-nav-lbl { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .22em; text-transform: uppercase; opacity: .28; }
+.g-foot-nav-links { display: flex; gap: 22px; }
+.g-foot-nav-links a { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: rgba(246,235,227,.42); transition: color .15s; }
+.g-foot-nav-links a:hover { color: var(--pn-juicy-fruit); }
+.g-foot-copy-row { padding: 14px 80px 22px; font-family: var(--pn-mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; opacity: .2; }
+
+/* ── EDITORIAL PHILOSOPHY ── */
+.ep-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 32px; }
+.ep-card { border: 1px solid rgba(40,52,20,.14); border-radius: 16px; padding: 22px 24px 26px; background: #fff; transition: transform .2s, box-shadow .2s, border-color .2s; }
+.ep-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(40,52,20,.1); border-color: rgba(40,52,20,.3); }
+.ep-card.dark { background: var(--pn-aloe-dark); border-color: var(--pn-aloe-dark); color: var(--pn-mango-50); }
+.ep-before { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; opacity: .4; display: block; margin-bottom: 5px; }
+.ep-card.dark .ep-before { color: rgba(246,235,227,.5); opacity: 1; }
+.ep-after { font-family: var(--pn-display); font-style: italic; font-weight: 600; font-size: 26px; line-height: 1; letter-spacing: -.015em; margin: 0 0 8px; color: var(--pn-aloe-dark); }
+.ep-after .pop { color: var(--pn-dragon-fruit); }
+.ep-card.dark .ep-after { color: var(--pn-mango-50); }
+.ep-body { font-family: var(--pn-sans); font-size: 13px; line-height: 1.5; opacity: .65; margin: 0; }
+.ep-card.dark .ep-body { opacity: .72; }
+
+/* ── STANDARDS TABLE ── */
+.std-table { border: 1px solid rgba(40,52,20,.12); border-radius: 16px; overflow: hidden; margin-top: 32px; }
+.std-head { display: grid; grid-template-columns: 1fr 1fr; background: rgba(40,52,20,.04); border-bottom: 1px solid rgba(40,52,20,.1); }
+.std-head span { font-family: var(--pn-mono); font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; padding: 12px 24px; }
+.std-head .dh { color: var(--pn-juicy-fruit); border-right: 1px solid rgba(40,52,20,.1); }
+.std-head .rh { color: var(--pn-aloe-mid, #547126); }
+.std-row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(40,52,20,.1); }
+.std-row:last-child { border-bottom: none; }
+.std-d, .std-r { font-family: var(--pn-sans); font-size: 15px; line-height: 1.4; padding: 16px 24px 16px 44px; color: var(--pn-aloe-dark); position: relative; }
+.std-d { border-right: 1px solid rgba(40,52,20,.1); opacity: .6; }
+.std-d::before { content: "×"; position: absolute; left: 20px; color: var(--pn-juicy-fruit); font-weight: 700; font-size: 16px; top: 16px; opacity: 1; }
+.std-r::before { content: "→"; position: absolute; left: 20px; color: var(--pn-aloe-light); font-size: 16px; top: 16px; }
+
+/* ── OUT IN THE WILD ── */
+.wild-flow { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 32px; }
+.wild-slide { background: rgba(246,235,227,.1); border: 1px solid rgba(246,235,227,.18); border-radius: 14px; padding: 20px 16px 24px; text-align: center; }
+.wild-num { font-family: var(--pn-mono); font-size: 8.5px; letter-spacing: .18em; text-transform: uppercase; opacity: .4; display: block; margin-bottom: 10px; }
+.wild-role { font-family: var(--pn-display); font-style: italic; font-weight: 600; font-size: 30px; line-height: 1; letter-spacing: -.015em; color: var(--pn-mango-50); display: block; margin-bottom: 7px; }
+.wild-ex { font-family: var(--pn-sans); font-size: 12px; line-height: 1.4; opacity: .52; }
+
+/* ── CALLOUT NORTH STAR ── */
+.cl-ns { border-radius: 16px; padding: 28px 32px; margin-top: 32px; }
+.cl-ns .cn-label { font-family: var(--pn-mono); font-size: 9.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--pn-aloe-light); display: block; margin-bottom: 12px; }
+.cl-ns p { font-family: var(--pn-display); font-style: italic; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; margin: 0; }
+.cl-ns strong { font-weight: 600; }
+
+
+/* ── POST EXAMPLES REBUILD ── */
+.pe-pillars { display: flex; flex-direction: column; gap: 56px; }
+.pe-pillar-head { margin-bottom: 22px; }
+.pe-formats { display: flex; gap: 20px; flex-wrap: wrap; align-items: start; }
+.pe-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 28px rgba(40,52,20,.1); flex: 1 1 260px; max-width: 380px; display: flex; flex-direction: column; }
+.pe-card-top { background: #283414; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+.pe-type { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: rgba(246,235,227,.65); display: flex; align-items: center; gap: 7px; }
+.pe-tbadge { font-size: 8px; letter-spacing: .14em; text-transform: uppercase; border-radius: 4px; padding: 3px 8px; font-weight: 700; font-family: var(--pn-mono); }
+.pe-tbadge.carousel { background: rgba(255,139,49,.2); color: #FF8B31; }
+.pe-tbadge.reel    { background: rgba(239,49,125,.2); color: #EF317D; }
+.pe-tbadge.single  { background: rgba(117,158,51,.2);  color: #759E33; }
+.pe-cover { width: 100%; aspect-ratio: 4/5; position: relative; overflow: hidden; background: #e8e8e8; }
+.pe-slides { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(40,52,20,.08); }
+.pe-slide { aspect-ratio: 4/5; position: relative; overflow: hidden; background: #ebebeb; }
+.pe-reel-bg { background: #1c1c1c; padding: 20px; display: flex; justify-content: center; }
+.pe-reel { width: 58%; aspect-ratio: 9/16; position: relative; overflow: hidden; border-radius: 10px; background: #2e2e2e; }
+.pe-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 2; }
+.pe-play-btn { width: 44px; height: 44px; background: rgba(255,255,255,.88); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.pe-canva { padding: 11px 14px 14px; border-top: 1px solid rgba(40,52,20,.07); }
+.pe-canva a { font-family: var(--pn-mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; background: var(--pn-aloe-dark); color: var(--pn-mango-50); border-radius: 999px; padding: 9px 18px; text-decoration: none; display: inline-block; }
+
+/* ── GRAIN OVERLAY ── */
+body::after { content: ''; position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: .04; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E"); background-size: 200px 200px; }
+/* ── HERO PHOTO BG ── */
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-bg::after { content: ''; position: absolute; inset: 0; background: rgba(40,52,20,.58); }
+/* ── WAVE DIVIDER ── */
+.wave-div { margin-top: -79px; position: relative; z-index: 10; line-height: 0; pointer-events: none; }
+.wave-div svg { display: block; width: 100%; height: 80px; }
+/* ── PHOTO BREAK ── */
+.photo-break { position: relative; height: 440px; overflow: hidden; }
+.photo-break img { width: 100%; height: 440px; object-fit: cover; display: block; object-position: center 40%; }
+.photo-break-scrim { position: absolute; inset: 0; background: radial-gradient(110% 90% at 100% 0%, rgba(255,139,49,.45) 0%, transparent 55%), radial-gradient(120% 110% at 95% 100%, rgba(239,49,125,.42) 0%, transparent 60%), linear-gradient(150deg, rgba(40,18,28,.5) 0%, rgba(40,18,28,.8) 100%); }
+.photo-break-cap { position: absolute; bottom: 52px; left: 80px; color: var(--pn-mango-50); }
+.photo-break-cap p { font-family: var(--pn-mono); font-size: 10px; letter-spacing: .3em; text-transform: uppercase; opacity: .5; margin: 0 0 10px; }
+.photo-break-cap h3 { font-family: var(--pn-display); font-style: italic; font-size: clamp(44px,6vw,84px); line-height: .9; letter-spacing: -.025em; margin: 0; }
+</style>
+<script src="image-slot.js"></script>
+</head>
+<body>
+
+<nav class="g-nav">
+  <img src="uploads/logo mark  - inverse.svg" alt="Pynk Nymph" class="g-nav-logo-img" />
+  <ul class="g-nav-links">
+    <li><a href="#goals">Foundation</a></li>
+    <li><a href="#editorial">Philosophy</a></li>
+    <li><a href="#pillars">Pillars</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#build">Build a Post</a></li>
+    <li><a href="#formulas">Reels</a></li>
+    <li><a href="#standards">Standards</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"><img src="uploads/uriel-xtgONQzGgOE-unsplash.jpg" alt="" /></div>
+  <div class="hero-bands" style="background:rgba(8,16,0,.48);">
+    <div class="mq" style="color:rgba(246,235,227,.92);"><div class="mq-track" id="mq1"><span class="mq-item">STAY TOP OF MIND <span class="mq-d"></span></span><span class="mq-item">SOUND LIKE US <span class="mq-d"></span></span><span class="mq-item">MAKE BOOKING EASY <span class="mq-d"></span></span><span class="mq-item">BUILD FAMILIARITY BEFORE THE FIRST APPOINTMENT <span class="mq-d"></span></span><span class="mq-item">THE STUDIO IS THE MAIN CHARACTER <span class="mq-d"></span></span></div></div>
+  </div>
+  <div class="hero-body">
+    <p class="hero-eye" style="color: rgb(246, 235, 227); opacity: 0.8">◆ Pynk Nymph · Social Playbook · 2026</p>
+    <h1 class="hero-h1"><span class="ac">Social</span><br /><span style="color:#F6EBE3;">Playbook.</span></h1>
+    <div class="hero-foot">
+      <p class="hero-sub" style="color: rgb(246, 235, 227)">Photo · Video · Copy · Cadence. The studio is the main character. Everyone else is part of the story.</p>
+      <div class="hero-pills">
+        <a href="#editorial" class="hero-pill" style="color: rgb(246, 235, 227)">◆ Philosophy</a>
+        <a href="#pillars" class="hero-pill" style="color: rgb(246, 235, 227)">◆ Pillars</a>
+        <a href="#community" class="hero-pill" style="color: rgb(246, 235, 227)">◆ Community</a>
+        <a href="#build" class="hero-pill" style="color: rgb(246, 235, 227)">◆ Build a Post</a>
+        <a href="#formulas" class="hero-pill" style="color: rgb(246, 235, 227)">◆ Reels</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVY BAND: both sides wavy, text follows wave path -->
+<div id="wavyBandOuter" style="position:relative; margin-top:-78px; z-index:10; overflow:hidden; height:90px; background:var(--pn-aloe-dark);"></div>
+
+<!-- GOALS -->
+<section id="goals" class="s s-dark">
+  <p class="s-eye" style="color:rgba(246,235,227,.88);">◆ 01 — Foundation</p>
+  <h2 class="s-title" style="color: rgb(246, 235, 227)">What every post is working toward.</h2>
+  <p class="s-desc" style="opacity: .82; color: rgb(246, 235, 227)">Most people book because they feel like they already know the studio. Social builds that familiarity — before anyone walks through the door.</p>
+  <div class="goal-list">
+    <div class="goal-row"><span class="goal-num">01</span><span class="goal-txt" style="color: rgb(246, 235, 227)">Stay top of mind.</span></div>
+    <div class="goal-row"><span class="goal-num">02</span><span class="goal-txt" style="color: rgb(246, 235, 227)">Sound like us.</span></div>
+    <div class="goal-row"><span class="goal-num">03</span><span class="goal-txt" style="color: rgb(246, 235, 227)">Make booking easy.</span></div>
+    <div class="goal-row"><span class="goal-num">04</span><span class="goal-txt" style="color: rgb(246, 235, 227)">Build familiarity before the first appointment.</span></div>
+  </div>
+
+  <div style="margin-top:36px;background:rgba(246,235,227,.06);border:1px solid rgba(246,235,227,.1);border-radius:16px;padding:24px 28px;">
+    <p style="font-family: var(--pn-mono); font-size: 9px; letter-spacing: .22em; text-transform: uppercase; opacity: .4; margin: 0 0 10px; color: rgb(246, 235, 227)">◆ Every post should help someone feel</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <span style="font-family:var(--pn-sans);font-size:14px;font-weight:600;border:1.5px solid rgba(246,235,227,.25);border-radius:999px;padding:7px 16px;display:inline-flex;align-items:center;gap:7px;"><span style="color:var(--pn-dragon-fruit);font-size:7px;">◆</span>Comfortable</span>
+      <span style="font-family:var(--pn-sans);font-size:14px;font-weight:600;border:1.5px solid rgba(246,235,227,.25);border-radius:999px;padding:7px 16px;display:inline-flex;align-items:center;gap:7px;"><span style="color:var(--pn-dragon-fruit);font-size:7px;">◆</span>Familiar</span>
+      <span style="font-family:var(--pn-sans);font-size:14px;font-weight:600;border:1.5px solid rgba(246,235,227,.25);border-radius:999px;padding:7px 16px;display:inline-flex;align-items:center;gap:7px;"><span style="color:var(--pn-dragon-fruit);font-size:7px;">◆</span>Welcome</span>
+      <span style="font-family:var(--pn-sans);font-size:14px;font-weight:600;border:1.5px solid rgba(246,235,227,.25);border-radius:999px;padding:7px 16px;display:inline-flex;align-items:center;gap:7px;"><span style="color:var(--pn-dragon-fruit);font-size:7px;">◆</span>Less nervous</span>
+      <span style="font-family:var(--pn-sans);font-size:14px;font-weight:600;border:1.5px solid rgba(246,235,227,.25);border-radius:999px;padding:7px 16px;display:inline-flex;align-items:center;gap:7px;"><span style="color:var(--pn-dragon-fruit);font-size:7px;">◆</span>More informed</span>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL PHILOSOPHY -->
+<section id="editorial" class="s" style="background:#F6EBE3;">
+  <p class="s-eye">◆ 02 — Editorial Philosophy</p>
+  <h2 class="s-title" style="padding: 0px 0px 16px">Start with something worth saying.</h2>
+  <p class="s-desc">Content starts long before you open Canva. The question isn't "what should we post?" — it's "what's worth talking about?"</p>
+  <div class="ep-grid">
+    <div class="ep-card">
+      <span class="ep-before">Before format</span>
+      <div class="ep-after"><span class="pop">Story.</span></div>
+      <p class="ep-body">Tell a story first, let the format emerge. A format chosen before you have something to say produces content that feels like content.</p>
+    </div>
+    <div class="ep-card">
+      <span class="ep-before">Before information</span>
+      <div class="ep-after"><span class="pop">Perspective.</span></div>
+      <p class="ep-body">Facts are everywhere. The Pynk Nymph point of view on those facts is what earns attention. "Waxing tips" is information. A perspective is content.</p>
+    </div>
+    <div class="ep-card">
+      <span class="ep-before">Before promotion</span>
+      <div class="ep-after"><span class="pop">Recommendation.</span></div>
+      <p class="ep-body">Promote and people tune out. Genuinely recommend something — a service, a product, an org — and they lean in. The difference is intent.</p>
+    </div>
+    <div class="ep-card">
+      <span class="ep-before">Before announcement</span>
+      <div class="ep-after"><span class="pop">Observation.</span></div>
+      <p class="ep-body">Announcements tell people what happened. Observations make them feel something. Lead with the human moment, then give them the information.</p>
+    </div>
+    <div class="ep-card">
+      <span class="ep-before">Before engagement</span>
+      <div class="ep-after"><span class="pop">Trust.</span></div>
+      <p class="ep-body">Engagement is a byproduct of trust. The content that generates the most engagement earned it — not content designed to bait a response.</p>
+    </div>
+    <div class="ep-card dark">
+      <span class="ep-before">The test</span>
+      <div class="ep-after"><span style="color:#F6EBE3;">Does it make someone more likely to </span><span style="color:var(--pn-juicy-fruit);">trust</span><span style="color:#F6EBE3;"> us?</span></div>
+      <p class="ep-body" style="color: rgb(246, 235, 227)">Even if they don't book today. That's the north star every principle points toward.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BARRIERS -->
+<section id="barriers" class="s">
+  <p class="s-eye">◆ 02 — Barriers to Booking</p>
+  <h2 class="s-title">Five categories of doubt.</h2>
+  <p class="s-desc">People don't book because they saw a discount. They book because something finally removed the last objection.</p>
+  <div class="barrier-grid">
+    <div class="barrier" style="background:rgba(40,52,20,.07);border:1.5px solid var(--pn-aloe-dark);">
+      <span class="barrier-lbl" style="color:var(--pn-aloe-dark);">◆ Barrier 01 · Trust</span>
+      <h4>Are they any good?</h4>
+      <ul><li>Are they skilled?</li><li>Are they experienced?</li><li>Do they know what they're talking about?</li></ul>
+    </div>
+    <div class="barrier" style="background:rgba(239,49,125,.07);border:1.5px solid var(--pn-dragon-fruit);">
+      <span class="barrier-lbl" style="color:var(--pn-dragon-fruit);">◆ Barrier 02 · Comfort</span>
+      <h4>Will this be weird?</h4>
+      <ul><li>Will I be judged?</li><li>Will this be awkward?</li><li>Who is going to see me naked?</li></ul>
+    </div>
+    <div class="barrier" style="background:rgba(255,86,93,.07);border:1.5px solid var(--pn-juicy-fruit);">
+      <span class="barrier-lbl" style="color:var(--pn-juicy-fruit);">◆ Barrier 03 · Belonging</span>
+      <h4>Is this place for me?</h4>
+      <ul><li>Will I fit in here?</li><li>Are they really inclusive?</li><li>What does "inclusive" actually mean?</li></ul>
+    </div>
+    <div class="barrier" style="background:rgba(255,139,49,.07);border:1.5px solid var(--pn-mango);">
+      <span class="barrier-lbl" style="color:var(--pn-mango);">◆ Barrier 04 · Logistics</span>
+      <h4>Is this going to be annoying?</h4>
+      <ul><li>Where do I park?</li><li>How do I prepare?</li><li>What do I wear?</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee divider -->
+<div class="mq" style="background:var(--pn-aloe-dark);color:rgba(117,158,51,.95);padding:11px 0;">
+  <div class="mq-track rev" id="mq5"><span class="mq-item">THE FEED SHOULD FEEL LIKE IT WAS MADE FOR SOMEONE WHO HASN'T BOOKED YET <span class="mq-d"></span></span></div>
+</div>
+
+<div class="photo-break">
+  <img src="uploads/miguel-bruna-FPhfi9O-qqI-unsplash.jpg" alt="" style="object-position:center 55%;" />
+  <div class="photo-break-scrim" style="background:linear-gradient(150deg,rgba(40,52,20,.48) 0%,rgba(40,52,20,.68) 100%);"></div>
+  <div class="photo-break-cap">
+    <p style="color: rgb(246, 235, 227)">◆ Pynk Nymph · Content Pillars</p>
+    <h3>What we<br />talk about<span style="color:var(--pn-juicy-fruit);">.</span></h3>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<section id="pillars" class="s">
+  <p class="s-eye">◆ 03 — Content Pillars</p>
+  <h2 class="s-title">What we talk about.</h2>
+  <p class="s-desc">Five recurring categories. Every post belongs to one of them. Click to explore each one.</p>
+
+  <div class="pillar-tabs">
+    <button class="p-tab on" data-pillar="p1">01 Education</button>
+    <button class="p-tab" data-pillar="p2">02 Testimonials</button>
+    <button class="p-tab" data-pillar="p3">03 Services</button>
+    <button class="p-tab" data-pillar="p4">04 Life at PN</button>
+    <button class="p-tab" data-pillar="p5">05 Community</button>
+  </div>
+
+  <div class="pillar-panel on" id="p1">
+    <div class="p-content">
+      <p class="p-num">01</p>
+      <h3 class="p-name">Education.</h3>
+      <p class="p-body">Demystify waxing. Break down what happens, what to expect, and how to care for skin. Reduces anxiety before the appointment — the highest-ROI content type for new clients.</p>
+      <div class="p-chips"><span class="p-chip">Before &amp; after care</span><span class="p-chip">How waxing works</span><span class="p-chip">Ingrown prevention</span><span class="p-chip">Growth cycles</span></div>
+    </div>
+  </div>
+  <div class="pillar-panel" id="p2">
+    <div class="p-content">
+      <p class="p-num">02</p>
+      <h3 class="p-name">Testimonials &amp; social proof.</h3>
+      <p class="p-body">Real clients, real experiences. Authentic language only — no marketing polish. Let people hear it from someone who was nervous before their first appointment.</p>
+      <div class="p-chips"><span class="p-chip">Client reviews</span><span class="p-chip">First-timer stories</span><span class="p-chip">DM screenshots</span></div>
+    </div>
+  </div>
+  <div class="pillar-panel" id="p3">
+    <div class="p-content">
+      <p class="p-num">03</p>
+      <h3 class="p-name">Service spotlights.</h3>
+      <p class="p-body">Not a menu — a reason to feel confident clicking "book." Show what's available, who it's for, and remove friction from the decision.</p>
+      <div class="p-chips"><span class="p-chip">Service walkthroughs</span><span class="p-chip">Pricing &amp; cadence</span><span class="p-chip">Add-on education</span></div>
+    </div>
+  </div>
+  <div class="pillar-panel" id="p4">
+    <div class="p-content">
+      <p class="p-num">04</p>
+      <h3 class="p-name">Life at Pynk Nymph.</h3>
+      <p class="p-body">Pynk Nymph isn't a founder brand — the studio is the main character and the team is the cast. This pillar shows what it actually feels like to be here, and it's what converts curious followers into first-time bookings.</p>
+      <div class="p-chips"><span class="p-chip">Day in the life (owner)</span><span class="p-chip">Day in the life (tech)</span><span class="p-chip">Opening the studio</span><span class="p-chip">Studio traditions</span><span class="p-chip">Things you only hear in a wax room</span></div>
+    </div>
+  </div>
+  <div class="pillar-panel" id="p5">
+    <div class="p-content" style="border-color:var(--pn-aloe-light);">
+      <p class="p-num" style="color:var(--pn-aloe-light);opacity:1;">05</p>
+      <h3 class="p-name">Community. <span style="font-family:var(--pn-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--pn-aloe-light);color:#fff;padding:3px 9px;border-radius:999px;font-style:normal;vertical-align:middle;">new</span></h3>
+      <p class="p-body">Pynk Nymph exists inside a city, a movement, and a set of values. Pride content, local Richmond orgs, and community spotlights need their own home.</p>
+      <div class="p-chips"><span class="p-chip">Pride spotlights</span><span class="p-chip">Richmond orgs</span><span class="p-chip">James River</span><span class="p-chip">Community fundraisers</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY CONTENT -->
+<section id="community" class="s s-wine">
+  <p class="s-eye" style="color:rgba(246,235,227,.55);">◆ 05 — Community Content</p>
+  <h2 class="s-title" style="color: rgb(246, 235, 227)">Why are WE<br />sharing this?</h2>
+  <p class="s-desc" style="color: rgb(246, 235, 227)">Community posts earn their place the same way every other post does: by making someone more likely to trust Pynk Nymph.</p>
+
+  <div style="margin-top:28px;background:rgba(246,235,227,.08);border:1px solid rgba(246,235,227,.14);border-radius:16px;padding:24px 28px;">
+    <p style="font-family:var(--pn-mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(117,158,51,.85);margin:0 0 12px;">◆ The question every community post must answer</p>
+    <p style="font-family:var(--pn-display);font-style:italic;font-size:22px;line-height:1.2;letter-spacing:-.01em;color:var(--pn-mango-50);margin:0;">Why are WE sharing this? The answer connects back to our beliefs — specifically, concretely, not generically.</p>
+  </div>
+
+  <div class="goal-list" style="margin-top:36px;">
+    <div class="goal-row"><span class="goal-num">01</span><span class="goal-txt">Strengthens trust by showing what we value.</span></div>
+    <div class="goal-row"><span class="goal-num">02</span><span class="goal-txt">Positions Pynk Nymph as an active member of Richmond — not just a studio in it.</span></div>
+    <div class="goal-row"><span class="goal-num">03</span><span class="goal-txt">Gives people a reason to follow beyond booking appointments.</span></div>
+  </div>
+
+  <div style="margin-top:56px;padding-top:48px;border-top:1px solid rgba(246,235,227,.12);">
+    <p style="font-family:var(--pn-mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(117,158,51,.7);margin:0 0 18px;">◆ Out in the Wild — official recurring series</p>
+    <h3 style="font-family: var(--pn-display); font-style: italic; font-size: clamp(38px,5vw,68px); line-height: .92; letter-spacing: -.025em; margin: 0 0 16px; color: rgb(246, 235, 227)">Not an event calendar.<br />A point of view.</h3>
+    <p style="font-family: var(--pn-sans); font-size: 15px; line-height: 1.55; opacity: .65; max-width: 560px; margin: 0; color: rgb(246, 235, 227)">Each carousel tells a story. Slides play a role — not just fill a list position. The curation is the content; our perspective is why someone follows instead of just Googling.</p>
+  </div>
+
+  <div class="wild-flow">
+    <div class="wild-slide"><span class="wild-num">Slide 01</span><span class="wild-role" style="color: rgb(246, 235, 227)">Learn</span><span class="wild-ex" style="color: rgb(246, 235, 227); line-height: 0.45">History, context, or education about the moment or theme</span></div>
+    <div class="wild-slide"><span class="wild-num">Slide 02</span><span class="wild-role" style="color: rgb(246, 235, 227)">Celebrate</span><span class="wild-ex" style="color: rgb(246, 235, 227)">An org or event worth showing up for</span></div>
+    <div class="wild-slide"><span class="wild-num">Slide 03</span><span class="wild-role" style="color: rgb(246, 235, 227)">Heal</span><span class="wild-ex" style="color: rgb(246, 235, 227)">A resource, space, or service that supports community</span></div>
+    <div class="wild-slide"><span class="wild-num">Slide 04</span><span class="wild-role" style="color: rgb(246, 235, 227)">Support</span><span class="wild-ex" style="color: rgb(246, 235, 227)">How to contribute, donate, or show up in a real way</span></div>
+  </div>
+
+  <div style="margin-top:24px;padding:20px 24px;background:rgba(246,235,227,.07);border-radius:12px;border:1px solid rgba(246,235,227,.12);">
+    <p style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.5;margin:0 0 8px;">◆ Visual standard</p>
+    <p style="font-family: var(--pn-sans); font-size: 14px; line-height: 1.55; opacity: .7; margin: 0; color: rgb(246, 235, 227)">Use real photography. If highlighting another organization, <strong style="opacity:1;color:var(--pn-mango-50);">let them be the hero</strong> — Pynk Nymph is the host. Avoid event flyers as the primary visual. Avoid AI-generated imagery for community posts.</p>
+  </div>
+</section>
+
+<!-- CAPTION BUILDER -->
+<div class="photo-break">
+  <img src="uploads/ingmar-7MeVVBM0MR8-unsplash.jpg" alt="" />
+  <div class="photo-break-scrim"></div>
+  <div class="photo-break-cap">
+    <p style="color: rgb(246, 235, 227)">◆ Pynk Nymph · Social Playbook</p>
+    <h3><span style="color:#F6EBE3;">Sound</span><br /><span style="color:#F6EBE3;">like us</span><span style="color:var(--pn-juicy-fruit);">.</span></h3>
+  </div>
+</div>
+
+<section id="build" class="s" style="background:#FDEAF2;">
+  <p class="s-eye">◆ 04 — Build a Post</p>
+  <h2 class="s-title" style="display:flex;align-items:center;gap:18px;">Build a post. <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:52px;height:52px;flex-shrink:0;opacity:.85;"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#EF317D" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="#EF317D" stroke-width="1.8"/><circle cx="17" cy="7" r="1.2" fill="#EF317D"/></svg></h2>
+  <div style="display:inline-flex;align-items:center;gap:8px;background:var(--pn-dragon-fruit);border-radius:999px;padding:5px 16px;margin-bottom:12px;"><span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:white;">✦ interactive — answer 3 questions</span></div>
+  <p class="s-desc">Answer three quick questions and we'll draft the post — caption, angle, and Instagram preview. Tweak it, then copy.</p>
+
+  <div class="bp-builder">
+    <div class="bp-left">
+      <div class="bp-steps" id="bp-steps"></div>
+      <div id="bp-panel"></div>
+    </div>
+
+    <!-- IG PHONE MOCKUP -->
+    <div class="ig-phone">
+      <div class="ig-status">
+        <div class="ig-status-bar">
+          <span class="ig-time">9:41</span>
+          <div class="ig-icons">
+            <svg width="16" height="12" viewBox="0 0 16 12"><rect x="0" y="3" width="3" height="9" rx="1" fill="#000"/><rect x="4" y="2" width="3" height="10" rx="1" fill="#000"/><rect x="8" y="1" width="3" height="11" rx="1" fill="#000"/><rect x="12" y="0" width="3" height="12" rx="1" fill="#000"/></svg>
+            <svg width="15" height="12" viewBox="0 0 15 12"><path d="M7.5 3 C5 3 3 5 3 7.5 C3 10 5 12 7.5 12 C10 12 12 10 12 7.5" fill="none" stroke="#000" stroke-width="1.5"/><path d="M1 4.5 C1 2 4 0 7.5 0 C11 0 14 2 14 4.5" fill="none" stroke="#000" stroke-width="1.5"/></svg>
+            <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0" y="1" width="22" height="10" rx="3" fill="none" stroke="#000" stroke-width="1.2"/><rect x="1.5" y="2.5" width="17" height="7" rx="2" fill="#000"/><rect x="23" y="4" width="2" height="4" rx="1" fill="#000"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="ig-header">
+        <div class="ig-avatar"><div class="ig-avatar-inner"><img src="uploads/PN_Social Icon.png" alt="pynknymph" /></div></div>
+        <div>
+          <div class="ig-handle">pynknymph</div>
+          <div class="ig-handle-sub">315 E Grace St</div>
+        </div>
+      </div>
+      <div class="ig-img" id="ig-img">
+        <div class="ig-figma">
+          <svg class="ig-figma-x" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="0" y1="0" x2="100" y2="100"></line><line x1="100" y1="0" x2="0" y2="100"></line></svg>
+          <div class="ig-figma-center">
+            <svg class="ig-figma-ico" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.6"></circle><path d="M21 15l-5-5L5 21"></path></svg>
+            <span class="ig-figma-dim">1080 × 1080</span>
+          </div>
+        </div>
+      </div>
+      <div class="ig-actions">
+        <svg class="ig-action-icon" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <svg class="ig-action-icon" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <svg class="ig-action-icon" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </div>
+      <div class="ig-likes" id="ig-likes" style="opacity:.35;">— likes</div>
+      <div class="ig-caption">
+        <span class="ig-cap-handle">pynknymph </span><span class="ig-cap-text empty" id="ig-cap-display">Your post will appear here…</span>
+      </div>
+      <div class="ig-comment" id="ig-comment" style="opacity:.5;">Build a post to preview it</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAMPLE POSTS -->
+<section id="examples" class="s" style="background:#F6EBE3;">
+  <p class="s-eye">◆ 05 — Example Posts</p>
+  <h2 class="s-title">Posts to follow.</h2>
+  <p class="s-desc">One section per content pillar. Drag your Canva exports onto each slot, then paste the Canva template URL into each button. Carousels at 4:5 (IG portrait); Reels at 9:16.</p>
+
+  <div class="pe-pillars">
+
+    <!-- ── PILLAR 01: EDUCATION ── -->
+    <div class="pe-pillar">
+      <div class="pe-pillar-head">
+        <span class="ex-goal-num">Pillar 01 · Education</span>
+        <h3 class="ex-goal-title">Demystify. Educate. Earn trust.</h3>
+        <p class="ex-goal-sub">Highest save + share rate. Best pillar for reach and new-follower discovery. Carousels outperform singles here — give them something worth swiping through.</p>
+      </div>
+      <div class="pe-formats">
+        
+        <div class="pe-card">
+          <div class="pe-card-top">
+            <div class="pe-type"><span class="pe-tbadge carousel">☰ Carousel</span><span>Education</span></div>
+            <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.1em;color:var(--pn-juicy-fruit);">↑ REACH</span>
+          </div>
+          <div class="pe-cover"><image-slot id="edu-cover" shape="rect" placeholder="Slide 1 — Cover (4:5)" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          <div class="pe-slides">
+            <div class="pe-slide"><image-slot id="edu-s2" shape="rect" placeholder="Slide 2" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+            <div class="pe-slide"><image-slot id="edu-s3" shape="rect" placeholder="Slide 3" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+            <div class="pe-slide"><image-slot id="edu-s4" shape="rect" placeholder="Slide 4" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          </div>
+          <div class="pe-canva"><a href="#">◆ Open Canva Template ↗</a></div>
+        </div>
+        
+        <div class="pe-card">
+          <div class="pe-card-top">
+            <div class="pe-type"><span class="pe-tbadge reel">▷ Reel</span><span>Education</span></div>
+            <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.1em;color:var(--pn-juicy-fruit);">↑ REACH</span>
+          </div>
+          <div class="pe-reel-bg">
+            <div class="pe-reel">
+              <image-slot id="edu-reel" shape="rect" placeholder="Reel cover (9:16)" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+              <div class="pe-play"><div class="pe-play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><polygon points="2,1 13,8 2,15" fill="#283414"/></svg></div></div>
+            </div>
+          </div>
+          <div class="pe-canva"><a href="#">◆ Open Canva Template ↗</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PILLAR 02: TESTIMONIALS ── -->
+    <div class="pe-pillar">
+      <div class="pe-pillar-head">
+        <span class="ex-goal-num">Pillar 02 · Testimonials</span>
+        <h3 class="ex-goal-title">Real words. Real clients.</h3>
+        <p class="ex-goal-sub">Authentic language converts fence-sitters. Multi-slide carousels let a full story unfold — hook on slide 1, quote on slide 2, CTA on the last.</p>
+      </div>
+      <div class="pe-formats">
+        
+        <div class="pe-card">
+          <div class="pe-card-top">
+            <div class="pe-type"><span class="pe-tbadge carousel">☰ Carousel</span><span>Testimonials</span></div>
+            <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.1em;color:var(--pn-dragon-fruit);">↑ CONVERSIONS</span>
+          </div>
+          <div class="pe-cover"><image-slot id="test-cover" shape="rect" placeholder="Slide 1 — Hook (4:5)" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          <div class="pe-slides">
+            <div class="pe-slide"><image-slot id="test-s2" shape="rect" placeholder="Slide 2 — Quote" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+            <div class="pe-slide"><image-slot id="test-s3" shape="rect" placeholder="Slide 3 — Story" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+            <div class="pe-slide"><image-slot id="test-s4" shape="rect" placeholder="Slide 4 — CTA" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          </div>
+          <div class="pe-canva"><a href="#">◆ Open Canva Template ↗</a></div>
+        </div>
+        
+        <div class="pe-card">
+          <div class="pe-card-top">
+            <div class="pe-type"><span class="pe-tbadge single">◻ Single</span><span>Testimonials</span></div>
+            <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.1em;color:var(--pn-dragon-fruit);">↑ CONVERSIONS</span>
+          </div>
+          <div class="pe-cover"><image-slot id="test-single" shape="rect" placeholder="Single quote post (4:5)" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          <div class="pe-canva"><a href="#">◆ Open Canva Template ↗</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PILLAR 03: SERVICES ── -->
+    <div class="pe-pillar">
+      <div class="pe-pillar-head">
+        <span class="ex-goal-num">Pillar 03 · Services</span>
+        <h3 class="ex-goal-title">Make booking the easy part.</h3>
+        <p class="ex-goal-sub">Remove logistics friction before they tap book. Carousel format lets you walk through a service step by step — what to expect, how to prep, what it costs.</p>
+      </div>
+      <div class="pe-formats">
+        
+        <div class="pe-card">
+          <div class="pe-card-top">
+            <div class="pe-type"><span class="pe-tbadge carousel">☰ Carousel</span><span>Services</span></div>
+            <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.1em;color:var(--pn-mango);">↑ BOOKINGS</span>
+          </div>
+          <div class="pe-cover"><image-slot id="srv-cover" shape="rect" placeholder="Slide 1 — Service intro (4:5)" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          <div class="pe-slides">
+            <div class="pe-slide"><image-slot id="srv-s2" shape="rect" placeholder="Slide 2 — What to expect" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+            <div class="pe-slide"><image-slot id="srv-s3" shape="rect" placeholder="Slide 3 — Prep tips" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+            <div class="pe-slide"><image-slot id="srv-s4" shape="rect" placeholder="Slide 4 — Book CTA" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          </div>
+          <div class="pe-canva"><a href="#">◆ Open Canva Template ↗</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PILLAR 04: LIFE AT PN ── -->
+    <div class="pe-pillar">
+      <div class="pe-pillar-head">
+        <span class="ex-goal-num">Pillar 04 · Life at Pynk Nymph</span>
+        <h3 class="ex-goal-title">The studio is the main character.</h3>
+        <p class="ex-goal-sub">Highest-converting content for first bookings. Reels first — camera-in-hand, real moments. Carousels for behind-the-scenes storytelling.</p>
+      </div>
+      <div class="pe-formats">
+        
+        <div class="pe-card">
+          <div class="pe-card-top">
+            <div class="pe-type"><span class="pe-tbadge reel">▷ Reel</span><span>Life at PN</span></div>
+            <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.1em;color:rgba(117,158,51,.9);">↑ FAMILIARITY</span>
+          </div>
+          <div class="pe-reel-bg">
+            <div class="pe-reel">
+              <image-slot id="life-reel" shape="rect" placeholder="Reel cover (9:16)" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+              <div class="pe-play"><div class="pe-play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><polygon points="2,1 13,8 2,15" fill="#283414"/></svg></div></div>
+            </div>
+          </div>
+          <div class="pe-canva"><a href="#">◆ Open Canva Template ↗</a></div>
+        </div>
+        
+        <div class="pe-card">
+          <div class="pe-card-top">
+            <div class="pe-type"><span class="pe-tbadge carousel">☰ Carousel</span><span>Life at PN</span></div>
+            <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.1em;color:rgba(117,158,51,.9);">↑ FAMILIARITY</span>
+          </div>
+          <div class="pe-cover"><image-slot id="life-cover" shape="rect" placeholder="Slide 1 — Cover (4:5)" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          <div class="pe-slides">
+            <div class="pe-slide"><image-slot id="life-s2" shape="rect" placeholder="Slide 2" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+            <div class="pe-slide"><image-slot id="life-s3" shape="rect" placeholder="Slide 3" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+            <div class="pe-slide"><image-slot id="life-s4" shape="rect" placeholder="Slide 4" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          </div>
+          <div class="pe-canva"><a href="#">◆ Open Canva Template ↗</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PILLAR 05: COMMUNITY ── -->
+    <div class="pe-pillar">
+      <div class="pe-pillar-head">
+        <span class="ex-goal-num">Pillar 05 · Community</span>
+        <h3 class="ex-goal-title">Not an event calendar. A point of view.</h3>
+        <p class="ex-goal-sub">Out in the Wild series. Pride spotlights, Richmond orgs, local love. Each carousel slide plays a role — Learn, Celebrate, Heal, Support.</p>
+      </div>
+      <div class="pe-formats">
+        
+        <div class="pe-card">
+          <div class="pe-card-top">
+            <div class="pe-type"><span class="pe-tbadge carousel">☰ Carousel</span><span>Out in the Wild</span></div>
+            <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.1em;color:rgba(117,158,51,.9);">↑ TRUST</span>
+          </div>
+          <div class="pe-cover"><image-slot id="com-cover" shape="rect" placeholder="Slide 1 — Cover (4:5)" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          <div class="pe-slides">
+            <div class="pe-slide"><image-slot id="com-s2" shape="rect" placeholder="Slide 2 — Learn" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+            <div class="pe-slide"><image-slot id="com-s3" shape="rect" placeholder="Slide 3 — Celebrate / Heal" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+            <div class="pe-slide"><image-slot id="com-s4" shape="rect" placeholder="Slide 4 — Support" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          </div>
+          <div class="pe-canva"><a href="#">◆ Open Canva Template ↗</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REEL FORMULAS -->
+<section id="formulas" class="s">
+  <p class="s-eye">◆ 06 — Reel Formulas</p>
+  <h2 class="s-title">Four formulas.</h2>
+  <p class="s-desc">A formula is a container — not a script. The structure stays recognizable so new viewers know what they're watching.</p>
+
+  <div class="formula-grid">
+    <div class="formula">
+      <div class="f-lbl">Formula 01</div>
+      <div>
+        <h4 class="f-name">The Hook + Education</h4>
+        <p class="f-body">Open with a question or surprising fact. Deliver the answer. Close with a CTA. Best for reach.</p>
+        <div class="f-chips"><span class="f-chip">Waxing myths</span><span class="f-chip">Skin care tips</span><span class="f-chip">Before &amp; after prep</span></div>
+      </div>
+    </div>
+    <div class="formula">
+      <div class="f-lbl">Formula 02</div>
+      <div>
+        <h4 class="f-name">The POV / Day in the Life</h4>
+        <p class="f-body">Camera-in-hand, real moments. Low production, high intimacy. Essential for world-building and comfort barriers.</p>
+        <div class="f-chips"><span class="f-chip">Opening the studio</span><span class="f-chip">Restock day</span><span class="f-chip">First client of the day</span></div>
+      </div>
+    </div>
+    <div class="formula">
+      <div class="f-lbl">Formula 03</div>
+      <div>
+        <h4 class="f-name">The Talking Head</h4>
+        <p class="f-body">One person, direct to camera. Works for "Just Checking…" and "We Need To Talk About…" Hannah, Shakita, future team.</p>
+        <div class="f-chips"><span class="f-chip">Waxer opinions</span><span class="f-chip">Direct advice</span><span class="f-chip">Studio PSAs</span></div>
+      </div>
+    </div>
+    <div class="formula" style="background:rgba(40,52,20,.05);border-radius:16px;padding:24px 24px;border:1.5px solid rgba(40,52,20,.14);border-top:1.5px solid rgba(40,52,20,.14);margin-top:20px;">
+      <div class="f-lbl" style="opacity:1;color:var(--pn-aloe-light);">Formula 04 <span style="font-family:var(--pn-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--pn-aloe-light);color:#fff;padding:3px 8px;border-radius:999px;font-style:normal;vertical-align:middle;">new</span></div>
+      <div>
+        <h4 class="f-name">Recurring Series</h4>
+        <p class="f-body">The audience should begin recognizing the format before they read the content. Each new episode pays into accumulated recognition.</p>
+        <div class="f-chips"><span class="f-chip">Leg Report</span><span class="f-chip">Just Checking…</span><span class="f-chip">Things You Only Hear in a Wax Room</span><span class="f-chip">Day in the Life</span><span class="f-chip">Pride Spotlight</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL STANDARDS -->
+<section id="standards" class="s" style="background:#F6EBE3;">
+  <p class="s-eye">◆ 07 — Editorial Standards</p>
+  <h2 class="s-title">The don't / do.</h2>
+  <p class="s-desc">Decision-making tools, not social media tactics. The difference between content that sounds like us and content that could have come from anywhere.</p>
+  <div class="std-table">
+    <div class="std-head"><span class="dh">× Don't</span><span class="rh">→ Instead</span></div>
+    <div class="std-row"><span class="std-d">Promote.</span><span class="std-r">Recommend.</span></div>
+    <div class="std-row"><span class="std-d">Repost.</span><span class="std-r">Curate.</span></div>
+    <div class="std-row"><span class="std-d">Chase trends.</span><span class="std-r">Find the Pynk Nymph perspective.</span></div>
+    <div class="std-row"><span class="std-d">Create because it's expected.</span><span class="std-r">Create because it aligns with our beliefs.</span></div>
+    <div class="std-row"><span class="std-d">Announce.</span><span class="std-r">Observe, then inform.</span></div>
+  </div>
+  <div style="background:var(--pn-aloe-dark);border-radius:16px;padding:28px 32px;margin-top:32px;">
+    <p style="font-family:var(--pn-mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--pn-aloe-light);margin:0 0 12px;">◆ The north star</p>
+    <p style="font-family:var(--pn-display);font-style:italic;font-size:22px;line-height:1.25;letter-spacing:-.01em;color:var(--pn-mango-50);margin:0;">Every piece of content should make someone more likely to <strong>trust Pynk Nymph</strong> — even if they don't book today.</p>
+  </div>
+</section>
+
+<div class="mq" style="background:var(--pn-aloe-dark);color:rgba(246,235,227,.88);padding:12px 0;border-top:1px solid rgba(246,235,227,.06);"><div class="mq-track" id="mq-bridge"><span class="mq-item">ALL BODIES WELCOME <span class="mq-d"></span></span><span class="mq-item">JUDGEMENT-FREE CARE <span class="mq-d"></span></span></div></div>
+
+<footer class="g-foot">
+  <div class="g-foot-main">
+    <div>
+      <img src="uploads/PN_Badge (light).svg" alt="Pynk Nymph" class="g-foot-badge" />
+      <p class="g-foot-tagline">Waxing and skincare<br />for every body.</p>
+    </div>
+    <div>
+      <h3 class="g-foot-col-head">Find us.</h3>
+      <p class="g-foot-body">315 E Grace Street<br />Richmond, VA 23222<br />Suite A</p>
+    </div>
+    <div>
+      <h3 class="g-foot-col-head">Hours.</h3>
+      <p class="g-foot-body">Tues &amp; Thur&nbsp;&nbsp;&nbsp;9am – 7pm<br />Wed &amp; Fri&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12pm – 7pm<br />Saturday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12pm – 7pm</p>
+    </div>
+    <div>
+      <h3 class="g-foot-col-head">Say Hi.</h3>
+      <p class="g-foot-body">pynknymph@gmail.com<br />(804) 455-7149<br />@pynknymph</p>
+    </div>
+  </div>
+  <div class="g-foot-nav-row">
+    <span class="g-foot-nav-lbl">Navigation</span>
+    <div class="g-foot-nav-links">
+      <a href="#goals">Foundation</a>
+      <a href="#editorial">Philosophy</a>
+      <a href="#pillars">Pillars</a>
+      <a href="#community">Community</a>
+      <a href="#build">Build a Post</a>
+      <a href="#formulas">Reels</a>
+      <a href="#standards">Standards</a>
+    </div>
+  </div>
+  <div class="g-foot-copy-row">© 2026 Pynk Nymph · Social Playbook · All rights reserved.</div>
+</footer>
+
+<script>
+// Marquee fill
+document.querySelectorAll('.mq-track').forEach(t => { t.innerHTML = t.innerHTML.repeat(5); });
+
+// ── WAVY BAND ──
+(function buildWavyBand() {
+  var outer = document.getElementById('wavyBandOuter');
+  if (!outer) return;
+  var W = Math.max(outer.offsetWidth || 0, window.innerWidth || 0, 320);
+  var H = 90, amp = 13, nPer = 5, P = W / nPer;
+  var topY = 22, midY = 45, botY = 68;
+
+  function seg(x, y, fl) {
+    var s = fl ? -1 : 1;
+    return 'C'+(x-P*.67)+','+(y+s*amp)+' '+(x-P*.33)+','+(y-s*amp)+' '+x+','+y;
+  }
+  function wavePath(y, fl, x0, x1) {
+    var d = 'M'+x0+','+y;
+    for (var x = x0+P; x < x1+P; x += P) d += ' '+seg(x,y,fl);
+    return d;
+  }
+
+  // Band fill — wavy top and wavy bottom
+  var ext = P;
+  var fillD = wavePath(topY, false, -ext, W+ext);
+  var xR = -ext + Math.ceil((W+2*ext+P)/P)*P;
+  fillD += ' L'+xR+','+botY;
+  for (var xr = xR; xr > -ext-P; xr -= P)
+    fillD += ' C'+(xr-P*.33)+','+(botY-amp)+' '+(xr-P*.67)+','+(botY+amp)+' '+(xr-P)+','+botY;
+  fillD += ' Z';
+
+  // Text path — midpoint wave, extended far left for scroll buffer
+  var phrase = 'FOR EVERY BODY \u2726 DOWNTOWN RVA \u2726 PYNK NYMPH \u2726 ';
+  var estCW = 12.8;
+  var phraseW = Math.round(phrase.length * estCW);
+  var nRep = 25;
+  var totalLeft = nRep * phraseW;
+  var tpD = wavePath(midY, false, -totalLeft, W*2);
+
+  var NS = 'http://www.w3.org/2000/svg';
+  var svg = document.createElementNS(NS,'svg');
+  svg.setAttribute('width', W); svg.setAttribute('height', H);
+  svg.setAttribute('viewBox', '0 0 '+W+' '+H);
+  svg.setAttribute('overflow','hidden');
+  svg.style.display = 'block';
+
+  var defs = document.createElementNS(NS,'defs');
+  var tpPath = document.createElementNS(NS,'path');
+  tpPath.id = 'wbTP'; tpPath.setAttribute('d', tpD);
+  defs.appendChild(tpPath); svg.appendChild(defs);
+
+  var fill = document.createElementNS(NS,'path');
+  fill.setAttribute('d', fillD); fill.setAttribute('fill','#FF565D');
+  svg.appendChild(fill);
+
+  var txt = document.createElementNS(NS,'text');
+  txt.setAttribute('font-family','monospace');
+  txt.setAttribute('font-size','11'); txt.setAttribute('letter-spacing','6');
+  txt.setAttribute('fill','white'); txt.setAttribute('font-weight','700');
+  var tpEl = document.createElementNS(NS,'textPath');
+  tpEl.setAttribute('href','#wbTP');
+  tpEl.setAttribute('startOffset', String(totalLeft));
+  tpEl.textContent = phrase.repeat(nRep + 4);
+  txt.appendChild(tpEl); svg.appendChild(txt);
+  outer.innerHTML = ''; outer.appendChild(svg);
+
+  var ofs = totalLeft, last = null;
+  var spd = phraseW / 38;
+  function frame(ts) {
+    if (last !== null) {
+      ofs -= spd * (ts - last) / 1000;
+      if (ofs < phraseW) ofs += (nRep - 2) * phraseW;
+      tpEl.setAttribute('startOffset', Math.round(ofs).toString());
+    }
+    last = ts;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+// Pillar tabs
+document.querySelectorAll('.p-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.p-tab').forEach(b => b.classList.remove('on'));
+    document.querySelectorAll('.pillar-panel').forEach(p => p.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById(btn.dataset.pillar).classList.add('on');
+  });
+});
+
+// ── BUILD A POST — DECISION TREE ──
+const BP_GOALS = [
+  { id:'topofmind', k:'Reach',   t:'Stay top of mind',   s:'Show up so they remember us when they\u2019re ready.',       rec:['education','community'] },
+  { id:'familiar',  k:'Warmth',  t:'Build familiarity',  s:'Make the studio feel like a place they already know.',    rec:['life','testimonials'] },
+  { id:'booking',   k:'Convert', t:'Make booking easy',  s:'Remove the last bit of friction before they tap book.',    rec:['services','education'] },
+  { id:'trust',     k:'Proof',   t:'Build trust',        s:'Prove we\u2019re skilled, kind, and judgment-free.',        rec:['testimonials','education'] },
+];
+
+const BP_PILLARS = {
+  education: { num:'01', name:'Education', grad:'radial-gradient(circle at 38% 35%, #FF8A8F, #FF565D 55%, #E23F46)', angles:[
+    { hook:'Myth-buster', headline:'3 things your\nwaxer wants\nyou to know', barrier:'Trust + Comfort', likes:143,
+      caption:'Real talk from your waxers \ud83d\udc47\n\n1. We don\u2019t care how much hair you have.\n2. You can\u2019t over-grow before an appointment.\n3. Ingrowns are preventable \u2014 here\u2019s how.\n\n\ud83d\udccd Downtown RVA \u00b7 Book: link in bio' },
+    { hook:'How-to', headline:'How to prep\nfor your\nfirst wax', barrier:'Logistics', likes:88,
+      caption:'First wax this week? Here\u2019s how to prep \ud83d\udc47\n\nExfoliate the night before. Skip lotion day-of. Let it grow to about \u00bc inch. That\u2019s it.\n\nQuestions? DM us anytime. \ud83d\udccd 316 E Grace St' },
+    { hook:'Reframe', headline:'Hair is normal.\nWaxing is\noptional.', barrier:'Comfort + Belonging', likes:210,
+      caption:'Friendly reminder that body hair is completely normal and we\u2019ll never judge you for it.\n\nWe\u2019re here when you\u2019re ready. \ud83d\udccd 316 E Grace St, RVA' },
+  ] },
+  testimonials: { num:'02', name:'Testimonials', grad:'radial-gradient(circle at 38% 35%, #FF6FA8, #EF317D 55%, #C71E63)', angles:[
+    { hook:'First-timer story', headline:'\u201cI was so\nnervous. Now I\ncome back.\u201d', barrier:'Comfort', likes:167,
+      caption:'We get it \u2014 first times feel like a lot. \ud83c\udf38\n\nFirst-timers welcome, always. No judgment, ever.\n\nBook: link in bio' },
+    { hook:'DM screenshot', headline:'Real words\nfrom real\nclients.', barrier:'Trust', likes:124,
+      caption:'The DMs that keep us going \ud83d\udcac\n\nThis is exactly why we do what we do. Come see what everyone\u2019s talking about.\n\n\ud83d\udccd Downtown RVA' },
+    { hook:'Review highlight', headline:'5 stars,\nzero\njudgment.', barrier:'Trust + Belonging', likes:198,
+      caption:'Couldn\u2019t have said it better ourselves \u2b50\ufe0f\n\nReady to see what the hype is about? Book the link in bio.' },
+  ] },
+  services: { num:'03', name:'Services', grad:'radial-gradient(circle at 38% 35%, #FFB36B, #FF8B31 55%, #E86F12)', angles:[
+    { hook:'What to expect', headline:'Brazilian 101:\nwhat to expect\nyour first time', barrier:'Logistics', likes:156,
+      caption:'First Brazilian? Here\u2019s exactly what to expect \ud83d\udc47\n\n30 min. One skilled waxer. Zero judgment. Prep tip: exfoliate the night before.\n\nBook: link in bio' },
+    { hook:'Where to start', headline:'Not sure\nwhere to\nstart?', barrier:'Belonging', likes:97,
+      caption:'New to waxing? Start here \ud83d\udc47\n\nWe\u2019ll walk you through every service and help you pick what\u2019s right for you. No pressure, ever.\n\nDM us or book: link in bio' },
+    { hook:'Cadence tip', headline:'The 4-week\nglow-up\nschedule.', barrier:'Logistics', likes:112,
+      caption:'Wax once and forget the rest? Here\u2019s the cadence that actually works.\n\nEvery 4 weeks keeps it easy and nearly painless. Book your next: link in bio' },
+  ] },
+  life: { num:'04', name:'Life at PN', grad:'radial-gradient(circle at 38% 35%, #4A5C2A, #283414 60%, #1A220D)', angles:[
+    { hook:'Open the studio', headline:'Morning at\nPynk Nymph.', barrier:'Comfort', likes:134,
+      caption:'9am and we\u2019re ready for you \u2600\ufe0f\n\nThis is what opening the studio looks like. Same-week appointments usually available.\n\n\ud83d\udccd 315 E Grace St' },
+    { hook:'Meet the team', headline:'The faces\nbehind the\nwax room.', barrier:'Trust + Comfort', likes:178,
+      caption:'Say hi to the team that\u2019s got you \ud83d\udc4b\n\nSkilled, kind, and impossible not to laugh with. Come meet us.\n\n\ud83d\udccd Downtown RVA' },
+    { hook:'Behind the scenes', headline:'Things you\nonly hear in a\nwax room.', barrier:'Comfort + Belonging', likes:221,
+      caption:'Overheard at Pynk Nymph \ud83d\ude02\n\nThe wax room is a judgment-free zone \u2014 and honestly kind of a vibe. Come see for yourself.' },
+  ] },
+  community: { num:'05', name:'Community', grad:'radial-gradient(circle at 38% 35%, #9BC257, #759E33 55%, #5A7D24)', angles:[
+    { hook:'Pride spotlight', headline:'All bodies.\nAll people.\nAll welcome.', barrier:'Belonging', likes:264,
+      caption:'Pride isn\u2019t a campaign for us \u2014 it\u2019s who we are, year round. \ud83c\udff3\ufe0f\u200d\ud83c\udf08\n\nEvery body is welcome here. Always has been.\n\n\ud83d\udccd Downtown RVA' },
+    { hook:'Local love', headline:'Made for\nRichmond.', barrier:'Belonging', likes:142,
+      caption:'We love this city and the people in it \ud83e\udd0d\n\nShout out to the local orgs doing the work. Tag someone RVA should know.' },
+    { hook:'Give-back', headline:'Showing up\nfor our\ncommunity.', barrier:'Belonging + Trust', likes:119,
+      caption:'This month we\u2019re supporting [org] \ud83d\udc9b\n\nWhen you book with us, you\u2019re part of it too. Link in bio.' },
+  ] },
+};
+
+const BP = { goal:null, pillar:null, angle:null };
+const bpEl = id => document.getElementById(id);
+function bpEsc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function bpCurStep(){ if(!BP.goal) return 1; if(!BP.pillar) return 2; if(BP.angle===null) return 3; return 4; }
+
+const BP_FIGMA = '<div class="ig-figma"><svg class="ig-figma-x" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="0" y1="0" x2="100" y2="100"></line><line x1="100" y1="0" x2="0" y2="100"></line></svg><div class="ig-figma-center"><svg class="ig-figma-ico" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.6"></circle><path d="M21 15l-5-5L5 21"></path></svg><span class="ig-figma-dim">1080 × 1080</span></div></div>';
+
+function bpStepsHTML(){
+  const cur = bpCurStep();
+  const labels = ['Goal','Pillar','Angle','Draft'];
+  return labels.map((l,i) => {
+    const n = i+1;
+    const cls = n < cur ? 'done' : (n === cur ? 'active' : '');
+    return '<div class="bp-step '+cls+'" data-step="'+n+'"><span class="bp-step-num">'+n+'</span>'+l+'</div>' + (i<3 ? '<span class="bp-step-sep">›</span>' : '');
+  }).join('');
+}
+
+function bpPanelHTML(){
+  const step = bpCurStep();
+  if(step === 1){
+    return '<p class="bp-q">What should this post do?</p><p class="bp-q-sub">Pick the goal \u2014 we\u2019ll suggest the right kind of post.</p>'
+      + '<div class="bp-choices">' + BP_GOALS.map(g =>
+        '<button class="bp-choice" data-bp="goal" data-val="'+g.id+'"><span class="bp-choice-k">\u25c6 '+g.k+'</span><span class="bp-choice-t">'+g.t+'</span><span class="bp-choice-s">'+g.s+'</span></button>'
+      ).join('') + '</div>';
+  }
+  if(step === 2){
+    const g = BP_GOALS.find(x => x.id === BP.goal);
+    const order = g.rec.concat(Object.keys(BP_PILLARS).filter(k => g.rec.indexOf(k) === -1));
+    return '<p class="bp-q">Pick a content pillar.</p><p class="bp-q-sub">Recommended for \u201c'+g.t+'\u201d are starred.</p>'
+      + '<div class="bp-choices">' + order.map(k => {
+        const p = BP_PILLARS[k]; const rec = g.rec.indexOf(k) !== -1;
+        return '<button class="bp-choice'+(rec?' bp-choice-rec':'')+'" data-bp="pillar" data-val="'+k+'"><span class="bp-choice-k">\u25c6 '+p.num+(rec?' <span class="bp-rec">\u2605 rec</span>':'')+'</span><span class="bp-choice-t">'+p.name+'</span></button>';
+      }).join('') + '</div>';
+  }
+  if(step === 3){
+    const p = BP_PILLARS[BP.pillar];
+    return '<p class="bp-q">Pick your angle.</p><p class="bp-q-sub">'+p.name+' \u2014 choose how to say it.</p>'
+      + '<div class="bp-choices">' + p.angles.map((a,i) =>
+        '<button class="bp-choice" data-bp="angle" data-val="'+i+'"><span class="bp-choice-k">\u25c6 '+a.hook+'</span><span class="bp-choice-t" style="font-size:16px;">'+a.headline.replace(/\n/g,' ')+'</span><span class="bp-choice-s">Removes: '+a.barrier+'</span></button>'
+      ).join('') + '</div>';
+  }
+  const p = BP_PILLARS[BP.pillar], a = p.angles[BP.angle], g = BP_GOALS.find(x => x.id === BP.goal);
+  return '<p class="bp-q">Your draft.</p><p class="bp-q-sub">Tweak the caption, then copy it.</p>'
+    + '<div class="bp-tags">'
+      + '<span class="bp-tag" style="background:rgba(239,49,125,.12);color:var(--pn-dragon-fruit);">\u25c6 Goal \u00b7 '+g.t+'</span>'
+      + '<span class="bp-tag" style="background:rgba(40,52,20,.08);color:var(--pn-aloe-dark);">\u25c6 Pillar '+p.num+' \u00b7 '+p.name+'</span>'
+      + '<span class="bp-tag" style="background:rgba(117,158,51,.16);color:var(--pn-aloe-mid);">\u25c6 Removes \u00b7 '+a.barrier+'</span>'
+    + '</div>'
+    + '<textarea id="bp-draft" class="bp-draft">'+bpEsc(a.caption)+'</textarea>'
+    + '<div class="bp-actions"><button class="bp-copy" data-bp="copy">Copy caption</button><button class="bp-restart" data-bp="restart">\u21bb Build another</button></div>';
+}
+
+function bpPreview(){
+  const img = bpEl('ig-img'), cap = bpEl('ig-cap-display'), likes = bpEl('ig-likes'), com = bpEl('ig-comment');
+  if(!BP.pillar){
+    img.innerHTML = BP_FIGMA;
+    cap.textContent = 'Your post will appear here…'; cap.classList.add('empty');
+    likes.textContent = '— likes'; likes.style.opacity = '.35';
+    com.textContent = 'Build a post to preview it'; com.style.opacity = '.5';
+    return;
+  }
+  const p = BP_PILLARS[BP.pillar];
+  const a = BP.angle !== null ? p.angles[BP.angle] : null;
+  let inner = '<div style="position:absolute;inset:0;background:'+p.grad+';"></div>'
+    + '<span style="position:absolute;top:14px;left:16px;color:rgba(255,255,255,.5);font-size:14px;z-index:2;">✦</span>'
+    + '<span style="position:absolute;bottom:16px;right:18px;color:rgba(255,255,255,.4);font-size:10px;z-index:2;">✦</span>';
+  if(a){
+    inner += '<div style="position:relative;z-index:1;text-align:center;padding:24px;"><p style="font-family:Georgia,serif;font-style:italic;color:#fff;font-size:21px;font-weight:700;line-height:1.18;margin:0 0 10px;text-shadow:0 1px 8px rgba(0,0,0,.22);">'+a.headline.replace(/\n/g,'<br/>')+'</p><p style="font-family:monospace;font-size:9px;color:rgba(255,255,255,.78);letter-spacing:3px;text-transform:uppercase;margin:0;">@pynknymph · rva</p></div>';
+  } else {
+    inner += '<div style="position:relative;z-index:1;text-align:center;"><span style="font-family:monospace;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:6px 14px;">✦ pick an angle</span></div>';
+  }
+  img.innerHTML = inner;
+  if(a){
+    const d = bpEl('bp-draft');
+    const txt = d ? d.value : a.caption;
+    cap.innerHTML = bpEsc(txt).replace(/\n/g,'<br/>'); cap.classList.remove('empty');
+    likes.textContent = a.likes + ' likes'; likes.style.opacity = '1';
+    com.textContent = 'View all 12 comments'; com.style.opacity = '1';
+  } else {
+    cap.textContent = 'Pick an angle to see the caption…'; cap.classList.add('empty');
+    likes.textContent = '— likes'; likes.style.opacity = '.35';
+    com.textContent = 'Almost there…'; com.style.opacity = '.5';
+  }
+}
+
+function bpRender(){
+  bpEl('bp-steps').innerHTML = bpStepsHTML();
+  bpEl('bp-panel').innerHTML = bpPanelHTML();
+  const d = bpEl('bp-draft');
+  if(d) d.addEventListener('input', bpPreview);
+  bpPreview();
+}
+
+bpEl('bp-panel').addEventListener('click', e => {
+  const c = e.target.closest('[data-bp]');
+  if(!c) return;
+  const a = c.getAttribute('data-bp');
+  if(a === 'copy'){
+    const d = bpEl('bp-draft'); if(!d) return;
+    navigator.clipboard.writeText(d.value).catch(() => {});
+    c.textContent = 'Copied ✓'; c.classList.add('copied');
+    setTimeout(() => { c.textContent = 'Copy caption'; c.classList.remove('copied'); }, 1500);
+    return;
+  }
+  if(a === 'goal') BP.goal = c.getAttribute('data-val');
+  else if(a === 'pillar') BP.pillar = c.getAttribute('data-val');
+  else if(a === 'angle') BP.angle = parseInt(c.getAttribute('data-val'), 10);
+  else if(a === 'restart'){ BP.goal = null; BP.pillar = null; BP.angle = null; }
+  bpRender();
+});
+
+bpEl('bp-steps').addEventListener('click', e => {
+  const s = e.target.closest('.bp-step');
+  if(!s) return;
+  const n = parseInt(s.getAttribute('data-step'), 10);
+  if(n >= bpCurStep()) return;
+  if(n <= 1){ BP.goal = null; BP.pillar = null; BP.angle = null; }
+  else if(n === 2){ BP.pillar = null; BP.angle = null; }
+  else if(n === 3){ BP.angle = null; }
+  bpRender();
+});
+
+bpRender();
+</script>
+</body>
+</html>
+
+<style id="__om-edit-overrides">
+#bp-steps >.active >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { text-align: center !important }
+#bp-steps >.active >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { border-width: 2px 2px 2px 4px !important }
+#bp-steps >.active >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { border-width: 2px !important }
+</style>

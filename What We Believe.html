@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pynk Nymph — What We Believe</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700;1,9..144,900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+  :root {
+    --cream: #F6EBE3;
+    --aloe: #283414;
+    --aloe-light: #759E33;
+    --juicy: #FF565D;
+    --dragon: #EF317D;
+    --ink: #20140B;
+    --display: "Fraunces", Georgia, serif;
+    --mono: "DM Mono", ui-monospace, monospace;
+    --sans: "DM Sans", system-ui, sans-serif;
+    --line: rgba(40,52,20,.20);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #cabfb4; }
+
+  .page {
+    width: 816px;
+    margin: 0 auto;
+    background: var(--cream);
+    color: var(--aloe);
+    padding: 46px 66px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* grain / edge texture */
+  .page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(40,52,20,.05) 1px, transparent 1.4px);
+    background-size: 5px 5px;
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .page > * { position: relative; z-index: 1; }
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead { position: relative; }
+  .mh-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .mh-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--aloe);
+  }
+  .mh-issue {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    text-align: right;
+  }
+  .mascot {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 84px;
+    height: auto;
+    transform: rotate(6deg);
+  }
+  .mh-title {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 82px;
+    line-height: 0.86;
+    letter-spacing: -0.03em;
+    margin: 22px 0 0;
+  }
+  .mh-title .amp { color: var(--dragon); }
+  .mh-sub {
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.5;
+    margin: 16px 0 0;
+    max-width: 460px;
+    opacity: 0.9;
+  }
+  .mh-rule {
+    height: 3px;
+    background: var(--aloe);
+    margin: 20px 0 0;
+  }
+  .mh-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-top: 9px;
+  }
+
+  /* ---------- BELIEFS ---------- */
+  .beliefs { margin-top: 8px; }
+  .belief {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 28px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .belief .folio {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 46px;
+    line-height: 0.8;
+    letter-spacing: -0.02em;
+    color: var(--aloe);
+  }
+  .belief .folio .dot { color: var(--dragon); }
+  .belief .b-head {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 27px;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin: 2px 0 0;
+  }
+  .belief .b-body {
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.5;
+    margin: 8px 0 0;
+    max-width: 560px;
+    color: #34431f;
+  }
+  .belief .b-body em { font-style: italic; color: var(--aloe); font-weight: 600; }
+
+  /* wide belief (the two-clause one) */
+  .belief.wide .b-head { font-size: 24px; }
+
+  /* ---------- CLOSER BAND ---------- */
+  .closer {
+    margin: 24px -66px 0;
+    background: var(--aloe);
+    color: var(--cream);
+    padding: 36px 66px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .closer .c-folio {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .closer .c-head {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 46px;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin: 0;
+    max-width: 760px;
+  }
+  .closer .c-head .pop { color: var(--dragon); }
+  .closer .cadence {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 24px;
+  }
+  .closer .cadence span {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 1.16;
+    opacity: 0.78;
+  }
+  .closer .cadence .now {
+    font-weight: 700;
+    font-size: 40px;
+    color: var(--dragon);
+    opacity: 1;
+    margin-top: 7px;
+    line-height: 1;
+  }
+  .closer .c-kicker {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 20px 0 0;
+    color: var(--cream);
+  }
+  .closer .spark {
+    position: absolute;
+    top: 24px;
+    right: 54px;
+    font-size: 34px;
+    color: var(--aloe-light);
+  }
+
+  /* ---------- CLOSING PHOTO BAND ---------- */
+  .photo-band {
+    margin: 0 -66px;
+    height: 360px;
+    position: relative;
+    overflow: hidden;
+    background: #ddd2c6;
+  }
+  .photo-band .pb-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .photo-band .pb-grad {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .25s;
+    background: linear-gradient(to top, rgba(20,12,6,.78) 0%, rgba(20,12,6,.18) 38%, rgba(20,12,6,0) 70%);
+  }
+  .photo-band .pb-cap {
+    position: absolute;
+    left: 66px;
+    bottom: 24px;
+    z-index: 2;
+    pointer-events: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0;
+    transition: opacity .25s;
+  }
+  .photo-band .pb-cap .dia { color: var(--dragon); margin-right: 7px; }
+  .photo-band .pb-img[data-filled] ~ .pb-grad,
+  .photo-band .pb-img[data-filled] ~ .pb-cap { opacity: 1; }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    padding: 18px 0 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.7;
+  }
+  .footer .dia { color: var(--dragon); margin: 0 4px; }
+
+  /* ---------- PRINT ---------- */
+  @media print {
+    @page { size: 8.5in 22in; margin: 0; }
+    html, body { background: #fff; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ============ MASTHEAD ============ -->
+    <header class="masthead">
+      <img class="mascot" src="assets/BootyNymph.svg" alt="Pynk Nymph mascot" />
+      <div class="mh-top">
+        <span class="mh-label">Pynk Nymph · What We Believe · 2026</span>
+      </div>
+      <h1 class="mh-title">What we<br />believe<span class="amp">.</span></h1>
+      <p class="mh-sub">The beliefs underneath everything we do.</p>
+      <div class="mh-rule"></div>
+      <div class="mh-meta">
+        <span>A manifesto, not a memo</span>
+        <span>Everything traces back here</span>
+      </div>
+    </header>
+
+    <!-- ============ BELIEFS ============ -->
+    <div class="beliefs">
+
+      <div class="belief">
+        <div class="folio">01</div>
+        <div>
+          <h2 class="b-head">Body hair is normal.</h2>
+          <p class="b-body">You don't need to earn care by looking a certain way first. You don't need to apologize for your hair, your skin, your stretch marks, your scars, or your body. That's what we're here for.</p>
+        </div>
+      </div>
+
+      <div class="belief">
+        <div class="folio">02</div>
+        <div>
+          <h2 class="b-head">Everybody deserves care.</h2>
+          <p class="b-body">Not eventually. Not after they lose weight or become more confident or "fix" something. <em>Now.</em></p>
+        </div>
+      </div>
+
+      <div class="belief">
+        <div class="folio">03</div>
+        <div>
+          <h2 class="b-head">Comfort shouldn't be a luxury.</h2>
+          <p class="b-body">A waxing appointment should not require bravery. People deserve to feel welcome, informed, respected, and comfortable from the moment they walk in.</p>
+        </div>
+      </div>
+
+      <div class="belief">
+        <div class="folio">04</div>
+        <div>
+          <h2 class="b-head">Confidence isn't something we sell.</h2>
+          <p class="b-body">We don't give people confidence. We help create the conditions for it. The confidence was already theirs.</p>
+        </div>
+      </div>
+
+      <div class="belief">
+        <div class="folio">05</div>
+        <div>
+          <h2 class="b-head">Education is part of the service.</h2>
+          <p class="b-body">People make better decisions when they understand their bodies. Questions are welcome. Curiosity is welcome. Nobody should leave feeling embarrassed for asking.</p>
+        </div>
+      </div>
+
+      <div class="belief wide">
+        <div class="folio">06</div>
+        <div>
+          <h2 class="b-head">We take the work seriously. We don't take ourselves seriously.</h2>
+          <p class="b-body">Waxing involves vulnerable moments. Humor helps. Laughter helps. Being human helps.</p>
+        </div>
+      </div>
+
+      <div class="belief">
+        <div class="folio">07</div>
+        <div>
+          <h2 class="b-head">Richmond matters.</h2>
+          <p class="b-body">Pynk Nymph exists because of the people who support it. We aren't trying to feel like a chain. We're trying to feel like home.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============ CLOSER · THE FINAL BELIEF ============ -->
+    <section class="closer">
+      <span class="spark">✦</span>
+      <span class="c-folio">◆ The final belief · Why we exist</span>
+      <h2 class="c-head">We help people feel comfortable in their bodies.</h2>
+      <div class="cadence">
+        <span>Not eventually.</span>
+        <span>Not when they lose weight.</span>
+        <span>Not when they become more confident.</span>
+        <span>Not when they finally feel “ready.”</span>
+        <span class="now">Now.</span>
+      </div>
+      <p class="c-kicker">We just happen to remove hair.</p>
+    </section>
+
+    <!-- ============ CLOSING PHOTO (drop your image here) ============ -->
+    <section class="photo-band">
+      <image-slot id="manifesto-photo" class="pb-img" shape="rect" placeholder="Drop your photo here — it becomes the closing image"></image-slot>
+      <div class="pb-grad"></div>
+      <span class="pb-cap"><span class="dia">◆</span> For every body · Downtown RVA</span>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      Pynk Nymph <span class="dia">◆</span> Richmond grown <span class="dia">◆</span> Slightly feral <span class="dia">◆</span> For every body
+    </footer>
+
+  </div>
+  <script src="image-slot.js"></script>
+</body>
+</html>

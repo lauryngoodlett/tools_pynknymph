@@ -1,0 +1,1894 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Pynk Nymph — Brand Guidelines Deck" subtitle="23-slide guidelines presentation" viewport="1920x1080" -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pynk Nymph — Brand Guidelines</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles/tokens.css" />
+<style>
+  /* =========================================================
+     Deck-wide chrome
+     ========================================================= */
+  body { background: #111; }
+
+  deck-stage > section {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    background: var(--pn-mango-50);
+    color: var(--pn-aloe-dark);
+    font-family: var(--pn-sans);
+    display: block;
+  }
+
+  /* shared frame: tiny crop marks + footer caption */
+  .pn-frame {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .pn-foot {
+    position: absolute;
+    left: 80px;
+    right: 80px;
+    bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--pn-mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: currentColor;
+    opacity: 0.65;
+  }
+
+  /* ---- Common section header layout ----- */
+  .pn-section-num {
+    font-family: var(--pn-mono);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    margin-bottom: 24px;
+    opacity: 0.75;
+  }
+  .pn-content {
+    position: absolute;
+    inset: 80px;
+  }
+  .pn-eyebrow-l {
+    font-family: var(--pn-mono);
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    margin-bottom: 32px;
+  }
+  .pn-h1 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 168px;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .pn-h2 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 110px;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+  }
+  .pn-h3 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.015em;
+    margin: 0 0 16px;
+  }
+  .pn-lede {
+    font-family: var(--pn-sans);
+    font-size: 26px;
+    line-height: 1.5;
+    max-width: 920px;
+    color: var(--pn-charcoal);
+  }
+  .pn-body-l {
+    font-family: var(--pn-sans);
+    font-size: 20px;
+    line-height: 1.65;
+  }
+  .pn-mono-label {
+    font-family: var(--pn-mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  /* ============= PALETTE BG VARIANTS ============= */
+  .bg-cream { background: var(--pn-mango-50); color: var(--pn-aloe-dark); }
+  .bg-aloe-dark { background: var(--pn-aloe-dark); color: var(--pn-mango-50); }
+  .bg-aloe-light { background: var(--pn-aloe-light); color: var(--pn-aloe-dark); }
+  .bg-juicy { background: var(--pn-juicy-fruit); color: var(--pn-pink-pale); }
+  .bg-dragon { background: var(--pn-dragon-fruit); color: #fff; }
+  .bg-wine { background: var(--pn-wine); color: var(--pn-pink-pale); }
+  .bg-strawberry { background: var(--pn-strawberry); color: var(--pn-mango-50); }
+  .bg-mango { background: var(--pn-mango); color: var(--pn-aloe-dark); }
+  .bg-charcoal { background: var(--pn-charcoal); color: var(--pn-mango-50); }
+  .bg-mango1500 { background: var(--pn-mango-1500); color: var(--pn-mango-50); }
+
+  /* ============= COVER ============= */
+  .s-cover {
+    background: var(--pn-aloe-dark);
+    color: var(--pn-mango-50);
+  }
+  .s-cover .stack {
+    position: absolute;
+    inset: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .s-cover .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: var(--pn-mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    opacity: 0.75;
+  }
+  .s-cover .center {
+    text-align: center;
+  }
+  .s-cover .center h1 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 320px;
+    line-height: 0.88;
+    margin: 0;
+    letter-spacing: -0.03em;
+    color: var(--pn-mango-50);
+  }
+  .s-cover .center .bookr {
+    color: var(--pn-juicy-fruit);
+    font-style: italic;
+  }
+  .s-cover .center .cover-logo {
+    display: block;
+    width: 940px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  .s-cover .tagline {
+    margin-top: 32px;
+    font-family: var(--pn-mono);
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.36em;
+  }
+  .s-cover .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    font-family: var(--pn-mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    opacity: 0.85;
+  }
+  .s-cover .bottom .tag {
+    border: 1px solid var(--pn-aloe-light);
+    border-radius: var(--pn-r-pill);
+    padding: 10px 20px;
+  }
+
+  /* ============= TABLE OF CONTENTS ============= */
+  .toc-wrap {
+    position: absolute;
+    inset: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+  .toc-left h2 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 200px;
+    line-height: 0.9;
+    margin: 0;
+    letter-spacing: -0.03em;
+  }
+  .toc-list { display: flex; flex-direction: column; gap: 4px; align-self: end; }
+  .toc-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px;
+    gap: 24px;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid currentColor;
+    font-family: var(--pn-mono);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .toc-row:last-child { border-bottom: 1px solid currentColor; }
+  .toc-row .num { font-weight: 500; }
+  .toc-row .name { font-family: var(--pn-display); font-style: italic; font-size: 36px; line-height: 1; letter-spacing: -0.01em; text-transform: none; }
+  .toc-row .pg { text-align: right; opacity: 0.7; }
+
+  /* ============= SECTION DIVIDER (big number) ============= */
+  .sec-div {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: center;
+    padding: 80px;
+  }
+  .sec-div .label {
+    font-family: var(--pn-mono);
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    margin-bottom: 32px;
+  }
+  .sec-div h1 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 240px;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    margin: 0;
+  }
+  .sec-div .sub {
+    font-family: var(--pn-sans);
+    font-size: 28px;
+    line-height: 1.5;
+    margin-top: 56px;
+    max-width: 800px;
+  }
+
+  /* ============= MISSION ============= */
+  .mission {
+    position: absolute;
+    inset: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .mission .quote {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 92px;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  .mission .quote .accent { color: var(--pn-juicy-fruit); }
+  .mission .right { display: flex; flex-direction: column; gap: 32px; }
+  .mission .signoff {
+    font-family: var(--pn-mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+  }
+  .mission .body { font-size: 22px; line-height: 1.6; }
+
+  /* ============= PRINCIPLES ============= */
+  .principles {
+    position: absolute;
+    inset: 80px;
+  }
+  .principles-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 64px;
+  }
+  .principles-head h2 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 168px;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .principles-head .desc {
+    max-width: 380px;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .pri-card {
+    border: 1px solid currentColor;
+    border-radius: var(--pn-r-card);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 380px;
+  }
+  .pri-card .num {
+    font-family: var(--pn-mono);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    opacity: 0.7;
+  }
+  .pri-card h3 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .pri-card p {
+    font-size: 18px;
+    line-height: 1.55;
+    margin: 0;
+    margin-top: auto;
+    opacity: 0.85;
+  }
+
+  /* ============= LOGO LOCKUPS ============= */
+  .logo-grid {
+    position: absolute;
+    inset: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 32px;
+  }
+  .logo-cell {
+    border: 1px solid currentColor;
+    border-radius: var(--pn-r-card);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .logo-cell .label-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--pn-mono);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .logo-cell .display {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+  }
+  .logo-cell.head {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    padding: 36px 48px;
+    min-height: auto;
+    border: none;
+  }
+  .logo-cell.head h2 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 168px;
+    line-height: 0.92;
+    margin: 0;
+    letter-spacing: -0.025em;
+  }
+  .logo-cell.head p { max-width: 420px; font-size: 18px; line-height: 1.6; margin: 0; }
+
+  /* ============= COLOR ============= */
+  .color-grid {
+    position: absolute;
+    inset: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    gap: 16px;
+  }
+  .color-grid .head-cell {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 0 8px 24px;
+    border-bottom: 1px solid currentColor;
+  }
+  .color-grid .head-cell h2 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 168px;
+    line-height: 0.92;
+    margin: 0;
+    letter-spacing: -0.025em;
+  }
+  .color-grid .head-cell p { max-width: 380px; font-size: 18px; line-height: 1.6; margin: 0; }
+  .swatch {
+    border-radius: var(--pn-r-card);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
+  }
+  .swatch .name {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 42px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .swatch .meta {
+    font-family: var(--pn-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    line-height: 1.7;
+  }
+
+  /* ============= TYPE SAMPLES ============= */
+  .type-sheet {
+    position: absolute;
+    inset: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 32px;
+  }
+  .type-sheet .head-row {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 24px;
+  }
+  .type-card {
+    border: 1px solid currentColor;
+    border-radius: var(--pn-r-card);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+  }
+  .type-card .role {
+    font-family: var(--pn-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+  }
+  .type-card .name {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .type-card.fr .name { font-family: var(--pn-display); font-style: italic; }
+  .type-card.mono .name { font-family: var(--pn-mono); font-style: normal; font-weight: 500; }
+  .type-card.sans .name { font-family: var(--pn-sans); font-style: normal; font-weight: 700; }
+  .type-card .specimen {
+    font-size: 120px;
+    line-height: 1;
+    margin-top: auto;
+  }
+  .type-card.fr .specimen { font-family: var(--pn-display); font-style: italic; font-weight: 500; }
+  .type-card.mono .specimen { font-family: var(--pn-mono); font-weight: 500; }
+  .type-card.sans .specimen { font-family: var(--pn-sans); font-weight: 700; }
+  .type-card p { font-size: 17px; line-height: 1.55; margin: 0; opacity: 0.85; }
+  .type-sheet .type-rule {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border-top: 1px solid currentColor;
+    padding-top: 22px;
+  }
+  .type-sheet .type-rule .rk {
+    font-family: var(--pn-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+  .type-sheet .type-rule .rt { font-family: var(--pn-sans); font-size: 24px; line-height: 1.3; }
+  .type-sheet .type-rule .rt em { font-style: normal; }
+  .type-sheet .type-rule .rt .fr { font-family: var(--pn-display); font-style: italic; }
+  .type-sheet .type-rule .rt .mo { font-family: var(--pn-mono); }
+  .type-sheet .type-rule .rt .sa { font-family: var(--pn-sans); font-weight: 700; }
+
+  /* ============= HIERARCHY DEMO ============= */
+  .hier {
+    position: absolute;
+    inset: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .hier .row { border-top: 1px solid currentColor; padding-top: 28px; display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: start; }
+  .hier .row .lbl { font-family: var(--pn-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.2em; padding-top: 12px; }
+  .hier .row .ex-headline { font-family: var(--pn-display); font-style: italic; font-size: 200px; line-height: 0.92; letter-spacing: -0.025em; }
+  .hier .row .ex-sub { font-family: var(--pn-mono); font-size: 28px; text-transform: uppercase; letter-spacing: 0.18em; }
+  .hier .row .ex-body { font-family: var(--pn-sans); font-size: 22px; line-height: 1.55; max-width: 1100px; }
+  .hier .row .ex-cap { font-family: var(--pn-mono); font-size: 16px; text-transform: uppercase; letter-spacing: 0.22em; }
+
+  /* ============= DO/DONT 2-COL ============= */
+  .dodont {
+    position: absolute;
+    inset: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 48px;
+  }
+  .dodont .head {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 24px;
+  }
+  .dodont h3 { display: flex; align-items: center; gap: 16px; font-family: var(--pn-mono); font-size: 18px; text-transform: uppercase; letter-spacing: 0.24em; margin: 0 0 28px; }
+  .dodont .check { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 16px; font-weight: 700; }
+  .dodont .check.do { background: var(--pn-aloe-light); color: var(--pn-aloe-dark); }
+  .dodont .check.no { background: var(--pn-juicy-fruit); color: #fff; }
+  .dodont ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 24px; }
+  .dodont li { display: grid; grid-template-columns: 1fr; gap: 6px; padding-bottom: 24px; border-bottom: 1px dashed rgba(0,0,0,.18); }
+  .dodont .bg-aloe-dark li { border-bottom-color: rgba(229,221,213,.2); }
+  .dodont li b { font-family: var(--pn-display); font-style: italic; font-size: 32px; font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; }
+  .dodont li span { font-family: var(--pn-sans); font-size: 17px; line-height: 1.5; opacity: 0.85; }
+
+  /* ============= IMAGERY ============= */
+  .img-page {
+    position: absolute;
+    inset: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 32px;
+  }
+  .img-page .head {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 24px;
+  }
+  .img-page .ph {
+    border-radius: var(--pn-r-card);
+    overflow: hidden;
+    background: var(--pn-aloe-pale);
+    background-size: cover;
+    background-position: center;
+  }
+  .img-page .ph-strip {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 24px;
+    min-height: 0;
+  }
+  .img-page .ph-strip > * {
+    flex: 1;
+    min-width: 0;
+    border-radius: var(--pn-r-card);
+    height: 100%;
+  }
+  .img-page .ph-strip image-slot {
+    border: 2px dashed rgba(40,52,20,.32);
+    background: rgba(40,52,20,.03);
+  }
+  .img-page .lbl-row {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 64px;
+    padding-top: 8px;
+    font-family: var(--pn-mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+  .img-page .lbl-row .col { display: flex; flex-direction: column; gap: 10px; }
+  .img-page .lbl-row .col span { line-height: 1.5; }
+  .img-page .lbl-row .col h4 { margin: 0 0 8px; font-family: var(--pn-display); font-style: italic; font-size: 32px; letter-spacing: -0.01em; text-transform: none; }
+  .img-page .lbl-row .ok::before { content: "+ "; color: var(--pn-aloe-light); }
+  .img-page .lbl-row .no::before { content: "× "; color: var(--pn-juicy-fruit); }
+
+  /* ============= MOTIFS ============= */
+  .motif-page {
+    position: absolute;
+    inset: 80px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 56px;
+  }
+  .motif-page .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 0;
+  }
+  .motif-page h2 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 84px;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .motif-page .lede { font-size: 18px; line-height: 1.5; max-width: 660px; margin-top: 18px; }
+  .motif-page .lede strong { font-weight: 600; }
+  .motif-page .motif-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 22px;
+  }
+  .motif-page .m-row {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    align-items: start;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(40,52,20,.14);
+  }
+  .motif-page .m-row.featured { padding-top: 4px; }
+  .motif-page .m-chip {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    font-size: 30px;
+    line-height: 1;
+    overflow: hidden;
+  }
+  .motif-page .m-chip img { width: 100%; height: 100%; object-fit: cover; }
+  .motif-page .m-chip.dark { background: var(--pn-aloe-dark); color: var(--pn-mango-50); }
+  .motif-page .m-chip.coral { background: var(--pn-juicy-fruit); color: #fff; }
+  .motif-page .m-chip.aloe { background: var(--pn-aloe-light); color: var(--pn-aloe-dark); }
+  .motif-page .m-chip.dragon { background: var(--pn-dragon-fruit); color: #fff; }
+  .motif-page .m-chip.wine { background: var(--pn-wine); color: var(--pn-pink-pale); }
+  .motif-page .m-txt h4 {
+    margin: 0 0 3px;
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+  .motif-page .m-txt h4 span {
+    font-family: var(--pn-mono);
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-left: 8px;
+  }
+  .motif-page .m-txt p { margin: 0; font-size: 15px; line-height: 1.4; opacity: 0.82; max-width: 600px; }
+  .motif-page .m-note {
+    margin-top: 18px;
+    font-family: var(--pn-mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: var(--pn-aloe-dark);
+    opacity: 0.7;
+  }
+
+  .motif-page .right {
+    border-radius: var(--pn-r-card);
+    background: var(--pn-aloe-dark);
+    color: var(--pn-mango-50);
+    padding: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+  }
+  .motif-page .right h3 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 80px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+  }
+  .motif-page .right p { font-size: 18px; line-height: 1.55; max-width: 380px; }
+  .motif-page .right .mascot-img {
+    align-self: center;
+    width: 320px;
+    height: auto;
+    margin-top: -32px;
+  }
+  .motif-page .right .tag {
+    align-self: flex-start;
+    font-family: var(--pn-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border: 1px solid var(--pn-aloe-light);
+    border-radius: var(--pn-r-pill);
+    padding: 8px 18px;
+  }
+
+  /* ============= CLOSING ============= */
+  .closing {
+    position: absolute;
+    inset: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .closing .credo {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 168px;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .closing .credo .a { color: var(--pn-juicy-fruit); }
+  .closing .credo .b { color: var(--pn-aloe-light); }
+  .closing .credo .c { color: var(--pn-dragon-fruit); }
+  .closing .body { max-width: 800px; font-size: 22px; line-height: 1.55; }
+
+  /* ============= FINALE ============= */
+  .finale-card {
+    position: absolute;
+    inset: 80px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 40px;
+  }
+  .finale-card h1 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 480px;
+    line-height: 0.85;
+    margin: 0;
+    letter-spacing: -0.04em;
+    align-self: center;
+  }
+  .finale-card .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    font-family: var(--pn-mono);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  /* ============= BIG QUOTE / VOICE ============= */
+  .voice {
+    position: absolute;
+    inset: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .voice .left { display: flex; flex-direction: column; justify-content: space-between; }
+  .voice h2 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 168px;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .voice .right { display: grid; grid-template-rows: 1fr 1fr 1fr; gap: 24px; }
+  .voice-line {
+    border: 1px solid currentColor;
+    border-radius: var(--pn-r-card);
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+  .voice-line .role { font-family: var(--pn-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; }
+  .voice-line .quote { font-family: var(--pn-display); font-style: italic; font-size: 44px; line-height: 1.05; letter-spacing: -0.01em; }
+
+  /* pairings & accessibility (slide 13) */
+  .pairs {
+    position: absolute;
+    inset: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .pairs .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 24px;
+  }
+  .pr-section { display: flex; flex-direction: column; gap: 18px; }
+  .pr-eyebrow {
+    font-family: var(--pn-mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pr-eyebrow .mark { font-size: 16px; }
+  .pr-eyebrow.good .mark { color: var(--pn-aloe-light); }
+  .pr-eyebrow.avoid .mark { color: var(--pn-juicy-fruit); }
+  .pr-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+  .pr-row.three { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .pr-card { display: flex; flex-direction: column; gap: 14px; }
+  .pr-demo {
+    height: 168px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+  }
+  .pr-row.three .pr-demo { height: 150px; }
+  .pr-demo .d-head {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 58px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .pr-demo .d-line {
+    font-family: var(--pn-mono);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .pr-meta { display: flex; flex-direction: column; gap: 7px; }
+  .pr-label { font-family: var(--pn-display); font-style: italic; font-size: 26px; letter-spacing: -0.01em; line-height: 1.05; }
+  .pr-why { font-size: 17px; line-height: 1.4; opacity: 0.78; }
+  .pr-names {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--pn-mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .pr-names .chips { display: inline-flex; gap: 4px; margin-right: 4px; }
+  .pr-names .chip { width: 14px; height: 14px; border-radius: 4px; }
+  .pr-names .chip.bordered { box-shadow: inset 0 0 0 1px rgba(40,52,20,.35); }
+
+  /* color application (slide 12) */
+  .esc {
+    position: absolute;
+    inset: 80px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 32px;
+  }
+  .esc .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 24px;
+  }
+  .esc-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .esc-card {
+    border-radius: var(--pn-r-card);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 480px;
+    overflow: hidden;
+    position: relative;
+  }
+  .esc-card .step {
+    font-family: var(--pn-mono);
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .esc-card h3 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .esc-card p { font-size: 17px; line-height: 1.55; margin: 0 0 auto 0; opacity: 0.88; }
+  .esc-card .demo {
+    align-self: stretch;
+    aspect-ratio: 1.4;
+    border-radius: 12px;
+    margin-top: auto;
+    background: rgba(0,0,0,.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .esc-card.cream .demo {
+    background: var(--pn-mango-50);
+    border: 1px solid rgba(40,52,20,.18);
+  }
+  .esc-card.cream .demo::after {
+    content: "";
+    position: absolute;
+    inset: 16px 16px 16px 16px;
+    background: linear-gradient(transparent calc(100% - 24px), rgba(40,52,20,.15) calc(100% - 24px));
+    background-size: 100% 12px;
+  }
+  .esc-card.aloe .demo { background: var(--pn-aloe-pale); }
+  .esc-card.aloe .demo::before {
+    content: "";
+    position: absolute;
+    left: 16px; right: 16px; top: 16px;
+    height: 24px;
+    background: var(--pn-aloe-mid);
+    border-radius: 6px;
+    opacity: 0.5;
+  }
+  .esc-card.aloe .demo::after {
+    content: "";
+    position: absolute;
+    left: 16px; right: 60px; bottom: 16px;
+    height: 14px;
+    background: var(--pn-aloe-mid);
+    border-radius: 4px;
+    opacity: 0.3;
+  }
+  .esc-card.coral .demo {
+    background: var(--pn-mango-50);
+  }
+  .esc-card.coral .demo::after {
+    content: "Book now →";
+    position: absolute;
+    inset: auto 16px 16px auto;
+    background: var(--pn-juicy-fruit);
+    color: #fff;
+    font-family: var(--pn-sans);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 999px;
+  }
+  .esc-card.coral .demo::before {
+    content: "";
+    position: absolute;
+    left: 16px; top: 16px; width: 60%; height: 16px;
+    background: var(--pn-aloe-dark);
+    border-radius: 4px;
+    opacity: 0.18;
+  }
+
+  /* ---- Color application: practice cards + cheat sheet ---- */
+  .ca-body { display: grid; grid-template-rows: auto auto; gap: 16px; align-content: start; min-height: 0; }
+  .ca-eyebrow {
+    font-family: var(--pn-mono);
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .ca-cards { display: flex; justify-content: flex-start; gap: 36px; }
+  .ca-card { display: flex; flex-direction: column; gap: 12px; width: 232px; }
+  .ca-mock {
+    width: 232px;
+    height: 232px;
+    border-radius: 18px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+  .ca-mock .m-head {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 31px;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .ca-mock .m-sub {
+    font-family: var(--pn-mono);
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin: 10px 0 0;
+  }
+  .ca-mock .m-label {
+    font-family: var(--pn-mono);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 0 0 auto;
+  }
+  .ca-mock .m-btn {
+    margin-top: 18px;
+    align-self: flex-start;
+    background: var(--pn-juicy-fruit);
+    color: #fff;
+    font-family: var(--pn-sans);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 11px 22px;
+    border-radius: var(--pn-r-pill);
+  }
+  .ca-mock.m1 { background: var(--pn-mango-50); color: var(--pn-aloe-dark); border: 1px solid rgba(40,52,20,.18); }
+  .ca-mock.m2 { background: var(--pn-aloe-dark); color: var(--pn-mango-50); }
+  .ca-mock.m3 { background: var(--pn-dragon-fruit); color: var(--pn-mango-50); justify-content: space-between; }
+  .ca-mock .push { margin-top: auto; }
+  .ca-cap { display: flex; flex-direction: column; gap: 2px; }
+  .ca-cap .t {
+    font-family: var(--pn-mono);
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .ca-cap .d { font-size: 14px; opacity: 0.6; line-height: 1.4; }
+
+  .ca-sheet { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  .ca-sheet th {
+    text-align: left;
+    font-family: var(--pn-mono);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    font-weight: 400;
+    padding: 0 0 12px;
+    border-bottom: 1px solid currentColor;
+  }
+  .ca-sheet td { padding: 5px 0; border-bottom: 1px solid rgba(40,52,20,.14); vertical-align: middle; }
+  .ca-sheet td.use { font-size: 17px; line-height: 1.35; }
+  .ca-sheet .col-color { width: 360px; }
+  .ca-sheet .chip-row { display: flex; align-items: center; gap: 16px; }
+  .ca-sheet .chip { width: 28px; height: 28px; border-radius: 8px; flex: none; }
+  .ca-sheet .chip.bordered { border: 1px solid rgba(40,52,20,.3); }
+  .ca-sheet .c-name { font-family: var(--pn-display); font-style: italic; font-size: 23px; letter-spacing: -0.01em; white-space: nowrap; }
+  .ca-sheet .c-paren { font-family: var(--pn-sans); font-style: normal; font-size: 14px; opacity: 0.55; margin-left: 8px; }
+
+  /* contact info on slide 23 */
+  .contact-bar {
+    position: absolute;
+    left: 80px; right: 80px; bottom: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+  .contact-bar .left { font-family: var(--pn-display); font-style: italic; font-size: 56px; line-height: 1; letter-spacing: -0.015em; }
+  .contact-bar .right {
+    font-family: var(--pn-mono);
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  /* SVG logo display sizing */
+  .svg-pn-monogram { height: 220px; width: auto; }
+  .svg-pn-monogram path { fill: currentColor; }
+  .svg-pn-arch { width: 80%; max-width: 460px; height: auto; }
+  .svg-pn-arch path { fill: currentColor; }
+  .svg-pn-line { width: 80%; max-width: 460px; height: auto; }
+  .svg-pn-line path { fill: currentColor; }
+
+  /* tag */
+  .tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid currentColor;
+    padding: 8px 18px;
+    border-radius: var(--pn-r-pill);
+    font-family: var(--pn-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  /* mascot image fallback */
+  .mascot-bg {
+    position: absolute;
+    bottom: -40px;
+    right: -60px;
+    width: 540px;
+    opacity: 0.95;
+  }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080" fit="contain">
+
+  <!-- =========================================================
+       SLIDE 01 — COVER
+       ========================================================= -->
+  <section class="s-cover" data-screen-label="01 Cover">
+    <div class="stack">
+      <div class="top">
+        <span>Pynk Nymph · Brand Guidelines</span>
+        <span>2026 Edition</span>
+      </div>
+      <div class="center">
+        <img class="cover-logo" src="assets/PN_Lockup-Inverse.svg" alt="Pynk Nymph" />
+        <div class="tagline">For every body · Downtown RVA</div>
+      </div>
+      <div class="bottom">
+        <span>Off Hours Creative · Vol 01</span>
+        <span class="tag">◆ Hot girls / hot boys / hot bodies</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 02 — TABLE OF CONTENTS
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="02 Contents" style="background-color: rgb(246, 235, 227)">
+    <div class="toc-wrap">
+      <div class="toc-left">
+        <span class="pn-mono-label" style="display:block; margin-bottom:32px;">In this volume</span>
+        <h2>Inside.</h2>
+      </div>
+      <div class="toc-list">
+        <div class="toc-row"><span class="num">01</span><span class="name">Introduction.</span><span class="pg">04</span></div>
+        <div class="toc-row"><span class="num">02</span><span class="name">Logo & Identity.</span><span class="pg">07</span></div>
+        <div class="toc-row"><span class="num">03</span><span class="name">Color.</span><span class="pg">10</span></div>
+        <div class="toc-row"><span class="num">04</span><span class="name">Typography.</span><span class="pg">14</span></div>
+        <div class="toc-row"><span class="num">05</span><span class="name">Imagery.</span><span class="pg">18</span></div>
+        <div class="toc-row"><span class="num">06</span><span class="name">Closing.</span><span class="pg">21</span></div>
+      </div>
+    </div>
+    <div class="pn-foot"><span>Pynk Nymph · 2026</span><span>02 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 03 — SECTION DIVIDER 01 / INTRODUCTION
+       ========================================================= -->
+  <section class="bg-juicy" data-screen-label="03 Section 01 — Introduction">
+    <div class="sec-div">
+      <span class="label">Section 01</span>
+      <h1 style="color: rgb(246, 235, 227)">Introduction.</h1>
+      <p class="sub" style="color: rgba(255,238,239,.92);">Built on care. Delivered with personality.</p>
+    </div>
+    <div class="pn-foot" style="color: var(--pn-pink-pale);"><span>Pynk Nymph · Brand Guidelines · 2026</span><span>03 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 04 — MISSION
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="04 Mission" style="background-color: rgb(246, 235, 227)">
+    <div class="mission">
+      <p class="quote">Care, comfort, and respect — for <span class="accent">every</span> body.</p>
+      <div class="right">
+        <span class="signoff">01 / Introduction · Mission</span>
+        <p class="body">Pynk Nymph is an inclusive waxing and skincare studio in Downtown Richmond. We exist to make grooming feel safe, easy, and welcoming — a space without judgment, where every body is treated with care.</p>
+        <p class="body">Booking lives at <strong>pynknymph.com</strong> — manage your appointments yourself, anytime. Stay on cadence and your maintenance pricing rewards you for it.</p>
+        <span class="tag-pill">◆ For every body · Downtown RVA</span>
+      </div>
+    </div>
+    <div class="pn-foot"><span>Pynk Nymph · Brand Guidelines · 2026</span><span>04 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 05 — PRINCIPLES
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="05 Principles" style="background-color: rgb(246, 235, 227)">
+    <div class="principles">
+      <div class="principles-head">
+        <h2>Principles.</h2>
+        <p class="desc">Three rules that keep the brand honest. They show up in copy, color, type, and behavior — every time.</p>
+      </div>
+      <div class="principles-grid">
+        <div class="pri-card">
+          <span class="num">01 / Principle</span>
+          <h3>Inclusive by default.</h3>
+          <p>Pynk Nymph is for every body. Photography, language, and visuals reflect a wide range of identities — never an idealized fraction.</p>
+        </div>
+        <div class="pri-card">
+          <span class="num">02 / Principle</span>
+          <h3>Bold, with care.</h3>
+          <p>Confident, expressive, and a little mischievous — but the warmth and craft underneath always lead. Personality without volume for its own sake.</p>
+        </div>
+        <div class="pri-card">
+          <span class="num">03 / Principle</span>
+          <h3>Clarity wins.</h3>
+          <p>If a line is hard to read, it's wrong. We choose plain words, generous space, and high contrast — every time.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pn-foot"><span>01 / Introduction</span><span>05 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 06 — VOICE
+       ========================================================= -->
+  <section class="bg-aloe-dark" data-screen-label="06 Voice">
+    <div class="voice">
+      <div class="left">
+        <span class="pn-mono-label" style="opacity:.75;">01 / Introduction · Voice</span>
+        <h2 style="color: rgb(246, 235, 227)">Speak like<br />a friend who<br />tells the truth.</h2>
+        <p class="pn-body-l" style="max-width: 520px; opacity: .9; color: rgb(246, 235, 227)">Direct, warm, a little funny. Never clinical, never apologetic. We use plain words, contractions, and the occasional well-placed "ass."</p>
+      </div>
+      <div class="right">
+        <div class="voice-line">
+          <span class="role">In a headline</span>
+          <span class="quote" style="color: rgb(246, 235, 227)">"Get your ass waxed."</span>
+        </div>
+        <div class="voice-line">
+          <span class="role">In a confirmation</span>
+          <span class="quote" style="color: rgb(246, 235, 227)">"You're booked. We'll see you Saturday."</span>
+        </div>
+        <div class="voice-line">
+          <span class="role">In a reminder</span>
+          <span class="quote">"Stay on cadence — your pricing rewards you for it."</span>
+        </div>
+      </div>
+    </div>
+    <div class="pn-foot"><span>01 / Introduction</span><span>06 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 07 — SECTION DIVIDER 02 / LOGO
+       ========================================================= -->
+  <section class="bg-aloe-light" data-screen-label="07 Section 02 — Logo">
+    <div class="sec-div">
+      <span class="label">Section 02</span>
+      <h1>Logo &amp;<br />identity.</h1>
+      <p class="sub">Three lockups. One voice. Built to flex.</p>
+    </div>
+    <div class="pn-foot"><span>Pynk Nymph · Brand Guidelines · 2026</span><span>07 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 08 — LOGO LOCKUPS
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="08 Logo lockups" style="background-color: rgb(246, 235, 227)">
+    <div class="logo-grid">
+      <div class="logo-cell head">
+        <h2>Lockups.</h2>
+        <p>The Pynk Nymph identity is a hand-drawn liquid letterform — friendly, mischievous, and unmistakable. Three primary lockups; a tiny family of accents.</p>
+      </div>
+      <div class="logo-cell">
+        <div class="label-row">
+          <span>Primary · Logo + mark</span>
+          <span>02.A</span>
+        </div>
+        <div class="display">
+          <img src="assets/PN_Lockup-Green.svg" alt="Pynk Nymph primary logo with mark" style="width: 86%; max-width: 440px; height: auto;" />
+        </div>
+      </div>
+      <div class="logo-cell">
+        <div class="label-row">
+          <span>Secondary · Wordmark</span>
+          <span>02.B</span>
+        </div>
+        <div class="display">
+          <img src="assets/PN_Logo.svg" alt="Pynk Nymph wordmark" style="height: 168px; width: auto;" />
+        </div>
+      </div>
+      <div class="logo-cell">
+        <div class="label-row">
+          <span>Tertiary · Mark</span>
+          <span>02.C</span>
+        </div>
+        <div class="display">
+          <img src="assets/BootyNymph.svg" alt="Pynk Nymph mascot mark" style="height: 268px; width: auto;" />
+        </div>
+      </div>
+    </div>
+    <div class="pn-foot"><span>02 / Logo &amp; identity</span><span>08 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 09 — LOGO USAGE / CLEAR SPACE
+       ========================================================= -->
+  <section class="bg-aloe-dark" data-screen-label="09 Logo clear space">
+    <div class="content" style="position:absolute;inset:80px;">
+      <div style="display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid currentColor;padding-bottom:24px;margin-bottom:48px;">
+        <h2 style="font-family: var(--pn-display); font-style: italic; font-size: 160px; line-height: .92; margin: 0; letter-spacing: -.025em; color: rgb(246, 235, 227)">Clear space.</h2>
+        <p style="max-width: 380px; font-size: 18px; line-height: 1.6; margin: 0; opacity: .85; color: rgb(246, 235, 227)">Maintain at least one full P-height of clear space around the logo. Don't crowd it. Don't shrink it. Don't recolor it outside the system.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center;">
+        <div style="border:1px dashed var(--pn-aloe-light);border-radius:var(--pn-r-card);padding:80px;display:grid;place-items:center;position:relative;background:var(--pn-mango-1500);">
+          <img src="assets/PN_Lockup-Inverse.svg" alt="Pynk Nymph logo + mark (inverse) clear space diagram" style="height:150px;width:auto;" />
+          <span style="position:absolute;top:24px;left:24px;font-family:var(--pn-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--pn-aloe-light);">P</span>
+          <span style="position:absolute;top:24px;right:24px;font-family:var(--pn-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--pn-aloe-light);">P</span>
+          <span style="position:absolute;bottom:24px;left:24px;font-family:var(--pn-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--pn-aloe-light);">P</span>
+          <span style="position:absolute;bottom:24px;right:24px;font-family:var(--pn-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--pn-aloe-light);">P</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:32px;">
+          <div>
+            <span class="pn-mono-label" style="opacity:.7;">Min size · Print</span>
+            <p style="font-family: var(--pn-display); font-style: italic; font-size: 48px; line-height: 1; margin: 8px 0 0; letter-spacing: -.01em; color: rgb(246, 235, 227)">24mm wide</p>
+          </div>
+          <div>
+            <span class="pn-mono-label" style="opacity:.7;">Min size · Digital</span>
+            <p style="font-family: var(--pn-display); font-style: italic; font-size: 48px; line-height: 1; margin: 8px 0 0; letter-spacing: -.01em; color: rgb(246, 235, 227)">88px wide</p>
+          </div>
+          <div>
+            <span class="pn-mono-label" style="opacity:.7;">Approved colors</span>
+            <p style="font-family: var(--pn-display); font-style: italic; font-size: 36px; line-height: 1.1; margin: 8px 0 0; letter-spacing: -.01em; color: rgb(246, 235, 227)">Aloe Dark · Mango 50 · Juicy Fruit · Dragon Fruit</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pn-foot"><span>02 / Logo &amp; identity</span><span>09 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 10 — SECTION DIVIDER 03 / COLOR
+       ========================================================= -->
+  <section class="bg-juicy" data-screen-label="10 Section 03 — Color">
+    <div class="sec-div">
+      <span class="label">Section 03</span>
+      <h1>Color.</h1>
+      <p class="sub" style="color: rgba(255,238,239,.92);">A loud palette earning quiet rules.</p>
+    </div>
+    <div class="pn-foot" style="color: var(--pn-pink-pale);"><span>Pynk Nymph · Brand Guidelines · 2026</span><span>10 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 11 — PALETTE GRID (8 swatches)
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="11 Palette" style="background-color: rgb(246, 235, 227)">
+    <div class="color-grid">
+      <div class="head-cell">
+        <h2>Palette.</h2>
+        <p>Two neutrals. Two greens. Two pinks. Two warms. Every brand moment lives somewhere on this grid.</p>
+      </div>
+
+      <div class="swatch" style="background: var(--pn-aloe-dark); color: var(--pn-mango-50);">
+        <span class="name">Aloe Dark</span>
+        <div class="meta"><div>HEX · #283414</div><div>RGB · 40 · 52 · 20</div><div>USE · Body · Structure</div></div>
+      </div>
+      <div class="swatch" style="background: var(--pn-mango-50); color: var(--pn-aloe-dark); border: 1px solid currentColor; background-color: rgb(246, 235, 227)">
+        <span class="name">Mango 50</span>
+        <div class="meta"><div>HEX · #F6EBE3</div><div>RGB · 229 · 221 · 213</div><div>USE · Background · Cream</div></div>
+      </div>
+      <div class="swatch" style="background: var(--pn-aloe-light); color: var(--pn-aloe-dark);">
+        <span class="name">Aloe Light</span>
+        <div class="meta"><div>HEX · #759E33</div><div>RGB · 117 · 158 · 51</div><div>USE · Accent · Mid-tone</div></div>
+      </div>
+      <div class="swatch" style="background: var(--pn-charcoal); color: var(--pn-mango-50);">
+        <span class="name" style="color: rgb(246, 235, 227)">Charcoal</span>
+        <div class="meta"><div>HEX · #2C312F</div><div>RGB · 44 · 49 · 47</div><div>USE · Cool dark · UI</div></div>
+      </div>
+
+      <div class="swatch" style="background: var(--pn-juicy-fruit); color: var(--pn-pink-pale);">
+        <span class="name">Juicy Fruit</span>
+        <div class="meta"><div>HEX · #FF565D</div><div>RGB · 255 · 86 · 93</div><div>USE · CTAs · Emphasis</div></div>
+      </div>
+      <div class="swatch" style="background: var(--pn-dragon-fruit); color: #fff;">
+        <span class="name">Dragon Fruit</span>
+        <div class="meta"><div>HEX · #EF317D</div><div>RGB · 239 · 49 · 125</div><div>USE · Accent · Headlines</div></div>
+      </div>
+      <div class="swatch" style="background: var(--pn-strawberry); color: var(--pn-mango-50);">
+        <span class="name">Strawberry</span>
+        <div class="meta"><div>HEX · #CC0709</div><div>RGB · 204 · 7 · 9</div><div>USE · Highlight · Sale</div></div>
+      </div>
+      <div class="swatch" style="background: var(--pn-mango); color: var(--pn-aloe-dark);">
+        <span class="name">Mango</span>
+        <div class="meta"><div>HEX · #FF8B31</div><div>RGB · 255 · 139 · 49</div><div>USE · Highlight · Warmth</div></div>
+      </div>
+    </div>
+    <div class="pn-foot"><span>03 / Color · Palette</span><span>11 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 12 — APPLICATION (escalation)
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="12 Color application" style="background-color: rgb(246, 235, 227)">
+    <div class="esc">
+      <div class="head">
+        <h2 style="font-family: Fraunces; font-style: italic; font-size: 120px; line-height: .95; margin: 0; letter-spacing: -.025em; font-weight: 800">Application.</h2>
+        <p style="max-width:560px;font-size:20px;line-height:1.55;margin:0;">Color should escalate with importance — not appear all at once. Start neutral. Add structure. Finish with emphasis.</p>
+      </div>
+      <div class="ca-body">
+        <div class="ca-top">
+          <span class="ca-eyebrow">◆ Color in practice</span>
+          <div class="ca-cards">
+
+            <div class="ca-card">
+              <div class="ca-mock m1" style="background-color: rgb(246, 235, 227)">
+                <h3 class="m-head">Fresh wax,<br />fresh start.</h3>
+                <p class="m-sub push">Mon–Sat · Downtown RVA</p>
+              </div>
+              <div class="ca-cap">
+                <span class="t">Everyday post</span>
+                <span class="d">Cream base, dark type. No accent needed.</span>
+              </div>
+            </div>
+
+            <div class="ca-card">
+              <div class="ca-mock m2">
+                <h3 class="m-head">20% off<br />first visit.</h3>
+                <p class="m-sub">New clients only</p>
+                <span class="m-btn push">Book now</span>
+              </div>
+              <div class="ca-cap">
+                <span class="t">Promo or CTA post</span>
+                <span class="d">Dark base, cream type, one coral button.</span>
+              </div>
+            </div>
+
+            <div class="ca-card">
+              <div class="ca-mock m3">
+                <p class="m-label">◆ Now open</p>
+                <h3 class="m-head" style="color: rgb(246, 235, 227)">Hello,<br />Richmond.</h3>
+              </div>
+              <div class="ca-cap">
+                <span class="t">High emphasis / announcement only</span>
+                <span class="d">Dragon Fruit field. Save it for big moments.</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="ca-bottom">
+          <span class="ca-eyebrow">◆ Plain-language cheat sheet</span>
+          <table class="ca-sheet">
+            <thead>
+              <tr><th class="col-color">Color</th><th>Use it for</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-color"><div class="chip-row"><span class="chip bordered" style="background: var(--pn-mango-50); background-color: rgb(246, 235, 227)"></span><span class="c-name">Mango 50<span class="c-paren">cream</span></span></div></td>
+                <td class="use">Your default background. Start here almost every time.</td>
+              </tr>
+              <tr>
+                <td class="col-color"><div class="chip-row"><span class="chip" style="background: var(--pn-aloe-dark);"></span><span class="c-name">Aloe Dark<span class="c-paren">dark green</span></span></div></td>
+                <td class="use">Body text, headlines, dark backgrounds.</td>
+              </tr>
+              <tr>
+                <td class="col-color"><div class="chip-row"><span class="chip" style="background: var(--pn-aloe-light);"></span><span class="c-name">Aloe Light<span class="c-paren">light green</span></span></div></td>
+                <td class="use">Accents, dividers, secondary panels.</td>
+              </tr>
+              <tr>
+                <td class="col-color"><div class="chip-row"><span class="chip" style="background: var(--pn-juicy-fruit);"></span><span class="c-name">Juicy Fruit<span class="c-paren">coral red</span></span></div></td>
+                <td class="use">Buttons, CTAs, links. One per post.</td>
+              </tr>
+              <tr>
+                <td class="col-color"><div class="chip-row"><span class="chip" style="background: var(--pn-dragon-fruit);"></span><span class="c-name">Dragon Fruit<span class="c-paren">pink</span></span></div></td>
+                <td class="use">One big accent moment. Headlines, announcement backgrounds.</td>
+              </tr>
+              <tr>
+                <td class="col-color"><div class="chip-row"><span class="chip" style="background: var(--pn-strawberry);"></span><span class="c-name">Strawberry<span class="c-paren">deep red</span></span></div></td>
+                <td class="use">Sales, urgency, and promotions only. Use sparingly.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="pn-foot"><span>03 / Color · Application</span><span>12 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 13 — CONTRAST PAIRS
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="13 Color pairings" style="background-color: rgb(246, 235, 227)">
+    <div class="pairs">
+      <div class="head">
+        <h2 style="font-family:var(--pn-display);font-style:italic;font-size:74px;line-height:.95;margin:0;letter-spacing:-.025em;white-space:nowrap;">Pairings &amp; accessibility.</h2>
+        <p style="max-width:540px;font-size:20px;line-height:1.55;margin:0;">A short, practical guide: which color combinations to reach for, and which to leave alone. If it takes effort to read, don't use it.</p>
+      </div>
+
+      <div class="pr-section">
+        <span class="pr-eyebrow good"><span class="mark">◆</span> Combinations that work</span>
+        <div class="pr-row">
+
+          <div class="pr-card">
+            <div class="pr-demo" style="background: var(--pn-mango-50); color: var(--pn-aloe-dark); background-color: rgb(246, 235, 227); border-width: 1px; border-style: solid">
+              <span class="d-head">Aa</span>
+              <span class="d-line">For every body</span>
+            </div>
+            <div class="pr-meta">
+              <span class="pr-label">Your everyday combo</span>
+              <span class="pr-names"><span class="chips"><span class="chip bordered" style="background: var(--pn-mango-50); background-color: rgb(246, 235, 227)"></span><span class="chip" style="background:var(--pn-aloe-dark);"></span></span>Mango 50 + Aloe Dark</span>
+            </div>
+          </div>
+
+          <div class="pr-card">
+            <div class="pr-demo" style="background: var(--pn-aloe-dark); color: var(--pn-mango-50);">
+              <span class="d-head">Aa</span>
+              <span class="d-line">For every body</span>
+            </div>
+            <div class="pr-meta">
+              <span class="pr-label">Flipped — great for dark posts</span>
+              <span class="pr-names"><span class="chips"><span class="chip" style="background:var(--pn-aloe-dark);"></span><span class="chip bordered" style="background: var(--pn-mango-50); background-color: rgb(246, 235, 227)"></span></span>Aloe Dark + Mango 50</span>
+            </div>
+          </div>
+
+          <div class="pr-card">
+            <div class="pr-demo" style="background: var(--pn-dragon-fruit); color: var(--pn-mango-50);">
+              <span class="d-head">Aa</span>
+              <span class="d-line">Now open</span>
+            </div>
+            <div class="pr-meta">
+              <span class="pr-label">Bold moments only</span>
+              <span class="pr-names"><span class="chips"><span class="chip" style="background:var(--pn-dragon-fruit);"></span><span class="chip bordered" style="background: var(--pn-mango-50); background-color: rgb(246, 235, 227)"></span></span>Dragon Fruit + Mango 50</span>
+            </div>
+          </div>
+
+          <div class="pr-card">
+            <div class="pr-demo" style="background: var(--pn-aloe-light); color: var(--pn-aloe-dark);">
+              <span class="d-head">Aa</span>
+              <span class="d-line">Section label</span>
+            </div>
+            <div class="pr-meta">
+              <span class="pr-label">Subtle, structured</span>
+              <span class="pr-names"><span class="chips"><span class="chip" style="background:var(--pn-aloe-light);"></span><span class="chip" style="background:var(--pn-aloe-dark);"></span></span>Aloe Light + Aloe Dark</span>
+            </div>
+          </div>
+
+          <div class="pr-card">
+            <div class="pr-demo" style="background: var(--pn-juicy-fruit); color: var(--pn-mango-50);">
+              <span class="d-head">Aa</span>
+              <span class="d-line">Book now</span>
+            </div>
+            <div class="pr-meta">
+              <span class="pr-label">Buttons and CTAs</span>
+              <span class="pr-names"><span class="chips"><span class="chip" style="background:var(--pn-juicy-fruit);"></span><span class="chip bordered" style="background: var(--pn-mango-50); background-color: rgb(246, 235, 227)"></span></span>Juicy Fruit + Mango 50</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="pr-section">
+        <span class="pr-eyebrow avoid"><span class="mark">×</span> Combinations to avoid</span>
+        <div class="pr-row three">
+
+          <div class="pr-card">
+            <div class="pr-demo" style="background: var(--pn-juicy-fruit); color: var(--pn-dragon-fruit);">
+              <span class="d-head">Aa</span>
+              <span class="d-line">Hard to read</span>
+            </div>
+            <div class="pr-meta">
+              <span class="pr-label">Too much at once — pick one</span>
+              <span class="pr-names"><span class="chips"><span class="chip" style="background:var(--pn-juicy-fruit);"></span><span class="chip" style="background:var(--pn-dragon-fruit);"></span></span>Juicy Fruit + Dragon Fruit</span>
+            </div>
+          </div>
+
+          <div class="pr-card">
+            <div class="pr-demo" style="background: var(--pn-aloe-light); color: var(--pn-mango-50);">
+              <span class="d-head" style="color: rgb(246, 235, 227)">Aa</span>
+              <span class="d-line">Hard to read</span>
+            </div>
+            <div class="pr-meta">
+              <span class="pr-label">Not enough contrast to read</span>
+              <span class="pr-names"><span class="chips"><span class="chip" style="background:var(--pn-aloe-light);"></span><span class="chip bordered" style="background: var(--pn-mango-50); color: rgb(246, 235, 227); background-color: rgb(246, 235, 227)"></span></span>Aloe Light + Mango 50</span>
+            </div>
+          </div>
+
+          <div class="pr-card">
+            <div class="pr-demo" style="background: var(--pn-strawberry); color: var(--pn-dragon-fruit);">
+              <span class="d-head">Aa</span>
+              <span class="d-line">Hard to read</span>
+            </div>
+            <div class="pr-meta">
+              <span class="pr-label">Clashes — both compete for attention</span>
+              <span class="pr-names"><span class="chips"><span class="chip" style="background:var(--pn-strawberry);"></span><span class="chip" style="background:var(--pn-dragon-fruit);"></span></span>Strawberry + Dragon Fruit</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="pn-foot"><span>03 / Color · Pairings</span><span>13 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 14 — SECTION DIVIDER 04 / TYPOGRAPHY
+       ========================================================= -->
+  <section class="bg-dragon" data-screen-label="14 Section 04 — Typography">
+    <div class="sec-div">
+      <span class="label">Section 04</span>
+      <h1>Typography.</h1>
+      <p class="sub" style="color: rgba(255,255,255,.95);">Expressive serif. Grounded sans. Structural mono. Three jobs.</p>
+    </div>
+    <div class="pn-foot" style="color: #fff;"><span>Pynk Nymph · Brand Guidelines · 2026</span><span>14 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 15 — TYPE SYSTEM (3 cards)
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="15 Type system" style="background-color: rgb(246, 235, 227)">
+    <div class="type-sheet">
+      <div class="head-row">
+        <h2 style="font-family:var(--pn-display);font-style:italic;font-size:72px;line-height:.95;margin:0;letter-spacing:-.025em;white-space:nowrap;">Type system.</h2>
+        <p style="max-width:540px;font-size:18px;line-height:1.55;margin:0;">Fraunces sets the tone. DM Mono carries the brand. DM Sans does the heavy lifting where it has to read.</p>
+      </div>
+      <div class="type-card fr" style="grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 64px;">
+        <div style="flex: 1;">
+          <span class="role">Use this for · Headlines &amp; big moments</span>
+          <h3 class="name" style="font-size: 68px;">Fraunces.</h3>
+          <p style="margin-top: 12px;">Use for big text only — post headlines, taglines, hero moments. Never for paragraphs or small text.</p>
+        </div>
+        <div class="specimen" style="font-size: 170px;">Aa</div>
+      </div>
+      <div class="type-card mono">
+        <span class="role">Use this for · Labels, captions &amp; brand accents</span>
+        <h3 class="name">DM Mono</h3>
+        <p>Use for short structural text — pillar labels, post captions, callouts, slide numbers. This is what makes it feel like Pynk Nymph.</p>
+        <div class="specimen">Aa</div>
+      </div>
+      <div class="type-card sans">
+        <span class="role">Use this for · Body text &amp; documents</span>
+        <h3 class="name">DM Sans</h3>
+        <p>Use when readability matters most — long captions, emails, policy text, anything people actually read line by line.</p>
+        <div class="specimen">Aa</div>
+      </div>
+      <div class="type-rule">
+        <span class="rk">When in doubt</span>
+        <span class="rt"><em class="fr">Fraunces</em> for the hook · <em class="mo">DM Mono</em> for the label · <em class="sa">DM Sans</em> for the explanation.</span>
+      </div>
+    </div>
+    <div class="pn-foot"><span>04 / Typography</span><span>15 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 16 — HIERARCHY DEMO
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="16 Hierarchy" style="background-color: rgb(246, 235, 227)">
+    <div class="hier">
+      <div style="display:flex;justify-content:space-between;align-items:end;">
+        <h2 style="font-family:var(--pn-display);font-style:italic;font-size:120px;line-height:.95;margin:0;letter-spacing:-.025em;">Hierarchy.</h2>
+        <p style="max-width:520px;font-size:18px;line-height:1.6;margin:0;">Three styles max in any single layout. Build hierarchy with scale, not decoration.</p>
+      </div>
+      <div class="row">
+        <span class="lbl">Headline · Fraunces</span>
+        <span class="ex-headline">Get your ass<br />waxed.</span>
+      </div>
+      <div class="row">
+        <span class="lbl">Subhead · DM Mono</span>
+        <span class="ex-sub">For every body. Downtown Richmond.</span>
+      </div>
+      <div class="row">
+        <span class="lbl">Body · DM Sans</span>
+        <span class="ex-body">Pynk Nymph is an inclusive waxing and skincare studio built on care, comfort, and respect. Booking lives at pynknymph.com — manage your appointments yourself, anytime. Stay on cadence and your maintenance pricing rewards you for it.</span>
+      </div>
+      <div class="row">
+        <span class="lbl">Caption · DM Mono</span>
+        <span class="ex-cap">Pynk Nymph · For every body · Downtown RVA</span>
+      </div>
+    </div>
+    <div class="pn-foot"><span>04 / Typography · Hierarchy</span><span>16 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 17 — DO'S & DON'TS (typography)
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="17 Type do/don't" style="background-color: rgb(246, 235, 227)">
+    <div class="dodont">
+      <div class="head">
+        <h2 style="font-family:var(--pn-display);font-style:italic;font-size:120px;line-height:.95;margin:0;letter-spacing:-.025em;">Do's &amp; Don'ts.</h2>
+        <p style="max-width:520px;font-size:18px;line-height:1.6;margin:0;">If a line is hard to read, it's wrong. Lead with clarity — always.</p>
+      </div>
+      <div>
+        <h3><span class="check do">✓</span>Do</h3>
+        <ul>
+          <li><b>Use display type at large, airy sizes.</b><span>Let Fraunces breathe — it's not for paragraphs.</span></li>
+          <li><b>Treat DM Mono as a brand accent.</b><span>Labels, callouts, structural details — it's a vibe.</span></li>
+          <li><b>Keep DM Sans clean and consistent.</b><span>Same size, same weight, comfortable line height.</span></li>
+          <li><b>Build hierarchy with scale, not decoration.</b><span>Bigger before bolder. Color before italic.</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3><span class="check no">×</span>Avoid</h3>
+        <ul>
+          <li><b>Long paragraphs in Fraunces.</b><span>Display type is not body type. Keep it to one line.</span></li>
+          <li><b>ALL CAPS in DM Sans body.</b><span>Caps belong to DM Mono accents, not running text.</span></li>
+          <li><b>Mixing weights or sizes in one block.</b><span>Pick one and commit. Visual noise reads as panic.</span></li>
+          <li><b>Italic for emphasis in body copy.</b><span>Use weight, color, or scale. Not italic.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pn-foot"><span>04 / Typography · Do's &amp; Don'ts</span><span>17 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 18 — SECTION DIVIDER 05 / IMAGERY
+       ========================================================= -->
+  <section class="bg-wine" data-screen-label="18 Section 05 — Imagery">
+    <div class="sec-div">
+      <span class="label">Section 05</span>
+      <h1>Imagery.</h1>
+      <p class="sub" style="color: rgba(255,238,239,.92);">Real bodies. Playful illustration. Mascot energy.</p>
+    </div>
+    <div class="pn-foot" style="color: var(--pn-pink-pale);"><span>Pynk Nymph · Brand Guidelines · 2026</span><span>18 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 19 — PHOTOGRAPHY
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="19 Photography" style="background-color: rgb(246, 235, 227)">
+    <div class="img-page">
+      <div class="head">
+        <h2 style="font-family:var(--pn-display);font-style:italic;font-size:120px;line-height:.95;margin:0;letter-spacing:-.025em;">Photography.</h2>
+        <p style="max-width:540px;font-size:18px;line-height:1.6;margin:0;">Real bodies, real texture, real comfort. Warm, human, approachable — never staged or clinical. Lighting feels natural or softly directional.</p>
+      </div>
+      <div class="ph-strip">
+        <div class="ph" style="background-image: url('assets/img/personality-bg.png');"></div>
+        <div class="ph" style="background-image: url('assets/img/inclusive-bg.jpg');"></div>
+        <image-slot id="photo-3" shape="rounded" radius="20" placeholder="Drop a photo"></image-slot>
+        <image-slot id="photo-4" shape="rounded" radius="20" placeholder="Drop a photo"></image-slot>
+      </div>
+      <div class="lbl-row">
+        <div class="col">
+          <h4>Capture.</h4>
+          <span class="ok">Real skin, real texture</span>
+          <span class="ok">Natural or softly directional light</span>
+          <span class="ok">Diverse bodies and identities</span>
+          <span class="ok">Lived-in, comfortable moments</span>
+        </div>
+        <div class="col">
+          <h4>Avoid.</h4>
+          <span class="no">Over-retouched, plastic finishes</span>
+          <span class="no">Harsh clinical lighting</span>
+          <span class="no">Generic luxury spa stock</span>
+          <span class="no">Performed or stiff posing</span>
+        </div>
+      </div>
+    </div>
+    <div class="pn-foot"><span>05 / Imagery · Photography</span><span>19 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 20 — ILLUSTRATION & MASCOT
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="20 Illustration & mascot" style="background-color: rgb(246, 235, 227)">
+    <div class="motif-page">
+      <div class="left">
+        <div>
+          <span class="pn-mono-label">05 / Imagery · Illustration &amp; mascot</span>
+          <h2 style="margin-top: 18px;">Recurring motifs.</h2>
+          <p class="lede">Illustration carries the playful, slightly mischievous energy. <strong>These motifs and the mascot are part of the Pynk Nymph visual language. Use them as accents — not as the main focus of a design.</strong> All assets are stored in the Pynk Nymph Canva Brand Kit and the Off Hours client asset library. Pull from there — do not recreate from scratch.</p>
+        </div>
+        <div class="motif-list">
+          <div class="m-row featured">
+            <div class="m-chip wine"><img src="assets/img/peeking-mascot.png" alt="Pynk Nymph mascot" /></div>
+            <div class="m-txt">
+              <h4>Mascot <span>Troll character</span></h4>
+              <p>The brand personality made visible. Use as a spot illustration in social posts, merch, event materials, and promo content. Available as a standalone asset — do not alter the character's colors or proportions.</p>
+            </div>
+          </div>
+          <div class="m-row">
+            <div class="m-chip dark">✺</div>
+            <div class="m-txt">
+              <h4>Cactus</h4>
+              <p>Post corners, section dividers, story backgrounds, spot illustration.</p>
+            </div>
+          </div>
+          <div class="m-row">
+            <div class="m-chip coral">⌬</div>
+            <div class="m-txt">
+              <h4>Splat / Slime</h4>
+              <p>Energy accents, promo posts, bold emphasis moments.</p>
+            </div>
+          </div>
+          <div class="m-row">
+            <div class="m-chip aloe">✦</div>
+            <div class="m-txt">
+              <h4>Sparkle <span>✦</span></h4>
+              <p>Subtle accents, testimonial posts, soft editorial moments.</p>
+            </div>
+          </div>
+          <div class="m-row">
+            <div class="m-chip dragon">◆</div>
+            <div class="m-txt">
+              <h4>Diamond <span>◆</span></h4>
+              <p>Brand mark accent, pillar labels, section openers, running footer.</p>
+            </div>
+          </div>
+        </div>
+        <div class="m-note">◆ All motifs are pre-loaded in your Canva brand kit. Drag and drop — no redesigning needed.</div>
+      </div>
+      <div class="right">
+        <span class="tag">◆ Bootynymph · The mascot</span>
+        <h3 style="color: rgb(246, 235, 227)">Slightly feral.<br />Always charming.</h3>
+        <img src="assets/img/peeking-mascot.png" alt="Pynk Nymph mascot peeking" class="mascot-img" />
+        <p>The flat, expressive Pynk Nymph mascot is the visual heart of our personality. Use her where playfulness earns its place. Avoid using her where clarity has to lead.</p>
+      </div>
+    </div>
+    <div class="pn-foot"><span>05 / Imagery</span><span>20 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 21 — SECTION DIVIDER 06 / CLOSING
+       ========================================================= -->
+  <section class="bg-aloe-dark" data-screen-label="21 Section 06 — Closing">
+    <div class="sec-div">
+      <span class="label">Section 06</span>
+      <h1 style="color: rgb(246, 235, 227)">Closing.</h1>
+      <p class="sub" style="opacity: .85;">The system, in one breath.</p>
+    </div>
+    <div class="pn-foot"><span>Pynk Nymph · Brand Guidelines · 2026</span><span>21 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 22 — CREDO
+       ========================================================= -->
+  <section class="bg-cream" data-screen-label="22 Credo" style="background-color: rgb(246, 235, 227)">
+    <div class="closing">
+      <div>
+        <span class="pn-mono-label" style="opacity:.7;">06 / Closing</span>
+      </div>
+      <h2 class="credo">
+        Built to be <span class="a">bold.</span><br />
+        Designed to be <span class="b">clear.</span><br />
+        Always rooted in <span class="c">care.</span>
+      </h2>
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:64px;">
+        <p class="body">Pynk Nymph is built on comfort, confidence, and care — delivered with personality. Apply this system consistently and the brand stays recognizable, inclusive, and easy to trust.</p>
+        <span class="tag-pill">◆ For every body</span>
+      </div>
+    </div>
+    <div class="pn-foot"><span>06 / Closing</span><span>22 / 23</span></div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 23 — FINALE
+       ========================================================= -->
+  <section class="bg-juicy" data-screen-label="23 Finale">
+    <div class="finale-card" style="color: var(--pn-pink-pale);">
+      <h1 style="font-size: 168px">
+</h1>
+      <div class="row">
+        <span>For every body.</span>
+        <span>pynknymph.com · 804.455.7149 · @pynknymph</span>
+      </div>
+    </div>
+  </section>
+
+</deck-stage>
+
+<div id="tweak-root"></div>
+<script src="image-slot.js"></script>
+<script src="deck-stage.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="brand-tweaks.jsx"></script>
+</body>
+</html>

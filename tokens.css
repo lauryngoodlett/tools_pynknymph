@@ -1,0 +1,219 @@
+/* =============================================================
+   Pynk Nymph — Brand Tokens (extracted from the 2026 brand guidelines)
+   ============================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700;1,9..144,900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400;1,9..40,500&display=swap');
+
+:root {
+  /* PRIMARY ---------------------------------------------------- */
+  --pn-juicy-fruit: #FF565D;       /* coral pink */
+  --pn-aloe-light:  #759E33;       /* spring olive */
+  --pn-aloe-dark:   #283414;       /* deep olive — primary dark */
+  --pn-dragon-fruit:#EF317D;       /* hot pink */
+
+  /* SECONDARY -------------------------------------------------- */
+  --pn-strawberry:  #CC0709;       /* deep red */
+  --pn-mango:       #FF8B31;       /* tangerine */
+
+  /* NEUTRALS --------------------------------------------------- */
+  --pn-mango-50:    #E5DDD5;       /* cream — primary background */
+  --pn-mango-1500:  #20140B;       /* near-black warm */
+  --pn-charcoal:    #2C312F;       /* off-black cool */
+
+  /* EXTENDED (sourced from site & social variations) ---------- */
+  --pn-wine:        #4D142A;       /* deep berry — secondary dark */
+  --pn-wine-deep:   #2A0814;
+  --pn-pink-pale:   #FFEEEF;       /* logo cream-pink */
+  --pn-pink-rose:   #FFDFE0;       /* booty highlight */
+  --pn-aloe-pale:   #DBE4CE;       /* sage */
+  --pn-aloe-mid:    #547126;       /* deep aloe */
+  --pn-cream-soft:  #F6EBE3;       /* site bg */
+
+  /* TYPE ------------------------------------------------------- */
+  --pn-display: "Fraunces", "Georgia", serif; /* @kind font */
+  --pn-mono:    "DM Mono", "JetBrains Mono", ui-monospace, monospace; /* @kind font */
+  --pn-sans:    "DM Sans", system-ui, -apple-system, sans-serif; /* @kind font */
+
+  /* SCALE (slide 1920×1080 — scale uses ems) ------------------ */
+  --pn-display-xl: clamp(64px, 9vw, 180px); /* @kind font */
+  --pn-display-l:  clamp(48px, 6.5vw, 120px); /* @kind font */
+  --pn-display-m:  clamp(36px, 4.5vw, 72px); /* @kind font */
+  --pn-display-s:  clamp(28px, 3vw, 48px); /* @kind font */
+  --pn-h1: 56px;
+  --pn-h2: 40px;
+  --pn-h3: 28px;
+  --pn-body-l: 18px;
+  --pn-body: 16px;
+  --pn-caption: 13px;
+  --pn-eyebrow: 12px;
+
+  /* RADII / SHADOWS -------------------------------------------- */
+  --pn-r-pill: 1000px;
+  --pn-r-card: 16px;
+  --pn-r-tag:  6px;
+
+  /* SPACING ---------------------------------------------------- */
+  --pn-s-1: 4px;
+  --pn-s-2: 8px;
+  --pn-s-3: 12px;
+  --pn-s-4: 16px;
+  --pn-s-5: 24px;
+  --pn-s-6: 32px;
+  --pn-s-7: 48px;
+  --pn-s-8: 64px;
+  --pn-s-9: 96px;
+  --pn-s-10: 128px;
+}
+
+/* =============================================================
+   GLOBAL RESET / DEFAULTS
+   ============================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--pn-mango-50);
+  color: var(--pn-aloe-dark);
+  font-family: var(--pn-sans);
+  font-size: var(--pn-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img, svg { display: block; max-width: 100%; }
+
+/* =============================================================
+   TYPE PRIMITIVES
+   ============================================================= */
+.pn-display {
+  font-family: var(--pn-display);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: var(--pn-aloe-dark);
+}
+.pn-display-roman { font-family: var(--pn-display); font-style: normal; font-weight: 500; }
+.pn-mono {
+  font-family: var(--pn-mono);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.pn-eyebrow {
+  font-family: var(--pn-mono);
+  font-weight: 500;
+  font-size: var(--pn-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+.pn-body { font-family: var(--pn-sans); font-weight: 400; line-height: 1.7; }
+.pn-body-strong { font-weight: 700; }
+
+/* =============================================================
+   BUTTONS
+   ============================================================= */
+.pn-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--pn-sans);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  border-radius: var(--pn-r-pill);
+  padding: 18px 36px;
+  border: 2px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease, color .2s ease;
+}
+.pn-btn:hover { transform: translateY(-1px); }
+.pn-btn-primary { background: var(--pn-dragon-fruit); color: #fff; }
+.pn-btn-primary:hover { background: #d6296e; }
+.pn-btn-ghost-cream { background: transparent; border-color: var(--pn-mango-50); color: var(--pn-mango-50); }
+.pn-btn-ghost-cream:hover { background: var(--pn-mango-50); color: var(--pn-aloe-dark); }
+.pn-btn-ghost-dark { background: transparent; border-color: var(--pn-aloe-dark); color: var(--pn-aloe-dark); }
+.pn-btn-ghost-dark:hover { background: var(--pn-aloe-dark); color: var(--pn-mango-50); }
+.pn-btn-coral { background: var(--pn-juicy-fruit); color: #fff; }
+.pn-btn-coral:hover { background: #ee424a; }
+
+/* =============================================================
+   TAG / CHIP — DM MONO
+   ============================================================= */
+.pn-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--pn-r-tag);
+  font-family: var(--pn-mono);
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--pn-aloe-dark);
+  color: var(--pn-mango-50);
+}
+.pn-tag-outline {
+  background: transparent;
+  border: 1px solid currentColor;
+}
+
+/* =============================================================
+   MARQUEE — "GET YOUR ASS WAXED" SCROLLER
+   ============================================================= */
+.pn-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--pn-mono);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 14px 0;
+}
+.pn-marquee-track {
+  display: inline-flex;
+  gap: 32px;
+  animation: pnScroll 35s linear infinite;
+}
+.pn-marquee-item { display: inline-flex; align-items: center; gap: 32px; }
+.pn-marquee-diamond { display: inline-block; width: 8px; height: 8px; background: currentColor; transform: rotate(45deg); }
+@keyframes pnScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* =============================================================
+   POLAROID — recurring brand frame
+   ============================================================= */
+.pn-polaroid {
+  background: #fff;
+  padding: 10px 10px 36px;
+  box-shadow: 0 12px 30px rgba(32,20,11,.18);
+  display: inline-block;
+  transform: rotate(-2deg);
+  transition: transform .25s ease;
+}
+.pn-polaroid:hover { transform: rotate(0deg) translateY(-4px); }
+.pn-polaroid-img {
+  display: block;
+  background: var(--pn-aloe-pale);
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.pn-polaroid-cap {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-family: var(--pn-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--pn-aloe-dark);
+}
+
+/* =============================================================
+   FOCUS / SELECT
+   ============================================================= */
+::selection { background: var(--pn-juicy-fruit); color: #fff; }
+*:focus-visible { outline: 2px solid var(--pn-dragon-fruit); outline-offset: 3px; }

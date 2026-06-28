@@ -1,0 +1,655 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Pynk Nymph — System Index" subtitle="Pynk Nymph wordmark + tweak controls" -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pynk Nymph — Brand Design System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles/tokens.css" />
+<style>
+  body {
+    background: var(--surface-bg, var(--pn-mango-50));
+    color: var(--surface-fg, var(--pn-aloe-dark));
+    min-height: 100vh;
+    transition: background .4s ease, color .4s ease;
+  }
+
+  /* ----- TOPBAR ----- */
+  .pn-topbar {
+    background: var(--pn-aloe-dark);
+    color: var(--pn-mango-50);
+    padding: 14px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pn-topbar-mark {
+    display: flex;
+    align-items: center;
+    height: 28px;
+  }
+  .pn-topbar-mark svg {
+    height: 22px;
+    width: auto;
+  }
+  .pn-topbar-mark svg path {
+    fill: var(--pn-mango-50);
+  }
+  .pn-topbar-meta {
+    font-family: var(--pn-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    opacity: 0.75;
+  }
+
+  /* ----- HERO ----- */
+  .pn-hero {
+    padding: 88px 50px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pn-hero-eyebrow {
+    font-family: var(--pn-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--pn-aloe-mid);
+    margin: 0 0 32px;
+  }
+  .pn-hero-wordmark {
+    display: block;
+    margin: 0 auto;
+    width: min(960px, 90%);
+    height: auto;
+    max-height: 38vh;
+  }
+  .pn-hero-wordmark path {
+    fill: var(--logo-fill, var(--pn-aloe-dark));
+    transition: fill .3s ease;
+  }
+  .pn-hero-sub {
+    max-width: 640px;
+    margin: 40px auto 0;
+    font-family: var(--pn-sans);
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--surface-fg-soft, var(--pn-charcoal));
+  }
+  .pn-hero-tag {
+    font-family: var(--pn-mono);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    margin-top: 28px;
+    color: var(--surface-fg, var(--pn-aloe-dark));
+    opacity: 0.85;
+  }
+
+  /* ----- SCROLLER ----- */
+  .pn-scroll-aloe { background: var(--pn-aloe-light); color: var(--pn-aloe-dark); }
+  .pn-scroll-pink { background: var(--accent, var(--pn-juicy-fruit)); color: var(--pn-pink-pale); }
+
+  /* ----- CARDS GRID ----- */
+  .pn-grid-wrap {
+    padding: 96px 50px 120px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .pn-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 48px;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .pn-section-head h2 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1;
+    margin: 8px 0 0;
+    color: var(--surface-fg, var(--pn-aloe-dark));
+    letter-spacing: -0.02em;
+  }
+  .pn-section-head .pn-eyebrow { color: var(--pn-aloe-mid); }
+  .pn-section-head p {
+    max-width: 380px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--surface-fg-soft, var(--pn-charcoal));
+    margin: 0;
+  }
+
+  .pn-card-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+  .pn-card {
+    border-radius: var(--pn-r-card);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform .25s ease, box-shadow .25s ease;
+    box-shadow: 0 1px 0 rgba(40,52,20,.08);
+    border: 1px solid rgba(40,52,20,.08);
+  }
+  .pn-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(40,52,20,.12); }
+  .pn-card-thumb {
+    aspect-ratio: 16 / 10;
+    position: relative;
+    overflow: hidden;
+    background: var(--pn-aloe-pale);
+    display: grid;
+    place-items: center;
+    color: var(--pn-aloe-dark);
+  }
+  .pn-card-foot {
+    background: #fff;
+    padding: 22px 24px 24px;
+  }
+  .pn-card-foot .pn-eyebrow {
+    color: var(--pn-aloe-mid);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .pn-card-foot h3 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1;
+    margin: 0 0 8px;
+    letter-spacing: -0.015em;
+    color: var(--pn-aloe-dark);
+  }
+  .pn-card-foot p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--pn-charcoal);
+    margin: 0;
+  }
+  .pn-card-arrow {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.92);
+    display: grid;
+    place-items: center;
+    font-family: var(--pn-mono);
+    font-size: 14px;
+    color: var(--pn-aloe-dark);
+  }
+
+  /* card spans + thumb backgrounds */
+  .pn-c-deck     { grid-column: span 7; }
+  .pn-c-system   { grid-column: span 5; }
+  .pn-c-website  { grid-column: span 7; }
+  .pn-c-social   { grid-column: span 5; }
+  .pn-c-skill    { grid-column: span 12; }
+
+  .pn-c-deck .pn-card-thumb {
+    background: var(--pn-wine);
+    color: var(--pn-mango-50);
+  }
+  .pn-c-system .pn-card-thumb { background: var(--pn-mango-50); }
+  .pn-c-website .pn-card-thumb {
+    background: linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)), url('assets/img/hero-bg.jpg') center/cover, var(--pn-wine);
+    color: var(--pn-pink-pale);
+  }
+  .pn-c-social .pn-card-thumb { background: var(--pn-aloe-dark); color: var(--pn-mango-50); }
+  .pn-c-skill .pn-card-thumb {
+    aspect-ratio: 16 / 4;
+    background: var(--pn-charcoal);
+    color: var(--pn-mango-50);
+  }
+
+  /* small thumb decorations */
+  .pn-thumb-display {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    text-align: center;
+    padding: 24px;
+  }
+  .pn-thumb-display.s-deck   { font-size: clamp(48px, 7vw, 96px); }
+  .pn-thumb-display.s-site   { font-size: clamp(40px, 5.5vw, 80px); }
+
+  /* mini system thumb */
+  .pn-mini {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .pn-mini > div { display: grid; place-items: end start; padding: 10px; font-family: var(--pn-mono); font-size: 9px; text-transform: uppercase; letter-spacing: .08em; }
+  .pn-mini-strip {
+    grid-column: 1 / -1;
+    height: 100%;
+    background: var(--pn-mango-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 88px;
+    line-height: 1;
+    color: var(--pn-aloe-dark);
+    letter-spacing: -0.03em;
+  }
+
+  /* social mini grid */
+  .pn-social-mini {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4px;
+    padding: 16px;
+    width: 100%;
+    height: 100%;
+    background: var(--pn-aloe-dark);
+  }
+  .pn-social-mini > div {
+    display: grid;
+    place-items: center;
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1;
+    text-align: center;
+    padding: 8px;
+  }
+
+  /* skill thumb */
+  .pn-c-skill .pn-card-thumb { padding: 36px 48px; align-items: stretch; justify-content: stretch; }
+  .pn-skill-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .pn-skill-row .left {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: clamp(36px, 4vw, 56px);
+    line-height: 1;
+    color: var(--pn-mango-50);
+    letter-spacing: -0.02em;
+  }
+  .pn-skill-row .right {
+    font-family: var(--pn-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--pn-mango-50);
+    opacity: 0.8;
+    max-width: 380px;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 900px) {
+    .pn-c-deck, .pn-c-system, .pn-c-website, .pn-c-social, .pn-c-skill { grid-column: span 12; }
+    .pn-grid-wrap { padding: 64px 24px 80px; }
+    .pn-hero { padding: 64px 24px 40px; }
+  }
+
+  /* ----- MOTIF ROW ----- */
+  .pn-motif-strip {
+    background: var(--pn-aloe-dark);
+    color: var(--pn-mango-50);
+    padding: 64px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+  }
+  .pn-motif-strip h3 {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 40px;
+    line-height: 1;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+  .pn-motif-row {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pn-motif-pill {
+    border: 1px solid var(--pn-aloe-light);
+    border-radius: var(--pn-r-pill);
+    padding: 10px 22px;
+    font-family: var(--pn-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--pn-mango-50);
+  }
+
+  /* ----- FOOTER ----- */
+  .pn-footer {
+    background: var(--pn-mango-1500);
+    color: var(--pn-mango-50);
+    padding: 48px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    font-family: var(--pn-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+  .pn-footer .lock {
+    font-family: var(--pn-display);
+    font-style: italic;
+    font-size: 24px;
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+
+  /* ----- SURFACE THEMES ----- */
+  body.surface-cream {
+    --surface-bg: var(--pn-mango-50);
+    --surface-fg: var(--pn-aloe-dark);
+    --surface-fg-soft: var(--pn-charcoal);
+    --logo-fill: var(--pn-aloe-dark);
+  }
+  body.surface-wine {
+    --surface-bg: var(--pn-wine);
+    --surface-fg: var(--pn-pink-pale);
+    --surface-fg-soft: rgba(255,238,239,.78);
+    --logo-fill: var(--pn-pink-pale);
+  }
+  body.surface-aloe {
+    --surface-bg: var(--pn-aloe-dark);
+    --surface-fg: var(--pn-mango-50);
+    --surface-fg-soft: rgba(229,221,213,.78);
+    --logo-fill: var(--pn-juicy-fruit);
+  }
+  body.surface-wine .pn-section-head .pn-eyebrow,
+  body.surface-aloe .pn-section-head .pn-eyebrow { color: rgba(255,255,255,.7); }
+  body.surface-wine .pn-hero-eyebrow,
+  body.surface-aloe .pn-hero-eyebrow { color: rgba(255,255,255,.65); }
+
+  /* hidden controls */
+  body.hide-motifs .pn-motif-strip { display: none; }
+  body.hide-marquee2 .pn-marquee-bottom { display: none; }
+  body.hide-sub .pn-hero-sub { display: none; }
+  body.hide-eyebrow .pn-hero-eyebrow { display: none; }
+
+  /* marquee speed control */
+  .pn-marquee-track { animation-duration: var(--marquee-speed, 35s) !important; }
+
+  /* React mount points sit transparently */
+  #tweaks-root { font-family: ui-sans-serif, system-ui; }
+</style>
+</head>
+<body class="surface-cream">
+
+<!-- TOP BAR ============================================== -->
+<header class="pn-topbar">
+  <span class="pn-topbar-mark">
+    <img src="assets/PN_Logo.svg" alt="Pynk Nymph" style="height: 22px; width: auto; filter: brightness(0) invert(1);" />
+  </span>
+  <span class="pn-topbar-meta">Brand Design System · v1 · 2026</span>
+</header>
+
+<!-- HERO ================================================= -->
+<section class="pn-hero">
+  <div class="pn-hero-eyebrow">Vol. 01 · For Every Body · Downtown RVA</div>
+  <img class="pn-hero-wordmark" src="assets/PN_Logo.svg" alt="Pynk Nymph" />
+  <div class="pn-hero-tag">Brand · Design System · 2026</div>
+  <p class="pn-hero-sub">
+    The complete visual system for Pynk Nymph — an inclusive waxing & skincare studio.
+    Built to be bold. Designed to be clear. Always rooted in care.
+  </p>
+</section>
+
+<!-- MARQUEE =============================================== -->
+<div class="pn-marquee pn-scroll-aloe pn-marquee-top">
+  <div class="pn-marquee-track">
+    <span class="pn-marquee-item">Get your ass waxed <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">For every body <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Downtown RVA <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Hot girls get waxed <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Hot boys get waxed <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Judgment-free care <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Get your ass waxed <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">For every body <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Downtown RVA <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Hot girls get waxed <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Hot boys get waxed <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Judgment-free care <i class="pn-marquee-diamond"></i></span>
+  </div>
+</div>
+
+<!-- CARD GRID ============================================ -->
+<section class="pn-grid-wrap">
+  <header class="pn-section-head">
+    <div>
+      <span class="pn-eyebrow">Inside the system</span>
+      <h2>Five surfaces. One brand.</h2>
+    </div>
+    <p>
+      The brand lives across guidelines, components, web, and social — each tuned to the
+      same rules but pitched for its own context. Open any door.
+    </p>
+  </header>
+
+  <div class="pn-card-grid">
+    <a class="pn-card pn-c-deck" href="brand-guidelines.html">
+      <div class="pn-card-thumb">
+        <div class="pn-thumb-display s-deck">Get your ass<br />waxed.</div>
+        <span class="pn-card-arrow">↗</span>
+      </div>
+      <div class="pn-card-foot">
+        <span class="pn-eyebrow">01 · Deck</span>
+        <h3>Brand Guidelines</h3>
+        <p>Vision, principles, voice, logos, color, type, and imagery — the full 2026 edition presented as a 23-slide deck.</p>
+      </div>
+    </a>
+
+    <a class="pn-card pn-c-system" href="design-system.html">
+      <div class="pn-card-thumb">
+        <div class="pn-mini">
+          <div class="pn-mini-strip"><em>Aa</em></div>
+        </div>
+        <span class="pn-card-arrow">↗</span>
+      </div>
+      <div class="pn-card-foot">
+        <span class="pn-eyebrow">02 · UI Kit</span>
+        <h3>Design System</h3>
+        <p>Tokens, type ramp, color, components, and motifs in one printable reference.</p>
+      </div>
+    </a>
+
+    <a class="pn-card pn-c-website" href="website.html">
+      <div class="pn-card-thumb">
+        <div class="pn-thumb-display s-site" style="font-family: var(--pn-display); color: var(--pn-pink-pale);">Pynk Nymph</div>
+        <span class="pn-card-arrow">↗</span>
+      </div>
+      <div class="pn-card-foot">
+        <span class="pn-eyebrow">03 · Web</span>
+        <h3>Website UI Kit</h3>
+        <p>Homepage, services, navigation, hero modules, and CTA blocks — applied to a real layout.</p>
+      </div>
+    </a>
+
+    <a class="pn-card pn-c-social" href="social.html">
+      <div class="pn-card-thumb">
+        <div class="pn-social-mini">
+          <div style="background: var(--pn-aloe-dark); color: var(--pn-mango-50);">Sale.</div>
+          <div style="background: var(--pn-juicy-fruit); color: #fff;">New.</div>
+          <div style="background: var(--pn-mango-50); color: var(--pn-aloe-dark);">Care.</div>
+          <div style="background: var(--pn-dragon-fruit); color: #fff;">Hot.</div>
+          <div style="background: var(--pn-aloe-light); color: var(--pn-aloe-dark);">Tossed.</div>
+          <div style="background: var(--pn-wine); color: var(--pn-pink-pale);">101.</div>
+        </div>
+        <span class="pn-card-arrow">↗</span>
+      </div>
+      <div class="pn-card-foot">
+        <span class="pn-eyebrow">04 · Social</span>
+        <h3>Instagram Kit</h3>
+        <p>Post, carousel, and story templates that stay on-brand across every grid.</p>
+      </div>
+    </a>
+
+    <a class="pn-card pn-c-skill" href="SKILL.md">
+      <div class="pn-card-thumb">
+        <div class="pn-skill-row">
+          <span class="left"><em>How to use this system.</em></span>
+          <span class="right">Token names, file map, do/don't, file index — everything Claude (or your team) needs to work inside the system without breaking it.</span>
+        </div>
+      </div>
+      <div class="pn-card-foot">
+        <span class="pn-eyebrow">05 · Reference</span>
+        <h3>SKILL.md</h3>
+        <p>Quick-reference for designers and developers building inside the Pynk Nymph system.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- MOTIF STRIP =========================================== -->
+<section class="pn-motif-strip">
+  <h3>Recurring Motifs.</h3>
+  <div class="pn-motif-row">
+    <span class="pn-motif-pill">◆ Cactus</span>
+    <span class="pn-motif-pill">◆ Splat / Slime</span>
+    <span class="pn-motif-pill">◆ Sparkle</span>
+    <span class="pn-motif-pill">◆ Polaroid</span>
+    <span class="pn-motif-pill">◆ Mascot Nymph</span>
+    <span class="pn-motif-pill">◆ Hand-drawn Stars</span>
+  </div>
+</section>
+
+<!-- MARQUEE 2 ============================================= -->
+<div class="pn-marquee pn-scroll-pink pn-marquee-bottom">
+  <div class="pn-marquee-track">
+    <span class="pn-marquee-item">All bodies welcome <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Judgment-free care <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">All bodies welcome <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Judgment-free care <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">All bodies welcome <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Judgment-free care <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">All bodies welcome <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Judgment-free care <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">All bodies welcome <i class="pn-marquee-diamond"></i></span>
+    <span class="pn-marquee-item">Judgment-free care <i class="pn-marquee-diamond"></i></span>
+  </div>
+</div>
+
+<!-- FOOTER =============================================== -->
+<footer class="pn-footer">
+  <span class="lock">for every body.</span>
+  <span>© 2026 Pynk Nymph · Designed by Off Hours Creative</span>
+</footer>
+
+<!-- ===== Tweaks mount ===== -->
+<div id="tweaks-root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "surface": "cream",
+    "accent": "#CC0709",
+    "logoSize": 100,
+    "showSub": true,
+    "showEyebrow": true,
+    "showMotifs": true,
+    "showSecondMarquee": true,
+    "marqueeSpeed": 35
+  }/*EDITMODE-END*/;
+
+  function App() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+    // Apply surface
+    React.useEffect(() => {
+      const body = document.body;
+      body.classList.remove('surface-cream', 'surface-wine', 'surface-aloe');
+      body.classList.add('surface-' + t.surface);
+    }, [t.surface]);
+
+    // Apply accent (drives marquee 2 + pink underline)
+    React.useEffect(() => {
+      document.documentElement.style.setProperty('--accent', t.accent);
+    }, [t.accent]);
+
+    // Apply logo size
+    React.useEffect(() => {
+      const img = document.querySelector('.pn-hero-wordmark');
+      if (img) img.style.width = `min(${t.logoSize * 9.6}px, 90%)`;
+    }, [t.logoSize]);
+
+    // Apply marquee speed
+    React.useEffect(() => {
+      document.documentElement.style.setProperty('--marquee-speed', t.marqueeSpeed + 's');
+    }, [t.marqueeSpeed]);
+
+    // Hide/show
+    React.useEffect(() => {
+      document.body.classList.toggle('hide-sub', !t.showSub);
+      document.body.classList.toggle('hide-eyebrow', !t.showEyebrow);
+      document.body.classList.toggle('hide-motifs', !t.showMotifs);
+      document.body.classList.toggle('hide-marquee2', !t.showSecondMarquee);
+    }, [t.showSub, t.showEyebrow, t.showMotifs, t.showSecondMarquee]);
+
+    return (
+      <TweaksPanel title="Index Tweaks">
+        <TweakSection label="Surface" />
+        <TweakRadio  label="Theme" value={t.surface}
+                     options={['cream', 'wine', 'aloe']}
+                     onChange={(v) => setTweak('surface', v)} />
+        <TweakColor  label="Accent" value={t.accent}
+                     options={['#FF565D', '#EF317D', '#CC0709', '#FF8B31', '#759E33']}
+                     onChange={(v) => setTweak('accent', v)} />
+
+        <TweakSection label="Hero" />
+        <TweakSlider label="Logo size" value={t.logoSize} min={50} max={140} unit="%"
+                     onChange={(v) => setTweak('logoSize', v)} />
+        <TweakToggle label="Show eyebrow" value={t.showEyebrow}
+                     onChange={(v) => setTweak('showEyebrow', v)} />
+        <TweakToggle label="Show subtitle" value={t.showSub}
+                     onChange={(v) => setTweak('showSub', v)} />
+
+        <TweakSection label="Motion" />
+        <TweakSlider label="Marquee speed" value={t.marqueeSpeed} min={10} max={80} unit="s"
+                     onChange={(v) => setTweak('marqueeSpeed', v)} />
+        <TweakToggle label="Show 2nd marquee" value={t.showSecondMarquee}
+                     onChange={(v) => setTweak('showSecondMarquee', v)} />
+
+        <TweakSection label="Sections" />
+        <TweakToggle label="Show motif strip" value={t.showMotifs}
+                     onChange={(v) => setTweak('showMotifs', v)} />
+      </TweaksPanel>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById('tweaks-root'));
+  root.render(<App />);
+</script>
+
+</body>
+</html>
